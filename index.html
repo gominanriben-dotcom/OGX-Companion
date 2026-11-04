@@ -6,10 +6,10 @@
 <title>OGX Companion</title>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#f3f4f8;--card:#fff;--card2:#f7f8fb;--line:#e1e4ec;--ink:#14161c;--mute:#697084;--acc:#2f6df0;--accink:#fff;--ok:#0b8a55;--warn:#b45309;--err:#d12b34;
+:root{--bg:#f3f4f8;--card:#fff;--card2:#f7f8fb;--line:#e1e4ec;--ink:#14161c;--mute:#697084;--acc:#2f6df0;--accink:#fff;--ok:#2f6df0;--warn:#b45309;--err:#d12b34;
 box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#17171b;--card:#26262c;--card2:#1f1f24;--line:#383841;--ink:#fff;--mute:#9b9ba6;--acc:#3b8cff;--ok:#4cc38a;--warn:#f0b24a;--err:#ff7b80;color-scheme:dark}}
-:root[data-theme="dark"]{--bg:#17171b;--card:#26262c;--card2:#1f1f24;--line:#383841;--ink:#fff;--mute:#9b9ba6;--acc:#3b8cff;--ok:#4cc38a;--warn:#f0b24a;--err:#ff7b80;color-scheme:dark}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#17171b;--card:#26262c;--card2:#1f1f24;--line:#383841;--ink:#fff;--mute:#9b9ba6;--acc:#3b8cff;--ok:#72a8ff;--warn:#f0b24a;--err:#ff7b80;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#17171b;--card:#26262c;--card2:#1f1f24;--line:#383841;--ink:#fff;--mute:#9b9ba6;--acc:#3b8cff;--ok:#72a8ff;--warn:#f0b24a;--err:#ff7b80;color-scheme:dark}
 html{scroll-padding-top:env(safe-area-inset-top,0px)}
 *,*::before,*::after{box-sizing:border-box}[hidden]{display:none!important}
 body{margin:0;background:var(--bg);color:var(--ink);font:500 15px/1.5 "Plus Jakarta Sans",Inter,system-ui,-apple-system,sans-serif}
@@ -19,7 +19,7 @@ svg.i{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;stro
 .pill{display:flex;align-items:center;gap:10px;background:var(--card);border-radius:18px;padding:10px 16px;font-size:13.5px;font-weight:600;color:var(--ink)}
 .mark{background:#000;color:#fff;font:italic 700 14px Georgia,serif;letter-spacing:-.5px;padding:1px 6px;border-radius:3px}
 .back{border:0;background:var(--card);color:var(--ink);border-radius:50%;width:44px;height:44px;display:grid;place-items:center;cursor:pointer}
-.av{width:46px;height:46px;border-radius:50%;border:2px solid var(--line);background:linear-gradient(135deg,#3b8cff,#7a5cff);color:#fff;font:700 15px inherit;cursor:pointer}
+.av{width:46px;height:46px;border-radius:50%;border:2px solid var(--line);background:linear-gradient(135deg,#3b8cff,#7a5cff);color:#fff;font:700 15px system-ui,sans-serif;cursor:pointer}
 main{max-width:720px;margin:auto;padding:8px 20px 120px}
 .hi{font-size:clamp(32px,9vw,44px);font-weight:800;letter-spacing:-.02em;line-height:1.1;margin:26px 0 22px}
 .pg h1.t{margin:22px 0 4px;font-size:32px;font-weight:800;letter-spacing:-.02em}.pg>p.s{margin:0 0 20px;color:var(--mute)}
@@ -29,7 +29,7 @@ main{max-width:720px;margin:auto;padding:8px 20px 120px}
 .tcard{flex:0 0 min(272px,74vw);scroll-snap-align:start;text-align:left;font:inherit;color:var(--ink);background:var(--card);border:0;border-radius:26px;padding:24px 22px;min-height:236px;cursor:pointer;display:flex;flex-direction:column}
 .tcard b{display:block;font-size:18px;font-weight:700;margin-top:auto}.tcard small{display:block;color:var(--mute);font-size:13.5px;margin-top:4px;line-height:1.4}
 .gi{width:64px;height:64px;border-radius:20px;display:grid;place-items:center;color:#fff;margin-bottom:26px;box-shadow:inset 0 2px 0 rgba(255,255,255,.35),0 8px 18px rgba(0,0,0,.28)}.gi svg{width:30px;height:30px}
-.g0{background:linear-gradient(135deg,#6aa8ff,#2f62e8)}.g1{background:linear-gradient(135deg,#b69bff,#6a47ee)}.g2{background:linear-gradient(135deg,#3fdcc0,#0e9f8b)}.g3{background:linear-gradient(135deg,#ffcb52,#e08709)}.g4{background:linear-gradient(135deg,#ff8a9a,#dc3f59)}
+.g0{background:linear-gradient(135deg,#6aa8ff,#2f62e8)}.g1{background:linear-gradient(135deg,#b69bff,#6a47ee)}.g2{background:linear-gradient(135deg,#8aa7ff,#4f46e5)}.g3{background:linear-gradient(135deg,#ffcb52,#e08709)}.g4{background:linear-gradient(135deg,#ff8a9a,#dc3f59)}
 .card{background:var(--card);border-radius:22px;padding:20px;margin-bottom:14px}
 .card h3{margin:0 0 2px;font-size:16px;font-weight:700}
 .mute{color:var(--mute);font-size:13.5px}
@@ -48,7 +48,8 @@ main{max-width:720px;margin:auto;padding:8px 20px 120px}
 label{display:block;font-size:13px;font-weight:600;color:var(--mute);margin:14px 0 6px}
 input,select,textarea{width:100%;font:inherit;font-size:15px;color:var(--ink);background:var(--card2);border:1px solid var(--line);border-radius:14px;padding:12px 14px}
 input:focus,select:focus{outline:2px solid var(--acc);outline-offset:-1px}
-.g2{display:grid;grid-template-columns:1fr 1fr;gap:0 16px}@media(max-width:520px){.g2{grid-template-columns:1fr}}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid var(--acc);outline-offset:3px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:0 16px}@media(max-width:520px){.grid2{grid-template-columns:1fr}}
 .acts{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
 .btn{font:inherit;font-weight:600;font-size:15px;border-radius:16px;padding:14px 20px;cursor:pointer;border:1px solid var(--line);background:var(--card);color:var(--ink)}
 .btn.p{background:var(--acc);border-color:var(--acc);color:var(--accink)}.btn.d{color:var(--err)}.btn:disabled{opacity:.55}
@@ -63,6 +64,19 @@ iframe{display:block;width:100%;height:calc(100dvh - 400px);min-height:420px;bor
 details.card summary{cursor:pointer;font-weight:600}details.card p,details.card ol{margin:10px 0 0;color:var(--mute);font-size:14px}details.card ol{padding-left:20px}
 #toast{position:fixed;left:50%;bottom:calc(90px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:11px 18px;border-radius:14px;font-size:14px;font-weight:600;opacity:0;pointer-events:none;transition:opacity .2s;z-index:40;max-width:90%}#toast.show{opacity:1}
 .lg{max-height:48px;max-width:100%;margin-top:12px;background:#0a7cf0;padding:6px 10px;border-radius:8px}
+@media(min-width:900px){
+ .top{max-width:1280px;padding:18px 32px 10px;position:sticky;top:0;z-index:21;background:var(--bg)}
+ main{max-width:1080px;margin:0 max(24px,calc((100vw - 1280px)/2)) 0 max(240px,calc((100vw - 1280px)/2 + 240px));padding:34px 24px 48px}
+ .nav{left:max(16px,calc((100vw - 1280px)/2));right:auto;top:96px;bottom:auto;width:210px;padding:0;background:transparent}
+ .nav>div{width:100%;max-width:none;display:flex;flex-direction:column;gap:8px}
+ .nb{flex:none;flex-direction:row;justify-content:flex-start;gap:10px;text-align:left;font-size:14px;padding:14px 16px;background:var(--card);border-radius:16px}
+ .hs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));overflow:visible;margin:0;padding:0}
+ .tcard{min-width:0;flex-basis:auto}
+ .chips{flex-wrap:wrap;overflow:visible;margin-left:0;margin-right:0;padding:0}
+ .qs{max-width:760px}
+ iframe{height:min(72vh,880px);min-height:520px}
+}
+@media(min-width:900px) and (max-width:1200px){.hs{grid-template-columns:repeat(2,minmax(0,1fr))}}
 </style>
 </head>
 <body>
@@ -84,12 +98,12 @@ details.card summary{cursor:pointer;font-weight:600}details.card p,details.card 
 var $=function(i){return document.getElementById(i)};
 var E=function(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})};
 var F={email:['E-mail de l’EP','email'],prenom:['Prénom'],nom:['Nom complet (ex. Monsieur Jean Dupont)'],programme:['Programme'],projet:['Projet / entreprise'],destination:['Destination (ville, pays)'],drapeau:['Drapeau (emoji)'],opportunite:['Opportunité'],lien_opportunite:['Lien aiesec.org','url'],
-frais_total:['Montant total (FCFA)'],acompte:['Acompte pour sécuriser la place (FCFA)'],date_acc:['Date d’acceptation','date'],date_apd:['Date d’approbation','date'],date_limite:['Date limite de paiement','date'],date_ops:['Date de l’OPS','date'],heure_ops:['Heure de l’OPS'],lieu_ops:['Lieu de l’OPS'],
-entite_admin:['Entité d’envoi (frais admin.)'],frais_admin:['Frais administratifs (FCFA)'],entite_projet:['Entité d’accueil (project fee)'],frais_projet:['Project fee (FCFA)'],lien_contrat:['Lien du contrat','url'],lien_preuve:['Lien d’envoi de la preuve de paiement','url'],lien_calendly:['Lien Calendly','url'],lien_goal:['Lien Goal setting','url'],lien_feedback:['Lien du formulaire de feedback','url'],lien_debrief:['Lien de réservation du debrief','url'],
+ frais_total:['Montant total (FCFA)','number'],acompte:['Acompte pour sécuriser la place (FCFA)','number'],date_acc:['Date d’acceptation','date'],date_apd:['Date d’approbation','date'],date_limite:['Date limite de paiement','date'],date_ops:['Date de l’OPS','date'],heure_ops:['Heure de l’OPS'],lieu_ops:['Lieu de l’OPS'],
+ entite_admin:['Entité d’envoi (frais admin.)'],frais_admin:['Frais administratifs (FCFA)','number'],entite_projet:['Entité d’accueil (project fee)'],frais_projet:['Project fee (FCFA)','number'],lien_contrat:['Lien du contrat','url'],lien_preuve:['Lien d’envoi de la preuve de paiement','url'],lien_calendly:['Lien Calendly','url'],lien_goal:['Lien Goal setting','url'],lien_feedback:['Lien du formulaire de feedback','url'],lien_debrief:['Lien de réservation du debrief','url'],
 odd:['ODD de l’opportunité','odd'],odd_texte:['Texte ODD (laissez vide pour le texte officiel)'],
 entite:['Votre entité','',1],sig_nom:['Nom du signataire','',1],sig_role:['Poste du signataire','',1],lcvp_nom:['Prénom du LCVP','',1],lcvp_contact:['Téléphone / WhatsApp du LCVP','',1],lcvp_email:['E-mail du LCVP','',1],numero_paiement:['Numéro de paiement du comité local','',1],mode_paiement:['Mode de paiement','',1],beneficiaire:['Bénéficiaire du paiement','',1],from_name:['Nom affiché de l’expéditeur','',1],logo_url:['Adresse du logo (facultatif)','url',1],script_url:['Adresse du script d’envoi','url',1],pass:['Mot de passe du script','password',1],email_test:['Mon e-mail (pour les tests)','email',1]};
-var LBL={limite_acc:'Date d’acceptation',limite_apd:'Date d’approbation'};
-var DEF={entite:'AIESEC in Côte d’Ivoire',mode_paiement:'Mobile Money',from_name:'AIESEC',acompte:'30 000',heure_ops:'9h',logo_url:'https://www.logos.aiesec.org/_next/image?url=https%3A%2F%2Faiesec-logos.s3.eu-west-1.amazonaws.com%2FBlack-Logo.png&w=640&q=75'};
+var LBL={};
+var DEF={entite:'AIESEC in Côte d’Ivoire',mode_paiement:'Mobile Money',from_name:'AIESEC',acompte:'30000',heure_ops:'9h',logo_url:'https://www.logos.aiesec.org/_next/image?url=https%3A%2F%2Faiesec-logos.s3.eu-west-1.amazonaws.com%2FBlack-Logo.png&w=640&q=75'};
 var SK=Object.keys(F).filter(function(k){return F[k][2]});
 var ODD=[['#e5243b','NO POVERTY','Pas de pauvreté','Mettre fin à la pauvreté sous toutes ses formes, partout dans le monde.'],['#dda63a','ZERO HUNGER','Faim « zéro »','Éliminer la faim, assurer la sécurité alimentaire et promouvoir une agriculture durable.'],['#4c9f38','GOOD HEALTH','Bonne santé et bien-être','Permettre à tous de vivre en bonne santé et promouvoir le bien-être à tout âge.'],['#c5192d','QUALITY EDUCATION','Éducation de qualité','Assurer l’accès de tous à une éducation de qualité, équitable et inclusive.'],['#ff3a21','GENDER EQUALITY','Égalité entre les sexes','Réaliser l’égalité des sexes et autonomiser toutes les femmes et les filles.'],['#26bde2','CLEAN WATER','Eau propre et assainissement','Garantir l’accès de tous à l’eau et à l’assainissement.'],['#fcc30b','CLEAN ENERGY','Énergie propre et abordable','Garantir l’accès de tous à des services énergétiques fiables, durables et modernes.'],['#a21942','DECENT WORK','Travail décent et croissance','Promouvoir une croissance économique soutenue et un travail décent pour tous.'],['#fd6925','INNOVATION','Industrie, innovation, infrastructure','Bâtir une infrastructure résiliente et promouvoir l’innovation.'],['#dd1367','REDUCED INEQUALITIES','Inégalités réduites','Réduire les inégalités dans les pays et d’un pays à l’autre.'],['#fd9d24','SUSTAINABLE CITIES','Villes et communautés durables','Faire en sorte que les villes soient inclusives, sûres, résilientes et durables.'],['#bf8b2e','RESPONSIBLE CONSUMPTION','Consommation responsable','Établir des modes de consommation et de production durables.'],['#3f7e44','CLIMATE ACTION','Lutte contre le changement climatique','Prendre d’urgence des mesures pour lutter contre les changements climatiques.'],['#0a97d9','LIFE BELOW WATER','Vie aquatique','Conserver et exploiter de manière durable les océans et les ressources marines.'],['#56c02b','LIFE ON LAND','Vie terrestre','Préserver et restaurer les écosystèmes terrestres et lutter contre la désertification.'],['#00689d','PEACE & JUSTICE','Paix, justice et institutions','Promouvoir des sociétés pacifiques, justes et inclusives.'],['#19486a','PARTNERSHIPS','Partenariats pour les objectifs','Renforcer les partenariats mondiaux pour le développement durable.']];
 /* Modèles : f = champs propres à l’EP ; b = blocs */
@@ -106,22 +120,22 @@ var T=[
 ['p','Si votre projet est toujours d’actualité, vous pouvez simplement **réserver un créneau pour un échange individuel**. Nous ferons le point sur votre profil, vos objectifs et les opportunités qui pourraient vous correspondre.'],
 ['cta','Réserver un échange →','{lien_calendly}','green'],
 ['p','Si vous avez déjà avancé de votre côté ou si vous ne souhaitez plus poursuivre, vous pouvez simplement me le signaler afin que je mette votre dossier à jour.']]},
-{id:'appli',n:'Candidature',s:'Open → Applied',f:['email','prenom','opportunite','destination','lien_opportunite'],sub:'{prenom}, une opportunité internationale faite pour toi t’attend',eb:'Opportunité',h:'Une opportunité faite pour ==toi==',b:[
-['p','Bonjour {prenom}, j’espère que tu vas bien. Suite à nos échanges, nous avons identifié une opportunité qui correspond à ton profil et à tes objectifs :'],
+{id:'appli',n:'Candidature',s:'Open → Applied',f:['email','prenom','opportunite','destination','lien_opportunite'],sub:'{prenom}, une opportunité internationale adaptée à votre profil vous attend',eb:'Opportunité',h:'Une opportunité faite pour ==vous==',b:[
+['p','Bonjour {prenom}, j’espère que vous allez bien. Suite à nos échanges, nous avons identifié une opportunité qui correspond à votre profil et à vos objectifs :'],
 ['tiles',[['Opportunité','{opportunite}'],['Destination','{destination}']]],
 ['ul',['Développer tes compétences professionnelles et ton leadership','Vivre une immersion internationale enrichissante','Renforcer ton employabilité','Intégrer le réseau mondial d’AIESEC']],
 ['cta','Postuler sur aiesec.org →','{lien_opportunite}','green'],
-['quote','**Les places sont limitées.** Les opportunités peuvent être fermées à tout moment : plus tu appliques tôt, plus tu augmentes tes chances d’être sélectionné(e).'],
-['p','Je reste disponible pour t’aider à optimiser ton CV, te préparer pour l’entretien et te guider à chaque étape. N’hésite pas à me confirmer dès que tu as appliqué.']]},
-{id:'acc',n:'Acceptation et paiement',s:'Accepted → Approved',f:['email','prenom','programme','frais_total','acompte','date_acc','lien_contrat','lien_preuve'],sub:'Félicitations {prenom}, confirmez votre place pour votre stage AIESEC',eb:'Acceptation',h:'Félicitations {prenom}, ==confirmez== votre place',b:[
+['quote','**Les places sont limitées.** Les opportunités peuvent être fermées à tout moment : plus tôt vous candidatez, plus vous augmentez vos chances d’être sélectionné(e).'],
+['p','Je reste disponible pour vous aider à optimiser votre CV, vous préparer à l’entretien et vous guider à chaque étape. N’hésitez pas à me confirmer lorsque vous aurez candidaté.']]},
+{id:'acc',n:'Acceptation et paiement',s:'Accepted → Approved',f:['email','prenom','programme','frais_total','acompte','date_acc','date_limite','lien_contrat','lien_preuve'],sub:'Félicitations {prenom}, confirmez votre place pour votre stage AIESEC',eb:'Acceptation',h:'Félicitations {prenom}, ==confirmez== votre place',b:[
 ['p','Vous avez été accepté(e) pour **{programme}** après vos interviews. Votre projet international va bientôt devenir réalité. Pour confirmer votre participation, la prochaine étape consiste à régler les frais de stage.'],
-['pay','👉 Ce que vous devez régler',[['Montant total','{frais_total}'],['Pour sécuriser votre place','{acompte} FCFA'],['Numéro de paiement','{numero_paiement}'],['Mode de paiement','{mode_paiement}'],['Bénéficiaire','{beneficiaire}',1],['Date limite','{limite_acc}']],'Envoyez ensuite la capture à **{lcvp_nom}**, en discussion permanente avec vous. Confirmer avant la date limite vous permet de commencer votre préparation sans délai.'],
+['pay','👉 Ce que vous devez régler',[['Montant total','{frais_total}'],['Pour sécuriser votre place','{acompte} FCFA'],['Numéro de paiement','{numero_paiement}'],['Mode de paiement','{mode_paiement}'],['Bénéficiaire','{beneficiaire}',1],['Date limite','{date_limite}']],'Envoyez ensuite la capture à **{lcvp_nom}**, en discussion permanente avec vous. Confirmer avant la date limite vous permet de commencer votre préparation sans délai.'],
 ['ul',['Votre place pour l’opportunité choisie','Un accompagnement personnalisé par votre responsable local','Le développement concret de compétences clés','L’accès à un réseau mondial de jeunes leaders','Une expérience conforme aux standards AIESEC']],
 ['p','Nous vous encourageons à lire votre contrat avant de régler.'],
 ['cta','Consulter mon contrat →','{lien_contrat}','line'],['cta','Envoyer la preuve de paiement →','{lien_preuve}','green']]},
-{id:'apd',n:'Choix de la date de départ',s:'Approved',f:['email','prenom','programme','date_apd'],sub:'{prenom}, choisissez votre date de départ pour votre stage AIESEC !',eb:'Paiement confirmé',h:'Choisissez votre date de ==départ==',b:[
+{id:'apd',n:'Choix de la date de départ',s:'Approved',f:['email','prenom','programme','date_apd','date_limite'],sub:'{prenom}, choisissez votre date de départ pour votre stage AIESEC !',eb:'Paiement confirmé',h:'Choisissez votre date de ==départ==',b:[
 ['p','Félicitations et merci d’avoir finalisé le paiement pour **{programme}**. Votre place est maintenant sécurisée et votre projet international est officiellement en route.'],
-['pay','📅 Prochaine étape',[['Action','Confirmer votre date de départ'],['Avant le','{limite_apd}']],'Passé ce délai sans nouvelle, votre responsable reprendra contact avec vous pour finaliser cette étape.'],
+['pay','📅 Prochaine étape',[['Action','Confirmer votre date de départ'],['Avant le','{date_limite}']],'Passé ce délai sans nouvelle, votre responsable reprendra contact avec vous pour finaliser cette étape.'],
 ['ul',['Assurez votre place sur la période idéale','Permettez à votre responsable de préparer votre programme personnalisé','Profitez d’un suivi complet conforme aux standards AIESEC','Rejoignez les participants qui ont déjà choisi leurs dates']]]},
 {id:'ops',n:'Invitation à l’OPS',s:'Approved',f:['email','prenom','programme','date_ops','heure_ops','lieu_ops','lien_goal'],sub:'Séminaire de préparation pour votre départ !',eb:'Séminaire de préparation',h:'Préparez votre ==départ==',b:[
 ['p','Félicitations, {prenom} ! Votre paiement pour **{programme}** est bien reçu. Nous organisons pour vous un séminaire de préparation avant le départ.'],
@@ -133,7 +147,7 @@ var T=[
 ['p','Même un court retour nous permet de mieux adapter notre soutien. En nous répondant, vous :'],
 ['ul',['Signalez rapidement toute difficulté ou question','Recevez un accompagnement personnalisé','Optimisez votre apprentissage et votre développement','Améliorez l’expérience des prochains participants']],
 ['cta','Partager mes impressions →','{lien_feedback}','green']]},
-{id:'fi',n:'Debrief après le stage',s:'Finished',f:['email','prenom','programme','lien_debrief'],sub:'{prenom}, on a hâte d’apprendre plus de ton expérience !',eb:'Retour d’expérience',h:'Bravo {prenom}, ==racontez-nous== !',b:[
+{id:'fi',n:'Débrief après le stage',s:'Finished',f:['email','prenom','programme','lien_debrief'],sub:'{prenom}, nous avons hâte d’en savoir plus sur votre expérience !',eb:'Retour d’expérience',h:'Bravo {prenom}, ==racontez-nous== !',b:[
 ['p','Félicitations pour avoir vécu votre expérience avec **{programme}**. Elle vous a permis de développer vos compétences, d’élargir votre réseau et d’acquérir de précieuses expériences professionnelles et culturelles.'],
 ['p','La prochaine étape essentielle est votre **séance de debrief AIESEC** :'],
 ['ul',['Partager vos réussites et apprentissages clés','Identifier vos compétences et comment les valoriser','Recevoir un retour personnalisé','Contribuer à améliorer l’expérience des prochains participants']],
@@ -152,27 +166,26 @@ var T=[
 ['cta','Consulter mon contrat →','{lien_contrat}','line']],close:['{destination} vous attend. {drapeau}','Une nouvelle culture. De nouvelles rencontres. Un nouvel impact.']}
 ];
 var V={},cur='frais',hist=[];
-try{V=JSON.parse(localStorage.getItem('ogx-v')||'{}');hist=JSON.parse(localStorage.getItem('ogx-h')||'[]')}catch(e){}
+try{V=JSON.parse(localStorage.getItem('ogx-v')||'{}');hist=JSON.parse(localStorage.getItem('ogx-h2')||localStorage.getItem('ogx-h')||'[]')}catch(e){}
 Object.keys(DEF).forEach(function(k){if(V[k]===undefined)V[k]=DEF[k]});
-function save(){try{localStorage.setItem('ogx-v',JSON.stringify(V))}catch(e){}}
+function save(){pt('ogx-v',V);persistDraft(V.email)}
 /* Valeurs dérivées */
-function num(s){return /^[\d\s.,\u00a0\u202f]+$/.test(s||'')?parseInt(String(s).replace(/\D/g,''),10)||0:0}
-function money(x){x=String(x||'').trim();if(!x)return '';return num(x)?num(x).toLocaleString('fr-FR')+' FCFA':x}
+function num(s){var x=String(s||'').trim();if(/^\d+$/.test(x))return Number(x);return /^\d{1,3}(?:[ ,.\u00a0\u202f]\d{3})+$/.test(x)?Number(x.replace(/\D/g,'')):0}
+function numberValue(s){var x=String(s||'').trim();if(/^\d+$/.test(x))return x;return /^\d{1,3}(?:[ ,.\u00a0\u202f]\d{3})+$/.test(x)?x.replace(/\D/g,''):''}
+function money(x){x=String(x==null?'':x).trim();if(!x)return '';var n=numberValue(x);return n!==''?Number(n).toLocaleString('fr-FR')+' FCFA':x}
 function fd(s){return s?new Date(s+'T12:00:00').toLocaleDateString('fr-FR',{day:'numeric',month:'long',year:'numeric'}):''}
-function iso(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
-function addD(s,n){var d=new Date(s+'T12:00:00');d.setDate(d.getDate()+n);return iso(d)}
-function addM(s,n){var d=new Date(s+'T12:00:00');d.setMonth(d.getMonth()+n);return iso(d)}
 function D(){var d={};for(var k in V)d[k]=V[k];
  ['frais_total','acompte','frais_admin','frais_projet'].forEach(function(k){d[k]=money(V[k])});
- if(!V.frais_total&&num(V.frais_admin)&&num(V.frais_projet))d.frais_total=money(num(V.frais_admin)+num(V.frais_projet));
+ if(!V.frais_total&&numberValue(V.frais_admin)!==''&&numberValue(V.frais_projet)!=='')d.frais_total=money(num(V.frais_admin)+num(V.frais_projet));
  ['date_acc','date_apd','date_limite','date_ops'].forEach(function(k){d[k]=fd(V[k])});
- d.limite_acc=V.date_acc?fd(addM(V.date_acc,1)):'';d.limite_apd=V.date_apd?fd(addD(V.date_apd,7)):'';return d}
+ return d}
 /* Rendu de l’e-mail */
 var miss,DV;
 var lab=function(k){return F[k]?F[k][0]:(LBL[k]||k)};
 function val(k){var x=(DV[k]||'').trim();if(!x){if(miss.indexOf(k)<0)miss.push(k);return '<span style="background:#ffb020;color:#111;border-radius:4px;padding:0 4px">['+E(lab(k))+']</span>'}return E(x)}
 function X(s){return s.replace(/\{(\w+)\}/g,function(m,k){return val(k)}).replace(/\*\*(.+?)\*\*/g,'<strong style="color:#fff">$1</strong>').replace(/==(.+?)==/g,'<span style="color:#3b9bff">$1</span>')}
 function plain(s){return s.replace(/\{(\w+)\}/g,function(m,k){return DV[k]||'['+lab(k)+']'}).replace(/\*\*|==/g,'')}
+function mailText(html){return html.replace(/<head\b[\s\S]*?<\/head>/gi,'').replace(/<a\b[^>]*href="([^"]*)"[^>]*>([\s\S]*?)<\/a>/gi,function(m,u,t){return t+' ('+u.replace(/&amp;/g,'&')+')'}).replace(/<br\b[^>]*>/gi,'\n').replace(/<li\b[^>]*>/gi,'\n• ').replace(/<\/(p|div|h[1-6]|li|tr|td|table)>/gi,'\n').replace(/<[^>]+>/g,'').replace(/&nbsp;/gi,' ').replace(/&amp;/gi,'&').replace(/&lt;/gi,'<').replace(/&gt;/gi,'>').replace(/&quot;/gi,'"').replace(/&#39;|&#x27;/gi,"'").replace(/[ \t]+\n/g,'\n').replace(/\n{3,}/g,'\n\n').trim()}
 function url(s){var u=X(s).replace(/<[^>]+>/g,'').replace(/&amp;/g,'&');return /^(https?:\/\/|mailto:|tel:)/i.test(u)?u:'#'}
 var FN='font-family:Roboto,Arial,Helvetica,sans-serif;';
 var B={
@@ -185,7 +198,7 @@ fee:function(t,ent,amt,desc){return '<table role="presentation" width="100%" cel
 total:function(a){return '<table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="margin:0 0 20px;background:#1c1f26;border-radius:14px"><tr><td style="padding:20px 22px"><div style="'+FN+'font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#8d939c">Coût total des frais d’échange</div><div style="'+FN+'font-size:32px;font-weight:700;color:#fff;margin-top:4px">'+X(a)+'</div></td></tr></table>'},
 pay:function(t,rows,note){var r=rows.filter(function(x){return !(x[2]&&!(DV[(x[1].match(/\{(\w+)\}/)||[])[1]]||'').trim())}).map(function(x){return '<tr><td valign="top" style="padding:7px 0;'+FN+'font-size:15px;color:#e6f1ff">'+x[0]+'</td><td align="right" valign="top" style="padding:7px 0 7px 14px;'+FN+'font-size:16px;font-weight:700;color:#fff">'+X(x[1])+'</td></tr>'}).join('');
  return '<table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="margin:0 0 24px;background:#0a7cf0;border-radius:16px"><tr><td style="padding:24px 24px 22px"><div style="'+FN+'font-size:20px;font-weight:700;color:#fff;margin-bottom:10px">'+t+'</div><table role="presentation" width="100%" cellspacing="0" cellpadding="0">'+r+'</table><div style="'+FN+'font-size:15px;line-height:1.7;color:#e6f1ff;margin-top:14px">'+X(note)+'</div></td></tr></table>'},
-cta:function(l,u,k){var g=k==='green';return '<table role="presentation" cellspacing="0" cellpadding="0" style="margin:0 0 22px"><tr><td style="border-radius:10px;background:'+(g?'#00c46a':'#0f1b2d')+';'+(g?'':'border:1px solid #1f6feb;')+'"><a href="'+E(url(u))+'" style="display:inline-block;padding:16px 26px;'+FN+'font-size:15px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:'+(g?'#fff':'#3b9bff')+';text-decoration:none">'+l+'</a></td></tr></table>'}};
+cta:function(l,u,k){var g=k==='green';return '<table role="presentation" cellspacing="0" cellpadding="0" style="margin:0 0 22px"><tr><td style="border-radius:10px;background:'+(g?'#0a7cf0':'#0f1b2d')+';'+(g?'':'border:1px solid #1f6feb;')+'"><a href="'+E(url(u))+'" style="display:inline-block;padding:16px 26px;'+FN+'font-size:15px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:'+(g?'#fff':'#3b9bff')+';text-decoration:none">'+l+'</a></td></tr></table>'}};
 function oddHtml(){var n=parseInt(V.odd,10);if(!n)return '';var o=ODD[n-1],tx=(V.odd_texte||'').trim()||o[3];
  return '<table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="margin:8px 0 26px;background:#221d1d;border-radius:16px"><tr><td style="padding:22px"><table role="presentation" cellspacing="0" cellpadding="0"><tr><td width="120" height="120" align="center" valign="middle" style="background:'+o[0]+';border-radius:6px"><div style="'+FN+'font-size:44px;font-weight:700;line-height:1;color:#fff">'+n+'</div><div style="'+FN+'font-size:10px;font-weight:700;letter-spacing:1px;color:#fff;padding:6px 8px 0">'+o[1]+'</div></td></tr></table><div style="'+FN+'font-size:12px;letter-spacing:2px;text-transform:uppercase;font-weight:700;color:'+(n===7?'#fcc30b':o[0])+';margin:18px 0 6px">Your experience · Your impact</div><div style="'+FN+'font-size:24px;font-weight:700;line-height:1.25;color:#fff">ODD '+n+' — '+E(o[2])+'</div><div style="'+FN+'font-size:15px;line-height:1.7;color:#bdbdbd;margin-top:8px">'+E(tx)+'</div></td></tr></table>'}
 function build(t){miss=[];DV=D();var logo=(V.logo_url||'').trim();
@@ -212,12 +225,15 @@ var TTL={accueil:'Accueil',ep:'Participant',infos:'Mes informations',apercu:'Ape
 var PAGES=Object.keys(TTL),page='accueil';
 function ld(k,d){try{return JSON.parse(localStorage.getItem(k))||d}catch(e){return d}}
 function pt(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
-hist=ld('ogx-h2',[]);var db=ld('ogx-db',{});
+hist=ld('ogx-h2',ld('ogx-h',[]));var db=ld('ogx-db',{}),drafts=ld('ogx-drafts',{});
+function persistDraft(email){var e=String(email||'').trim().toLowerCase();if(!e)return;var o={};Object.keys(F).forEach(function(k){if(!F[k][2]&&V[k]!==undefined)o[k]=V[k]});drafts[e]=o;pt('ogx-drafts',drafts)}
+function switchParticipant(email,source){var e=String(email||'').trim(),key=e.toLowerCase(),old=String(V.email||'').trim().toLowerCase();if(old)persistDraft(old);if(old===key){V.email=e;save();return}
+ Object.keys(F).forEach(function(k){if(!F[k][2])delete V[k]});var o=source||db[key]||drafts[key];if(o)Object.keys(o).forEach(function(k){if(F[k]&&!F[k][2])V[k]=o[k]});V.email=e;save()}
 function tpl(){return T.filter(function(t){return t.id===cur})[0]}
 function toast(m){var t=$('toast');t.textContent=m;t.classList.add('show');setTimeout(function(){t.classList.remove('show')},2200)}
 function field(k){var f=F[k],id='f_'+k,v=V[k]||'',inp;
  if(f[1]==='odd')inp='<select id="'+id+'"><option value="">Aucun</option>'+ODD.map(function(o,i){return '<option value="'+(i+1)+'"'+(String(v)===String(i+1)?' selected':'')+'>ODD '+(i+1)+' · '+o[2]+'</option>'}).join('')+'</select>';
- else inp='<input id="'+id+'" type="'+(f[1]||'text')+'" value="'+E(v)+'" autocomplete="off">';
+  else inp='<input id="'+id+'" type="'+(f[1]||'text')+'" value="'+E(f[1]==='number'?numberValue(v):v)+'"'+(f[1]==='number'?' min="0" step="1" inputmode="numeric"':'')+' autocomplete="off">';
  return '<div><label for="'+id+'">'+f[0]+'</label>'+inp+'</div>'}
 function fmt(i){return new Date(i).toLocaleString('fr-FR',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'})}
 function setupDone(){return REQ.filter(function(k){return (V[k]||'').trim()}).length}
@@ -235,26 +251,26 @@ function bar(){var t=tpl(),k=t.f.filter(function(x){return (V[x]||'').trim()}).l
 function dEp(){var t=tpl(),n=setupDone();
  $('p-ep').innerHTML=head('Informations du participant','Renseignez les champs du message.')+'<div class="list">'+it('mail',t.n,'Modèle sélectionné · modifier','accueil')+'</div>'+
  (n<REQ.length?'<div class="card warn">Votre configuration est incomplète. <a href="#infos" style="color:inherit;font-weight:600">Compléter mes informations</a></div>':'')+
- '<div class="card" id="pr">'+bar()+'</div><div class="card"><h3>Champs du message</h3><div class="g2">'+t.f.map(field).join('')+'</div></div>'+
- '<div class="card"><h3>Objectif de développement durable (facultatif)</h3><div class="mute">Ajoute au message la carte de l’ODD lié à l’opportunité.</div>'+field('odd')+field('odd_texte')+'</div>'+
+ '<div class="card" id="pr">'+bar()+'</div><div class="card"><h3>Champs du message</h3><div class="grid2">'+t.f.map(field).join('')+'</div></div>'+
+ '<div class="card"><h3>Objectif de développement durable (facultatif)</h3><div class="mute">Ajoutez au message la carte de l’ODD lié à l’opportunité.</div>'+field('odd')+field('odd_texte')+'</div>'+
  '<div class="acts"><button class="btn p" data-go="apercu" type="button">Afficher l’aperçu</button><button class="btn" id="saveep" type="button">Enregistrer le participant</button><button class="btn d" id="newep" type="button">Réinitialiser</button></div>'}
 function dInf(){var G=[['','Entité et signature',['entite','sig_nom','sig_role','from_name']],['','Responsable local (LCVP)',['lcvp_nom','lcvp_contact','lcvp_email']],['','Paiement',['numero_paiement','mode_paiement','beneficiaire']],['','Logo',['logo_url']],['','Envoi par Gmail',['script_url','pass','email_test']]];
- $('p-infos').innerHTML=head('Mes informations','Ces informations sont réutilisées dans tous les messages.')+G.map(function(g){return '<div class="card"><h3>'+g[1]+'</h3><div class="g2">'+g[2].map(field).join('')+'</div>'+(g[1]==='Logo'?'<div id="lgp"></div><div class="mute" style="margin-top:8px">Adresse https d’une image hébergée. En l’absence de logo, le logotype texte AIESEC est utilisé.</div>':'')+'</div>'}).join('')+'<div class="mute">Enregistrement automatique sur cet appareil.</div>';lg()}
+ $('p-infos').innerHTML=head('Mes informations','Ces informations sont réutilisées dans tous les messages.')+G.map(function(g){return '<div class="card"><h3>'+g[1]+'</h3><div class="grid2">'+g[2].map(field).join('')+'</div>'+(g[1]==='Logo'?'<div id="lgp"></div><div class="mute" style="margin-top:8px">Adresse https d’une image hébergée. En l’absence de logo, le logotype texte AIESEC est utilisé.</div>':'')+'</div>'}).join('')+'<div class="mute">Enregistrement automatique dans ce navigateur ; ces réglages ne sont pas synchronisés avec d’autres appareils.</div>';lg()}
 function lg(){var e=$('lgp');if(e)e.innerHTML=/^https:\/\//.test(V.logo_url||'')?'<img class="lg" src="'+E(V.logo_url)+'" alt="Logo" onerror="this.outerHTML=\'<div class=warn>Image introuvable.</div>\'">':''}
 function dPrev(){var r=build(tpl()),m=miss.map(lab);
  $('p-apercu').innerHTML=head('Aperçu du message','Vérifiez le contenu avant l’envoi.')+'<div class="meta"><div><span>À</span><b>'+E(V.email||'—')+'</b></div><div><span>Objet</span>'+E(r.subject)+'</div></div><iframe id="prev" sandbox title="Aperçu"></iframe>'+
- '<div class="st" id="pst">'+(m.length?'<span class="warn">Champs à compléter : '+E(m.join(', '))+'</span>':'<span class="ok">Tous les champs requis sont renseignés.</span>')+'</div>'+
+ '<div class="st" id="pst" role="status" aria-live="polite">'+(m.length?'<span class="warn">Champs à compléter : '+E(m.join(', '))+'</span>':'<span class="ok">Tous les champs requis sont renseignés.</span>')+'</div>'+
  '<div class="acts"><button class="btn p" id="send" type="button">Envoyer au participant</button><button class="btn" id="test" type="button">Envoyer un test</button><button class="btn" id="copy" type="button">Copier le code HTML</button></div>';$('prev').srcdoc=r.html}
 function dHist(){$('p-historique').innerHTML=head('Historique','Messages envoyés depuis cet appareil.')+(hist.length?'<div class="list">'+hist.map(function(h){return '<div class="it" style="cursor:default"><span class="ic">'+ic('mail')+'</span><div><b>'+E(h.t)+(h.test?' (test)':'')+'</b><small>'+E(h.to)+' · '+fmt(h.d)+'</small></div></div>'}).join('')+'</div><div class="acts"><button class="btn d" id="clh" type="button">Effacer l’historique</button></div>':'<div class="empty"><b>Aucun envoi</b>Les messages envoyés apparaîtront ici.</div>')}
-function dBase(){var a=Object.keys(db).map(function(k){return db[k]}).sort(function(x,y){return (y.last||'')>(x.last||'')?1:-1});
- $('p-base').innerHTML=head('Base de données','Participants enregistrés lors des envois ou manuellement.')+'<div class="card"><h3>'+a.length+' participant(s)</h3><div class="mute">Exportez la liste au format CSV, compatible Excel et Google Sheets.</div><div class="acts"><button class="btn p" id="exp" type="button">Exporter en CSV</button><button class="btn" id="expc" type="button">Copier le CSV</button></div></div>'+
+function dBase(){var a=Object.keys(db).map(function(k){return db[k]}).sort(function(x,y){return String(y.updatedAt||y.last||'').localeCompare(String(x.updatedAt||x.last||''))});
+ $('p-base').innerHTML=head('Participants enregistrés','Carnet local des participants de cet appareil.')+'<div class="card"><h3>'+a.length+' participant(s)</h3><div class="mute">Exportez la liste au format CSV, compatible Excel et Google Sheets. Les données ne sont pas synchronisées ni sauvegardées automatiquement sur un serveur.</div><div class="acts"><button class="btn p" id="exp" type="button">Exporter en CSV</button><button class="btn" id="expc" type="button">Copier le CSV</button></div></div>'+
  (a.length?'<div class="list">'+a.map(function(e){return it('user',E(((e.prenom||'')+' '+(e.nom||'')).trim()||e.email),E(e.email)+(e.programme?' · '+E(e.programme):'')+' · '+(e.n||0)+' envoi(s)',E(e.email),'load')}).join('')+'</div>':'<div class="empty"><b>Base vide</b>Aucun participant enregistré.</div>')}
 function dAide(){$('p-aide').innerHTML=head('Aide','Guide d’utilisation et dépannage.')+[
 ['Envoyer un message','<ol><li>Accueil : sélectionnez un modèle.</li><li>Participant : renseignez les champs.</li><li>Aperçu : vérifiez le message, puis sélectionnez « Envoyer au participant ».</li></ol>'],
 ['Installer l’envoi par Gmail','<ol><li>Ouvrez script.google.com, créez un projet et collez le contenu du fichier apps-script.gs.</li><li>Dans les propriétés du script, ajoutez OGX_PASS avec le mot de passe de votre choix.</li><li>Déployez en application Web : exécution « Moi », accès « Tout le monde ».</li><li>Saisissez l’adresse du déploiement (se terminant par /exec) et le mot de passe dans Mes informations.</li></ol>'],
 ['Ajouter le logo','<p>Dans Mes informations, rubrique Logo, saisissez l’adresse https d’une image hébergée. Un lien de téléchargement ou de partage ne fonctionne pas dans un e-mail.</p>'],
 ['Limites d’envoi','<p>Un compte Gmail personnel permet 100 destinataires par jour, un compte Google Workspace 1 500.</p>'],
-['Un message ne part pas','<p>Vérifiez l’adresse du script, le mot de passe et le dossier Envoyés de Gmail. L’envoi n’est pas disponible dans l’aperçu de Claude : l’application doit être hébergée.</p>'],
+ ['Un message ne part pas','<p>Vérifiez l’adresse du script, le mot de passe et le dossier Envoyés de Gmail. Certains environnements d’aperçu bloquent l’envoi : publiez l’application et utilisez son adresse hébergée.</p>'],
 ['Champs en surbrillance orange','<p>Ils signalent une information manquante dans l’aperçu. L’envoi est bloqué tant qu’il en reste.</p>']].map(function(x){return '<details class="card"><summary>'+x[0]+'</summary>'+x[1]+'</details>'}).join('')}
 function dPlus(){$('p-plus').innerHTML=head('Outils','Paramètres et données.')+'<div class="list">'+it('card','Mes informations','Équipe, responsable local, paiement, logo, envoi','infos')+it('db','Base de données','Participants et export CSV','base')+it('clock','Historique','Messages envoyés','historique')+it('help','Aide','Guide et dépannage','aide')+'</div>'}
 var DRAW={accueil:dAcc,ep:dEp,infos:dInf,apercu:dPrev,historique:dHist,base:dBase,aide:dAide,plus:dPlus};
@@ -263,19 +279,19 @@ function show(p){if(!DRAW[p])p='accueil';page=p;PAGES.forEach(function(x){$('p-'
  var sb=p==='infos'||p==='base'||p==='aide'||p==='historique';$('back').hidden=!sb;$('pill').hidden=sb;var nn=(V.sig_nom||'').trim().split(/\s+/);$('av').textContent=((nn[0]||'').charAt(0)+(nn[1]||'').charAt(0)).toUpperCase()||'·';DRAW[p]();window.scrollTo(0,0)}
 function go(p){if(location.hash==='#'+p)show(p);else location.hash=p}
 window.addEventListener('hashchange',function(){show(location.hash.slice(1))});
-function upsert(){var e=(V.email||'').trim().toLowerCase();if(!e)return false;var o=db[e]||{n:0};
- Object.keys(F).forEach(function(k){if(!F[k][2]&&V[k])o[k]=V[k]});o.email=e;o.last=new Date().toISOString();o.modele=tpl().n;db[e]=o;pt('ogx-db',db);return true}
-function csv(){var c=['prenom','nom','email','programme','projet','destination','modele','last','n'],q=function(s){return '"'+String(s==null?'':s).replace(/"/g,'""')+'"'};
- return '\ufeff'+['prenom','nom','email','programme','projet','destination','dernier_modele','dernier_envoi','nb_envois'].join(',')+'\n'+Object.keys(db).map(function(k){return c.map(function(x){return q(db[k][x])}).join(',')}).join('\n')}
+function upsert(){var e=(V.email||'').trim().toLowerCase();if(!e)return false;var o=db[e]||{n:0},now=new Date().toISOString();
+ Object.keys(F).forEach(function(k){if(F[k][2])return;if(String(V[k]||'').trim())o[k]=V[k];else delete o[k]});o.email=e;o.updatedAt=now;o.modele=tpl().n;db[e]=o;pt('ogx-db',db);persistDraft(e);return true}
+function csv(){var c=['prenom','nom','email','programme','projet','destination','modele','lastSentAt','updatedAt','n'],q=function(s){var v=String(s==null?'':s);if(/^\s*[=+\-@]/.test(v))v="'"+v;return '"'+v.replace(/"/g,'""')+'"'};
+ return '\ufeff'+['prenom','nom','email','programme','projet','destination','dernier_modele','dernier_envoi','modifie_le','nb_envois'].join(',')+'\n'+Object.keys(db).map(function(k){var o=db[k];return c.map(function(x){return q(x==='lastSentAt'?(o.lastSentAt||''):(x==='updatedAt'?(o.updatedAt||o.last||''):o[x]))}).join(',')}).join('\n')}
 document.addEventListener('input',function(e){var k=(e.target.id||'').slice(2);if(!F[k])return;V[k]=e.target.value;save();
  if(page==='ep'&&$('pr'))$('pr').innerHTML=bar();if(k==='logo_url')lg()});
 document.addEventListener('change',function(e){var k=(e.target.id||'').slice(2);if(F[k]){V[k]=e.target.value;save()}});
 document.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;var id=b.id,g=b.getAttribute('data-go'),t=b.getAttribute('data-t'),l=b.getAttribute('data-load'),p=b.getAttribute('data-p');
  if(p)return go(p);if(g)return go(g);if(t){cur=t;return go('ep')}
- if(l){var o=db[l];Object.keys(F).forEach(function(k){if(!F[k][2])delete V[k]});Object.keys(o).forEach(function(k){if(F[k]&&!F[k][2])V[k]=o[k]});save();toast('Participant chargé');return go('ep')}
+ if(l){switchParticipant(l,db[l]);toast('Participant chargé');return go('ep')}
  if(id==='back'){if(typeof history!=='undefined'&&history.length>1)history.back();else go('plus');return}
  if(id==='av')return go('infos');
- if(id==='qgo'){var m=$('qm').value,em=($('qe').value||'').trim();cur=m;if(em){V.email=em;save()}return go('ep')}
+ if(id==='qgo'){var m=$('qm').value,em=($('qe').value||'').trim();if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)){toast('Saisissez une adresse e-mail valide.');return}cur=m;switchParticipant(em);return go('ep')}
  if(id==='newep'){Object.keys(V).forEach(function(k){if(!F[k][2])delete V[k]});save();return dEp()}
  if(id==='saveep')return toast(upsert()?'Participant enregistré':'Renseignez d’abord son adresse e-mail');
  if(id==='clh'){if(confirm('Effacer tout l’historique ?')){hist=[];pt('ogx-h2',hist);dHist()}return}
@@ -284,14 +300,15 @@ document.addEventListener('click',function(e){var b=e.target.closest('button');i
  if(id==='send')return doSend(false);if(id==='test')return doSend(true)});
 async function doSend(test){var r=build(tpl()),to=test?(V.email_test||'').trim():(V.email||'').trim(),st=$('pst'),b=$(test?'test':'send'),old=b.textContent,bad=function(m){st.innerHTML='<span class="err">'+m+'</span>'};
  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(to))return bad(test?'Renseignez votre adresse e-mail de test dans Mes informations.':'Adresse e-mail du participant invalide.');
+ var invalid=$('p-ep').querySelector('input:invalid,select:invalid');if(invalid)return bad('Vérifiez le champ « '+E(lab((invalid.id||'').slice(2)))+' ».');
  if(miss.length)return bad('Veuillez d’abord compléter : '+E(miss.map(lab).join(', ')));
  if(!/^https:\/\//.test(V.script_url||'')||!V.pass)return bad('Renseignez l’adresse du script et le mot de passe dans Mes informations.');
  if(!confirm('Confirmer l’envoi à '+to+' ?'))return;b.disabled=true;b.textContent='Envoi en cours…';
- try{var res=await fetch(V.script_url,{method:'POST',body:JSON.stringify({pass:V.pass,to:to,subject:(test?'[TEST] ':'')+r.subject,html:r.html,name:V.from_name||'AIESEC'})}),j=await res.json();
+ try{var res=await fetch(V.script_url,{method:'POST',body:JSON.stringify({pass:V.pass,to:to,subject:(test?'[TEST] ':'')+r.subject,html:r.html,text:mailText(r.html),name:V.from_name||'AIESEC'})}),j=await res.json();
   if(j.ok){st.innerHTML='<span class="ok">Message envoyé. Envois restants aujourd’hui : '+E(j.remaining)+'.</span>';hist.unshift({t:tpl().n,id:cur,to:to,d:new Date().toISOString(),test:!!test});hist=hist.slice(0,200);pt('ogx-h2',hist);
-   if(!test){upsert();var e=db[(V.email||'').trim().toLowerCase()];if(e){e.n=(e.n||0)+1;pt('ogx-db',db)}}toast('Message envoyé')}
+   if(!test){upsert();var e=db[(V.email||'').trim().toLowerCase()];if(e){e.n=(e.n||0)+1;e.lastSentAt=new Date().toISOString();pt('ogx-db',db)}}toast('Message envoyé')}
   else bad('Refusé : '+E(j.error||'erreur'))}
- catch(x){bad('Envoi impossible ou réponse illisible. Vérifiez le dossier Envoyés de Gmail. Si rien n’est parti, l’application doit être hébergée (l’aperçu Claude bloque l’envoi) et l’adresse du script doit être correcte.')}
+ catch(x){bad('Envoi impossible ou réponse illisible. Vérifiez le dossier Envoyés de Gmail, l’adresse du script et le fait que l’application est ouverte depuis son adresse publiée.')}
  b.disabled=false;b.textContent=old}
 show(location.hash.slice(1)||'accueil');
 })();
