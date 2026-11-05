@@ -84,7 +84,7 @@ details.card summary{cursor:pointer;font-weight:600}details.card p,details.card 
 <main>
  <section class="pg" id="p-accueil"></section><section class="pg" id="p-ep" hidden></section><section class="pg" id="p-infos" hidden></section>
  <section class="pg" id="p-apercu" hidden></section><section class="pg" id="p-historique" hidden></section><section class="pg" id="p-base" hidden></section>
- <section class="pg" id="p-aide" hidden></section><section class="pg" id="p-plus" hidden></section>
+ <section class="pg" id="p-aide" hidden></section><section class="pg" id="p-avance" hidden></section><section class="pg" id="p-plus" hidden></section>
 </main>
 <nav class="nav" aria-label="Navigation principale"><div>
  <button class="nb" data-p="accueil" type="button"><svg class="i" viewBox="0 0 24 24"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>Accueil</button>
@@ -180,13 +180,13 @@ function D(){var d={};for(var k in V)d[k]=V[k];
  ['date_acc','date_apd','date_limite','date_ops'].forEach(function(k){d[k]=fd(V[k])});
  return d}
 /* Rendu de l’e-mail */
-var miss,DV;
+var miss,DV,SRC=false,CU={};try{CU=JSON.parse(localStorage.getItem('ogx-cu')||'{}')||{}}catch(e){CU={}}
 var lab=function(k){return F[k]?F[k][0]:(LBL[k]||k)};
-function val(k){var x=(DV[k]||'').trim();if(!x){if(miss.indexOf(k)<0)miss.push(k);return '<span style="background:#ffb020;color:#111;border-radius:4px;padding:0 4px">['+E(lab(k))+']</span>'}return E(x)}
+function val(k){if(SRC)return '{'+k+'}';var x=(DV[k]||'').trim();if(!x){if(miss.indexOf(k)<0)miss.push(k);return '<span style="background:#ffb020;color:#111;border-radius:4px;padding:0 4px">['+E(lab(k))+']</span>'}return E(x)}
 function X(s){return s.replace(/\{(\w+)\}/g,function(m,k){return val(k)}).replace(/\*\*(.+?)\*\*/g,'<strong style="color:#fff">$1</strong>').replace(/==(.+?)==/g,'<span style="color:#3b9bff">$1</span>')}
 function plain(s){return s.replace(/\{(\w+)\}/g,function(m,k){return DV[k]||'['+lab(k)+']'}).replace(/\*\*|==/g,'')}
 function mailText(html){return html.replace(/<head\b[\s\S]*?<\/head>/gi,'').replace(/<a\b[^>]*href="([^"]*)"[^>]*>([\s\S]*?)<\/a>/gi,function(m,u,t){return t+' ('+u.replace(/&amp;/g,'&')+')'}).replace(/<br\b[^>]*>/gi,'\n').replace(/<li\b[^>]*>/gi,'\n• ').replace(/<\/(p|div|h[1-6]|li|tr|td|table)>/gi,'\n').replace(/<[^>]+>/g,'').replace(/&nbsp;/gi,' ').replace(/&amp;/gi,'&').replace(/&lt;/gi,'<').replace(/&gt;/gi,'>').replace(/&quot;/gi,'"').replace(/&#39;|&#x27;/gi,"'").replace(/[ \t]+\n/g,'\n').replace(/\n{3,}/g,'\n\n').trim()}
-function url(s){var u=X(s).replace(/<[^>]+>/g,'').replace(/&amp;/g,'&');return /^(https?:\/\/|mailto:|tel:)/i.test(u)?u:'#'}
+function url(s){if(SRC)return s;var u=X(s).replace(/<[^>]+>/g,'').replace(/&amp;/g,'&');return /^(https?:\/\/|mailto:|tel:)/i.test(u)?u:'#'}
 var FN='font-family:Roboto,Arial,Helvetica,sans-serif;';
 var B={
 p:function(s){return '<p style="margin:0 0 18px;'+FN+'font-size:16px;line-height:1.75;color:#bdbdbd">'+X(s)+'</p>'},
@@ -196,32 +196,46 @@ quote:function(s){return '<div style="margin:0 0 22px;padding:16px 18px;backgrou
 tiles:function(a){return '<table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="margin:0 0 26px;background:#1c1f26;border-radius:14px"><tr>'+a.map(function(c,i){return '<td align="center" valign="top" style="padding:16px 8px;'+(i?'border-left:1px solid #34383f;':'')+'"><div style="'+FN+'font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#7d8591;margin-bottom:6px">'+c[0]+'</div><div style="'+FN+'font-size:16px;font-weight:700;color:'+(i?'#fff':'#3b9bff')+'">'+X(c[1])+'</div></td>'}).join('')+'</tr></table>'},
 fee:function(t,ent,amt,desc){return '<table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="margin:0 0 16px;border:1px solid #34383f;border-radius:14px"><tr><td style="padding:20px 22px"><div style="'+FN+'font-size:12px;letter-spacing:2px;text-transform:uppercase;font-weight:700;color:#3b9bff">'+t+'</div><div style="'+FN+'font-size:18px;font-weight:700;color:#fff;margin-top:4px">'+X(ent)+'</div><div style="'+FN+'font-size:34px;font-weight:700;color:#3b9bff;margin:6px 0 8px">'+X(amt)+'</div><div style="'+FN+'font-size:14px;line-height:1.6;color:#8d939c">'+X(desc)+'</div></td></tr></table>'},
 total:function(a){return '<table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="margin:0 0 20px;background:#1c1f26;border-radius:14px"><tr><td style="padding:20px 22px"><div style="'+FN+'font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#8d939c">Coût total des frais d’échange</div><div style="'+FN+'font-size:32px;font-weight:700;color:#fff;margin-top:4px">'+X(a)+'</div></td></tr></table>'},
-pay:function(t,rows,note){var r=rows.filter(function(x){return !(x[2]&&!(DV[(x[1].match(/\{(\w+)\}/)||[])[1]]||'').trim())}).map(function(x){return '<tr><td valign="top" style="padding:7px 0;'+FN+'font-size:15px;color:#e6f1ff">'+x[0]+'</td><td align="right" valign="top" style="padding:7px 0 7px 14px;'+FN+'font-size:16px;font-weight:700;color:#fff">'+X(x[1])+'</td></tr>'}).join('');
+pay:function(t,rows,note){var r=rows.filter(function(x){return SRC||!(x[2]&&!(DV[(x[1].match(/\{(\w+)\}/)||[])[1]]||'').trim())}).map(function(x){return '<tr><td valign="top" style="padding:7px 0;'+FN+'font-size:15px;color:#e6f1ff">'+x[0]+'</td><td align="right" valign="top" style="padding:7px 0 7px 14px;'+FN+'font-size:16px;font-weight:700;color:#fff">'+X(x[1])+'</td></tr>'}).join('');
  return '<table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="margin:0 0 24px;background:#0a7cf0;border-radius:16px"><tr><td style="padding:24px 24px 22px"><div style="'+FN+'font-size:20px;font-weight:700;color:#fff;margin-bottom:10px">'+t+'</div><table role="presentation" width="100%" cellspacing="0" cellpadding="0">'+r+'</table><div style="'+FN+'font-size:15px;line-height:1.7;color:#e6f1ff;margin-top:14px">'+X(note)+'</div></td></tr></table>'},
 cta:function(l,u,k){var g=k==='green';return '<table role="presentation" cellspacing="0" cellpadding="0" style="margin:0 0 22px"><tr><td style="border-radius:10px;background:'+(g?'#0a7cf0':'#0f1b2d')+';'+(g?'':'border:1px solid #1f6feb;')+'"><a href="'+E(url(u))+'" style="display:inline-block;padding:16px 26px;'+FN+'font-size:15px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:'+(g?'#fff':'#3b9bff')+';text-decoration:none">'+l+'</a></td></tr></table>'}};
 function oddHtml(){var n=parseInt(V.odd,10);if(!n)return '';var o=ODD[n-1],tx=(V.odd_texte||'').trim()||o[3];
  return '<table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="margin:8px 0 26px;background:#221d1d;border-radius:16px"><tr><td style="padding:22px"><table role="presentation" cellspacing="0" cellpadding="0"><tr><td width="120" height="120" align="center" valign="middle" style="background:'+o[0]+';border-radius:6px"><div style="'+FN+'font-size:44px;font-weight:700;line-height:1;color:#fff">'+n+'</div><div style="'+FN+'font-size:10px;font-weight:700;letter-spacing:1px;color:#fff;padding:6px 8px 0">'+o[1]+'</div></td></tr></table><div style="'+FN+'font-size:12px;letter-spacing:2px;text-transform:uppercase;font-weight:700;color:'+(n===7?'#fcc30b':o[0])+';margin:18px 0 6px">Your experience · Your impact</div><div style="'+FN+'font-size:24px;font-weight:700;line-height:1.25;color:#fff">ODD '+n+' — '+E(o[2])+'</div><div style="'+FN+'font-size:15px;line-height:1.7;color:#bdbdbd;margin-top:8px">'+E(tx)+'</div></td></tr></table>'}
-function build(t){miss=[];DV=D();var logo=(V.logo_url||'').trim();
- var mark=logo&&/^https:\/\//i.test(logo)?'<img src="'+E(logo)+'" alt="AIESEC" height="44" style="display:block;border:0;height:44px;width:auto">':'<span style="display:inline-block;background:#000;padding:5px 12px;font:italic 700 26px Georgia,serif;letter-spacing:-1px;color:#fff">AIESEC</span>';
+function build0(t){miss=[];DV=D();var logo=(V.logo_url||'').trim();
+ var mark=logo&&/^https:\/\//i.test(logo)?'<img src="'+(SRC?'{logo_url}':E(logo))+'" alt="AIESEC" height="44" style="display:block;border:0;height:44px;width:auto">':'<span style="display:inline-block;background:#000;padding:5px 12px;font:italic 700 26px Georgia,serif;letter-spacing:-1px;color:#fff">AIESEC</span>';
  var h=t.h;
- var body=t.b.map(function(x){return B[x[0]].apply(null,x.slice(1))}).join('')+oddHtml();
- var contacts=['<div style="margin:0 0 6px">Téléphone / WhatsApp : '+E(V.lcvp_contact||'')+'</div>','<div>E-mail : '+E(V.lcvp_email||'')+'</div>'];
+ var body=t.b.map(function(x){return B[x[0]].apply(null,x.slice(1))}).join('')+(SRC?'{odd_block}':oddHtml());
+ var contacts=['<div style="margin:0 0 6px">Téléphone / WhatsApp : '+(SRC?'{lcvp_contact}':E(V.lcvp_contact||''))+'</div>','<div>E-mail : '+(SRC?'{lcvp_email}':E(V.lcvp_email||''))+'</div>'];
  var support='<h2 style="margin:30px 0 10px;'+FN+'font-size:22px;color:#fff">Une question ? Nous sommes là.</h2>'+B.p('Si vous avez la moindre question, n’hésitez pas à nous contacter. Notre objectif est de vous accompagner au mieux afin que vous puissiez vivre cette expérience avec sérénité et enthousiasme.')+
- '<div style="'+FN+'font-size:16px;line-height:1.7;color:#bdbdbd"><strong style="color:#d9d9d9">'+val('sig_nom')+'</strong><br>'+E(V.sig_role||'')+'<br>'+val('entite')+'<br><br>'+(V.lcvp_contact?contacts[0]:'')+(V.lcvp_email?contacts[1]:'')+'</div>';
+ '<div style="'+FN+'font-size:16px;line-height:1.7;color:#bdbdbd"><strong style="color:#d9d9d9">'+val('sig_nom')+'</strong><br>'+(SRC?'{sig_role}':E(V.sig_role||''))+'<br>'+val('entite')+'<br><br>'+((V.lcvp_contact||SRC)?contacts[0]:'')+((V.lcvp_email||SRC)?contacts[1]:'')+'</div>';
  var cl=t.close?'<tr><td align="center" style="background:#0a7cf0;padding:34px 24px"><div style="'+FN+'font-size:28px;font-weight:700;color:#fff;margin-bottom:10px">'+X(t.close[0])+'</div><div style="'+FN+'font-size:16px;line-height:1.7;color:#e6f1ff">'+X(t.close[1])+'</div></td></tr>':'';
  var html='<!DOCTYPE html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="dark light"><meta name="supported-color-schemes" content="dark light"></head><body style="margin:0;padding:0;background:#0b1220"><table role="presentation" width="100%" cellspacing="0" cellpadding="0" bgcolor="#0b1220" style="background:#0b1220"><tr><td align="center" style="padding:20px 10px"><table role="presentation" width="600" cellspacing="0" cellpadding="0" style="width:100%;max-width:600px;background:#121212;border-radius:18px;overflow:hidden">'+
- '<tr><td style="background:#0a7cf0;padding:26px 28px"><table role="presentation" width="100%" cellspacing="0" cellpadding="0"><tr><td valign="middle">'+mark+'</td><td align="right" valign="middle" style="'+FN+'font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#fff;line-height:1.6">'+E((V.entite||'AIESEC').replace(/^AIESEC in /i,'AIESEC in '))+'<br><span style="font-weight:400">Outgoing Exchange</span></td></tr></table></td></tr>'+
+ '<tr><td style="background:#0a7cf0;padding:26px 28px"><table role="presentation" width="100%" cellspacing="0" cellpadding="0"><tr><td valign="middle">'+mark+'</td><td align="right" valign="middle" style="'+FN+'font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#fff;line-height:1.6">'+(SRC?'{entite}':E((V.entite||'AIESEC').replace(/^AIESEC in /i,'AIESEC in ')))+'<br><span style="font-weight:400">Outgoing Exchange</span></td></tr></table></td></tr>'+
  '<tr><td style="padding:36px 30px 30px"><div style="'+FN+'font-size:13px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#3b9bff;margin-bottom:14px">'+X(t.eb)+'</div><h1 style="margin:0 0 22px;'+FN+'font-size:34px;line-height:1.2;color:#fff">'+X(h)+'</h1>'+body+support+'</td></tr>'+cl+
  '<tr><td style="padding:20px 30px 28px;'+FN+'font-size:11px;line-height:1.6;color:#6b717b;font-style:italic">AIESEC is a global youth-led organization striving to achieve peace and fulfillment of humankind’s potential by activating leadership qualities in youth through learning from practical experiences in challenging environments.</td></tr></table></td></tr></table></body></html>';
  return {html:html,subject:plain(t.sub)}}
+
+function build(t,src){var c=CU[t.id];
+ if(!src&&c&&c.html){miss=[];DV=D();return {html:fillTokens(c.html),subject:plain(c.subject||t.sub)}}
+ SRC=!!src;var r;try{r=build0(t)}finally{SRC=false}if(src)r.subject=t.sub;return r}
+function KN(k){return !!F[k]||k==='limite_acc'||k==='limite_apd'}
+function fillTokens(h){return h.replace(/\{(\w+)\}/g,function(m,k,off){
+ if(k==='odd_block')return oddHtml();
+ if(k==='logo_url'||k==='lcvp_contact'||k==='lcvp_email')return E(V[k]||'');
+ if(!KN(k))return m;var x=(DV[k]||'').trim();
+ if(!x){if(miss.indexOf(k)<0)miss.push(k);return /(href|src)=["']$/.test(h.slice(Math.max(0,off-8),off))?'#':'<span style="background:#ffb020;color:#111;border-radius:4px;padding:0 4px">['+E(lab(k))+']</span>'}
+ return E(x)})}
+function fieldsOf(t){var c=CU[t.id];if(!(c&&c.html))return t.f;var o=['email'],re=/\{(\w+)\}/g,m,x=c.html+' '+(c.subject||'');
+ while((m=re.exec(x))){var k=m[1];if(F[k]&&!F[k][2]&&k!=='odd'&&k!=='odd_texte'&&o.indexOf(k)<0)o.push(k)}
+ if(/\{limite_acc\}/.test(x)&&o.indexOf('date_acc')<0)o.push('date_acc');if(/\{limite_apd\}/.test(x)&&o.indexOf('date_apd')<0)o.push('date_apd');return o}
 /* Interface */
 var DSC={first:'Premier message après l’inscription sur la plateforme.',relance:'Relance d’un candidat sans échange initial.',appli:'Présentation d’une opportunité et invitation à postuler.',acc:'Acceptation, modalités et échéance de paiement.',apd:'Demande de confirmation de la date de départ.',ops:'Convocation au séminaire de préparation au départ.',re:'Prise de nouvelles pendant l’expérience.',fi:'Invitation à la séance de débriefing.',frais:'Détail des frais d’échange et instructions de paiement.'};
-var PI={mail:'<path d="M3 6h18v12H3z"/><path d="M3 7l9 6 9-6"/>',card:'<rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M14 10h4M14 14h4"/>',db:'<ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v6c0 1.7 3.6 3 8 3s8-1.3 8-3V6M4 12v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/>',help:'<circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 015 .5c0 1.7-2.5 2-2.5 3.5M12 17h.01"/>',chev:'<path d="M9 6l6 6-6 6"/>',send:'<path d="M5 12h14M13 6l6 6-6 6"/>',clock:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',up:'<path d="M3 11l9-8 9 8"/>',user:'<circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/>'};
+var PI={code:'<path d="M8 8l-4 4 4 4M16 8l4 4-4 4M14 5l-4 14"/>',mail:'<path d="M3 6h18v12H3z"/><path d="M3 7l9 6 9-6"/>',card:'<rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M14 10h4M14 14h4"/>',db:'<ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v6c0 1.7 3.6 3 8 3s8-1.3 8-3V6M4 12v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/>',help:'<circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 015 .5c0 1.7-2.5 2-2.5 3.5M12 17h.01"/>',chev:'<path d="M9 6l6 6-6 6"/>',send:'<path d="M5 12h14M13 6l6 6-6 6"/>',clock:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',up:'<path d="M3 11l9-8 9 8"/>',user:'<circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/>'};
 var TG={first:'<circle cx="9" cy="8" r="4"/><path d="M2 21c0-4 3-6 7-6s7 2 7 6"/><path d="M19 8v6M16 11h6"/>',relance:'<path d="M6 16V11a6 6 0 0112 0v5l2 2H4z"/><path d="M10 21h4"/>',appli:'<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/>',acc:'<circle cx="12" cy="12" r="9"/><path d="M8 12.5l3 3 5-6"/>',apd:'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>',ops:'<circle cx="9" cy="8" r="3.5"/><path d="M2 20c0-3.5 3-5.5 7-5.5s7 2 7 5.5"/><circle cx="17" cy="9" r="2.5"/><path d="M17 14.5c3 0 5 1.5 5 4"/>',re:'<path d="M4 5h16v11H9l-5 4z"/>',fi:'<circle cx="12" cy="9" r="6"/><path d="M8.5 14.5L7 21l5-3 5 3-1.5-6.5"/>',frais:'<rect x="3" y="6" width="18" height="14" rx="2"/><path d="M3 10h18M16 15h2"/>'};
 function ic(n){return '<svg class="i" viewBox="0 0 24 24">'+PI[n]+'</svg>'}
 function head(t,s){return '<h1 class="t">'+t+'</h1><p class="s">'+s+'</p>'}
 var REQ=['entite','sig_nom','sig_role','lcvp_nom','numero_paiement','script_url','pass'];
-var TTL={accueil:'Accueil',ep:'Participant',infos:'Mes informations',apercu:'Aperçu',historique:'Historique',base:'Base de données',aide:'Aide',plus:'Outils'};
+var TTL={accueil:'Accueil',ep:'Participant',infos:'Mes informations',apercu:'Aperçu',historique:'Historique',base:'Base de données',avance:'Avancé',aide:'Aide',plus:'Outils'};
 var PAGES=Object.keys(TTL),page='accueil';
 function ld(k,d){try{return JSON.parse(localStorage.getItem(k))||d}catch(e){return d}}
 function pt(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
@@ -247,11 +261,11 @@ function dAcc(){var n=setupDone(),nm=(V.sig_nom||'').trim().split(/\s+/)[0],l=hi
  sec('Historique','historique')+(l?'<div class="card last"><b>'+E(l.t)+'</b><small>'+E(l.to)+' · '+fmt(l.d)+'</small></div>':'<div class="card last"><b>Aucun envoi pour l’instant</b><small>Vos messages envoyés apparaîtront ici.</small></div>')+
  '<div class="chips">'+chip('card','Mes informations','infos')+chip('db','Base de données','base')+chip('clock','Historique','historique')+chip('help','Aide','aide')+'</div>'+
  '<div class="qs"><div class="r"><select id="qm" aria-label="Modèle">'+T.map(function(t){return '<option value="'+t.id+'"'+(t.id===cur?' selected':'')+'>'+t.n+'</option>'}).join('')+'</select></div><input id="qe" type="email" placeholder="Adresse e-mail du participant" value="'+E(V.email||'')+'" autocomplete="off"><div style="display:flex"><button class="go" id="qgo" type="button" aria-label="Continuer">'+ic('send')+'</button></div></div>'}
-function bar(){var t=tpl(),k=t.f.filter(function(x){return (V[x]||'').trim()}).length;return '<h3>Progression</h3><div class="mute">'+k+' champ(s) renseigné(s) sur '+t.f.length+'</div><div class="bar"><i style="width:'+Math.round(k/t.f.length*100)+'%"></i></div>'}
+function bar(){var t=tpl(),f=fieldsOf(t),k=f.filter(function(x){return (V[x]||'').trim()}).length;return '<h3>Progression</h3><div class="mute">'+k+' champ(s) renseigné(s) sur '+f.length+'</div><div class="bar"><i style="width:'+Math.round(k/f.length*100)+'%"></i></div>'}
 function dEp(){var t=tpl(),n=setupDone();
  $('p-ep').innerHTML=head('Informations du participant','Renseignez les champs du message.')+'<div class="list">'+it('mail',t.n,'Modèle sélectionné · modifier','accueil')+'</div>'+
  (n<REQ.length?'<div class="card warn">Votre configuration est incomplète. <a href="#infos" style="color:inherit;font-weight:600">Compléter mes informations</a></div>':'')+
- '<div class="card" id="pr">'+bar()+'</div><div class="card"><h3>Champs du message</h3><div class="grid2">'+t.f.map(field).join('')+'</div></div>'+
+ '<div class="card" id="pr">'+bar()+'</div><div class="card"><h3>Champs du message</h3><div class="grid2">'+fieldsOf(t).map(field).join('')+'</div></div>'+
  '<div class="card"><h3>Objectif de développement durable (facultatif)</h3><div class="mute">Ajoutez au message la carte de l’ODD lié à l’opportunité.</div>'+field('odd')+field('odd_texte')+'</div>'+
  '<div class="acts"><button class="btn p" data-go="apercu" type="button">Afficher l’aperçu</button><button class="btn" id="saveep" type="button">Enregistrer le participant</button><button class="btn d" id="newep" type="button">Réinitialiser</button></div>'}
 function dInf(){var G=[['','Entité et signature',['entite','sig_nom','sig_role','from_name']],['','Responsable local (LCVP)',['lcvp_nom','lcvp_contact','lcvp_email']],['','Paiement',['numero_paiement','mode_paiement','beneficiaire']],['','Logo',['logo_url']],['','Envoi par Gmail',['script_url','pass','email_test']]];
@@ -272,12 +286,43 @@ function dAide(){$('p-aide').innerHTML=head('Aide','Guide d’utilisation et dé
 ['Limites d’envoi','<p>Un compte Gmail personnel permet 100 destinataires par jour, un compte Google Workspace 1 500.</p>'],
  ['Un message ne part pas','<p>Vérifiez l’adresse du script, le mot de passe et le dossier Envoyés de Gmail. Certains environnements d’aperçu bloquent l’envoi : publiez l’application et utilisez son adresse hébergée.</p>'],
 ['Champs en surbrillance orange','<p>Ils signalent une information manquante dans l’aperçu. L’envoi est bloqué tant qu’il en reste.</p>']].map(function(x){return '<details class="card"><summary>'+x[0]+'</summary>'+x[1]+'</details>'}).join('')}
-function dPlus(){$('p-plus').innerHTML=head('Outils','Paramètres et données.')+'<div class="list">'+it('card','Mes informations','Équipe, responsable local, paiement, logo, envoi','infos')+it('db','Base de données','Participants et export CSV','base')+it('clock','Historique','Messages envoyés','historique')+it('help','Aide','Guide et dépannage','aide')+'</div>'}
-var DRAW={accueil:dAcc,ep:dEp,infos:dInf,apercu:dPrev,historique:dHist,base:dBase,aide:dAide,plus:dPlus};
+function dPlus(){$('p-plus').innerHTML=head('Outils','Paramètres et données.')+'<div class="list">'+it('card','Mes informations','Équipe, responsable local, paiement, logo, envoi','infos')+it('db','Base de données','Participants et export CSV','base')+it('clock','Historique','Messages envoyés','historique')+it('code','Avancé','Modifier le code des modèles d’e-mails','avance')+it('help','Aide','Guide et dépannage','aide')+'</div>'}
+
+var AVT=null;
+function cl(c){return String(c).replace(/^\s*```[a-z]*\s*/i,'').replace(/\s*```\s*$/,'').trim()}
+function copyTxt(x,m){try{navigator.clipboard.writeText(x).then(function(){toast(m)},function(){toast('Copie impossible dans cet environnement')})}catch(e){toast('Copie impossible dans cet environnement')}}
+function prevCode(c){miss=[];DV=D();var f=$('avif');if(f)f.srcdoc=fillTokens(c)}
+function unknownTokens(x){var o=[],re=/\{(\w+)\}/g,m;while((m=re.exec(x))){var k=m[1];if(!KN(k)&&k!=='odd_block'&&o.indexOf('{'+k+'}')<0)o.push('{'+k+'}')}return o}
+function aiPrompt(code,req){var skip={odd:1,odd_texte:1},v=Object.keys(F).filter(function(k){return !skip[k]}).map(function(k){return '{'+k+'} : '+F[k][0]}).concat(['{limite_acc} : date limite calculée (1 mois après la date d’acceptation)','{limite_apd} : date limite calculée (1 semaine après la date d’approbation)','{odd_block} : carte facultative de l’objectif de développement durable (à conserver)']);
+ return 'Tu es un expert en e-mails HTML. Voici le code d’un e-mail envoyé par le département Outgoing Exchange d’AIESEC. Modifie-le selon ma demande.\n\nRÈGLES\n- Conserve la structure en tableaux et les styles en ligne (style="...") : les messageries n’acceptent ni feuille de style externe ni JavaScript.\n- Les variables s’écrivent entre accolades, par exemple {prenom}. Conserve celles qui existent. Tu peux utiliser uniquement les variables de la liste ci-dessous, sans en inventer.\n- N’ajoute aucune image externe (le logo est déjà géré par {logo_url}).\n- Garde un ton formel et professionnel, en français, avec vouvoiement.\n- Réponds uniquement avec le code HTML complet modifié, sans explication et sans balises de code Markdown.\n\nVARIABLES DISPONIBLES\n'+v.join('\n')+'\n\nMA DEMANDE\n'+req+'\n\nCODE ACTUEL\n'+code}
+function dAvance(){if(!AVT||!T.some(function(x){return x.id===AVT}))AVT=cur;var t=T.filter(function(x){return x.id===AVT})[0],c=CU[t.id],src=c&&c.html?{html:c.html,subject:c.subject||t.sub}:build(t,true);
+ var vars=Object.keys(F).filter(function(k){return k!=='odd'&&k!=='odd_texte'}).map(function(k){return '<code>{'+k+'}</code> '+E(F[k][0])}).join('<br>');
+ $('p-avance').innerHTML=head('Avancé','Modifier le code des modèles d’e-mails.')+
+ '<div class="card"><h3>Modèle à modifier</h3><label for="avt">Modèle</label><select id="avt">'+T.map(function(x){return '<option value="'+x.id+'"'+(x.id===AVT?' selected':'')+'>'+x.n+(CU[x.id]&&CU[x.id].html?' (personnalisé)':'')+'</option>'}).join('')+'</select>'+
+ '<div class="mute" style="margin-top:8px">'+(c&&c.html?'Version personnalisée active.':'Version d’origine.')+'</div>'+
+ '<label for="avs">Objet</label><input id="avs" value="'+E(src.subject)+'" autocomplete="off">'+
+ '<label for="avc">Code HTML</label><textarea id="avc" rows="14" spellcheck="false" style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12.5px;line-height:1.5;white-space:pre;overflow:auto">'+E(src.html)+'</textarea>'+
+ '<div class="acts"><button class="btn p" id="avprev" type="button">Aperçu</button><button class="btn" id="avsave" type="button">Enregistrer</button><button class="btn" id="avcopy" type="button">Copier le code</button><button class="btn d" id="avreset" type="button">Rétablir l’original</button></div></div>'+
+ '<div class="card"><h3>Modifier avec une IA</h3><div class="mute">1. Décrivez la modification souhaitée. 2. Copiez la demande et collez-la dans ChatGPT, Claude ou Gemini. 3. Collez le code obtenu dans la zone « Code HTML » ci-dessus, vérifiez l’aperçu, puis enregistrez.</div><label for="avq">Votre demande</label><textarea id="avq" rows="3" placeholder="Ex. : ajoute une phrase de rappel sur le numéro WhatsApp et passe le bouton en vert foncé."></textarea><div class="acts"><button class="btn p" id="avai" type="button">Copier la demande pour l’IA</button></div></div>'+
+ '<h2>Aperçu du code</h2><iframe id="avif" sandbox title="Aperçu du code"></iframe>'+
+ '<details class="card"><summary>Variables disponibles</summary><p style="line-height:1.9">'+vars+'<br><code>{odd_block}</code> Carte ODD (facultative)</p></details>'+
+ '<div class="mute">Les modifications sont enregistrées sur cet appareil. Les variables entre accolades sont remplacées automatiquement par les informations du participant.</div>';
+ prevCode(src.html)}
+function avClick(id){var t=T.filter(function(x){return x.id===AVT})[0];if(!t)return false;
+ if(id==='avprev'){prevCode(cl($('avc').value));return true}
+ if(id==='avsave'){var c=cl($('avc').value),sj=$('avs').value.trim();if(c.length<80||c.indexOf('<')<0){toast('Le code semble vide ou incomplet');return true}
+  var u=unknownTokens(c+' '+sj);if(u.length&&!confirm('Variables inconnues : '+u.join(', ')+'. Elles resteront affichées telles quelles. Enregistrer quand même ?'))return true;
+  CU[t.id]={html:c,subject:sj||t.sub};pt('ogx-cu',CU);toast('Modèle enregistré');dAvance();return true}
+ if(id==='avreset'){if(CU[t.id]&&confirm('Rétablir le modèle d’origine ?')){delete CU[t.id];pt('ogx-cu',CU);toast('Modèle d’origine rétabli');dAvance()}return true}
+ if(id==='avcopy'){copyTxt($('avc').value,'Code copié');return true}
+ if(id==='avai'){var q=$('avq').value.trim();if(!q){toast('Décrivez d’abord la modification souhaitée');return true}copyTxt(aiPrompt($('avc').value,q),'Demande copiée : collez-la dans votre IA');return true}
+ return false}
+document.addEventListener('change',function(e){if(e.target.id==='avt'){AVT=e.target.value;dAvance()}});
+var DRAW={accueil:dAcc,ep:dEp,infos:dInf,apercu:dPrev,historique:dHist,base:dBase,avance:dAvance,aide:dAide,plus:dPlus};
 function sync(){document.querySelectorAll('input[id^="f_"],select[id^="f_"]').forEach(function(e){var k=e.id.slice(2),sc=e.closest('section');if(!F[k]||(sc&&sc.hidden))return;if(e.value!==''||V[k]===undefined)V[k]=e.value});save()}
 function show(p){sync();if(!DRAW[p])p='accueil';page=p;PAGES.forEach(function(x){$('p-'+x).hidden=x!==p});
- document.querySelectorAll('.nb').forEach(function(b){var q=b.getAttribute('data-p');b.classList.toggle('on',q===p||(q==='plus'&&(p==='infos'||p==='base'||p==='aide'||p==='historique')))});
- var sb=p==='infos'||p==='base'||p==='aide'||p==='historique';$('back').hidden=!sb;$('pill').hidden=sb;var nn=(V.sig_nom||'').trim().split(/\s+/);$('av').textContent=((nn[0]||'').charAt(0)+(nn[1]||'').charAt(0)).toUpperCase()||'·';DRAW[p]();window.scrollTo(0,0)}
+ document.querySelectorAll('.nb').forEach(function(b){var q=b.getAttribute('data-p');b.classList.toggle('on',q===p||(q==='plus'&&(p==='infos'||p==='base'||p==='aide'||p==='historique'||p==='avance')))});
+ var sb=p==='infos'||p==='base'||p==='aide'||p==='historique'||p==='avance';$('back').hidden=!sb;$('pill').hidden=sb;var nn=(V.sig_nom||'').trim().split(/\s+/);$('av').textContent=((nn[0]||'').charAt(0)+(nn[1]||'').charAt(0)).toUpperCase()||'·';DRAW[p]();window.scrollTo(0,0)}
 function go(p){if(location.hash==='#'+p)show(p);else location.hash=p}
 window.addEventListener('hashchange',function(){show(location.hash.slice(1))});
 function upsert(){var e=(V.email||'').trim().toLowerCase();if(!e)return false;var o=db[e]||{n:0},now=new Date().toISOString();
@@ -299,6 +344,7 @@ document.addEventListener('click',function(e){var b=e.target.closest('button');i
  if(id==='clh'){if(confirm('Effacer tout l’historique ?')){hist=[];pt('ogx-h2',hist);dHist()}return}
  if(id==='copy'||id==='expc'){var s=id==='copy'?build(tpl()).html:csv();try{navigator.clipboard.writeText(s).then(function(){toast('Copié')},function(){toast('Copie impossible dans cet environnement')})}catch(x){toast('Copie impossible dans cet environnement')}return}
  if(id==='exp'){try{var a=document.createElement('a');a.href=URL.createObjectURL(new Blob([csv()],{type:'text/csv;charset=utf-8'}));a.download='ogx-ep.csv';document.body.appendChild(a);a.click();a.remove();toast('Export lancé')}catch(x){toast('Téléchargement impossible : utilisez « Copier le CSV »')}return}
+ if(id.slice(0,2)==='av'&&avClick(id))return;
  if(id==='chk')return chk();
  if(id==='send')return doSend(false);if(id==='test')return doSend(true)});
 async function chk(){sync();var o=$('chs'),u=(V.script_url||'').trim();
