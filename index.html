@@ -97,7 +97,7 @@ details.card summary{cursor:pointer;font-weight:600}details.card p,details.card 
 (function(){
 var $=function(i){return document.getElementById(i)};
 var E=function(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})};
-var F={email:['E-mail de l’EP','email'],prenom:['Prénom'],nom:['Nom complet (ex. Monsieur Jean Dupont)'],programme:['Programme'],projet:['Projet / entreprise'],destination:['Destination (ville, pays)'],drapeau:['Drapeau (emoji)'],opportunite:['Opportunité'],lien_opportunite:['Lien aiesec.org','url'],
+var F={email:['E-mail de l’EP','email'],prenom:['Prénom'],nom:['Nom complet (ex. Monsieur Jean Dupont)'],programme:['Programme'],projet:['Projet / entreprise'],destination:['Destination (ville, pays)'],opportunite:['Opportunité'],lien_opportunite:['Lien aiesec.org','url'],
  frais_total:['Montant total (FCFA)','number'],acompte:['Acompte pour sécuriser la place (FCFA)','number'],date_acc:['Date d’acceptation','date'],date_apd:['Date d’approbation','date'],date_limite:['Date limite de paiement','date'],date_ops:['Date de l’OPS','date'],heure_ops:['Heure de l’OPS'],lieu_ops:['Lieu de l’OPS'],
  entite_admin:['Entité d’envoi (frais admin.)'],frais_admin:['Frais administratifs (FCFA)','number'],entite_projet:['Entité d’accueil (project fee)'],frais_projet:['Project fee (FCFA)','number'],lien_contrat:['Lien du contrat','url'],lien_preuve:['Lien d’envoi de la preuve de paiement','url'],lien_calendly:['Lien Calendly','url'],lien_goal:['Lien Goal setting','url'],lien_feedback:['Lien du formulaire de feedback','url'],lien_debrief:['Lien de réservation du debrief','url'],
 odd:['ODD de l’opportunité','odd'],odd_texte:['Texte ODD (laissez vide pour le texte officiel)'],
@@ -129,13 +129,13 @@ var T=[
 ['p','Je reste disponible pour vous aider à optimiser votre CV, vous préparer à l’entretien et vous guider à chaque étape. N’hésitez pas à me confirmer lorsque vous aurez candidaté.']]},
 {id:'acc',n:'Acceptation et paiement',s:'Accepted → Approved',f:['email','prenom','programme','frais_total','acompte','date_acc','date_limite','lien_contrat','lien_preuve'],sub:'Félicitations {prenom}, confirmez votre place pour votre stage AIESEC',eb:'Acceptation',h:'Félicitations {prenom}, ==confirmez== votre place',b:[
 ['p','Vous avez été accepté(e) pour **{programme}** après vos interviews. Votre projet international va bientôt devenir réalité. Pour confirmer votre participation, la prochaine étape consiste à régler les frais de stage.'],
-['pay','👉 Ce que vous devez régler',[['Montant total','{frais_total}'],['Pour sécuriser votre place','{acompte} FCFA'],['Numéro de paiement','{numero_paiement}'],['Mode de paiement','{mode_paiement}'],['Bénéficiaire','{beneficiaire}',1],['Date limite','{date_limite}']],'Envoyez ensuite la capture à **{lcvp_nom}**, en discussion permanente avec vous. Confirmer avant la date limite vous permet de commencer votre préparation sans délai.'],
+['pay','Ce que vous devez régler',[['Montant total','{frais_total}'],['Pour sécuriser votre place','{acompte} FCFA'],['Numéro de paiement','{numero_paiement}'],['Mode de paiement','{mode_paiement}'],['Bénéficiaire','{beneficiaire}',1],['Date limite','{date_limite}']],'Envoyez ensuite la capture à **{lcvp_nom}**, en discussion permanente avec vous. Confirmer avant la date limite vous permet de commencer votre préparation sans délai.'],
 ['ul',['Votre place pour l’opportunité choisie','Un accompagnement personnalisé par votre responsable local','Le développement concret de compétences clés','L’accès à un réseau mondial de jeunes leaders','Une expérience conforme aux standards AIESEC']],
 ['p','Nous vous encourageons à lire votre contrat avant de régler.'],
 ['cta','Consulter mon contrat →','{lien_contrat}','line'],['cta','Envoyer la preuve de paiement →','{lien_preuve}','green']]},
 {id:'apd',n:'Choix de la date de départ',s:'Approved',f:['email','prenom','programme','date_apd','date_limite'],sub:'{prenom}, choisissez votre date de départ pour votre stage AIESEC !',eb:'Paiement confirmé',h:'Choisissez votre date de ==départ==',b:[
 ['p','Félicitations et merci d’avoir finalisé le paiement pour **{programme}**. Votre place est maintenant sécurisée et votre projet international est officiellement en route.'],
-['pay','📅 Prochaine étape',[['Action','Confirmer votre date de départ'],['Avant le','{date_limite}']],'Passé ce délai sans nouvelle, votre responsable reprendra contact avec vous pour finaliser cette étape.'],
+['pay','Prochaine étape',[['Action','Confirmer votre date de départ'],['Avant le','{date_limite}']],'Passé ce délai sans nouvelle, votre responsable reprendra contact avec vous pour finaliser cette étape.'],
 ['ul',['Assurez votre place sur la période idéale','Permettez à votre responsable de préparer votre programme personnalisé','Profitez d’un suivi complet conforme aux standards AIESEC','Rejoignez les participants qui ont déjà choisi leurs dates']]]},
 {id:'ops',n:'Invitation à l’OPS',s:'Approved',f:['email','prenom','programme','date_ops','heure_ops','lieu_ops','lien_goal'],sub:'Séminaire de préparation pour votre départ !',eb:'Séminaire de préparation',h:'Préparez votre ==départ==',b:[
 ['p','Félicitations, {prenom} ! Votre paiement pour **{programme}** est bien reçu. Nous organisons pour vous un séminaire de préparation avant le départ.'],
@@ -152,18 +152,18 @@ var T=[
 ['p','La prochaine étape essentielle est votre **séance de debrief AIESEC** :'],
 ['ul',['Partager vos réussites et apprentissages clés','Identifier vos compétences et comment les valoriser','Recevoir un retour personnalisé','Contribuer à améliorer l’expérience des prochains participants']],
 ['cta','Réserver mon créneau →','{lien_debrief}','green']],close:['Merci d’avoir osé.','Votre histoire inspire la suite.']},
-{id:'frais',n:'Confirmation d’échange et frais',s:'Accepted → Approved',f:['email','nom','programme','projet','destination','drapeau','entite_admin','frais_admin','entite_projet','frais_projet','frais_total','date_limite','lien_preuve','lien_contrat'],sub:'Votre aventure à {destination} se prépare',eb:'{programme}',h:'Votre aventure à =={destination}== se prépare',b:[
+{id:'frais',n:'Confirmation d’échange et frais',s:'Accepted → Approved',f:['email','nom','programme','projet','destination','entite_admin','frais_admin','entite_projet','frais_projet','frais_total','date_limite','lien_preuve','lien_contrat'],sub:'Votre aventure à {destination} se prépare',eb:'{programme}',h:'Votre aventure à =={destination}== se prépare',b:[
 ['p','Bonjour **{nom}**, nous sommes heureux de vous accompagner dans cette nouvelle étape. Votre expérience **{programme}**, portée par **{projet}**, vous conduira à **{destination}**, où vous contribuerez à un projet porteur d’impact.'],
-['tiles',[['Programme','{programme}'],['Projet','{projet}'],['Destination','{destination} {drapeau}']]],
+['tiles',[['Programme','{programme}'],['Projet','{projet}'],['Destination','{destination}']]],
 ['h','Vos frais d’échange'],
 ['p','Le montant total s’élève à **{frais_total}**, réparti entre l’entité d’envoi et l’entité d’accueil.'],
 ['fee','1 — Frais administratifs','{entite_admin}','{frais_admin}','Frais liés à votre participation, à régler auprès de votre entité d’envoi.'],
 ['fee','2 — Project fee','{entite_projet}','{frais_projet}','Frais de projet destinés à l’entité d’accueil, réglés selon les modalités qui vous seront communiquées.'],
 ['total','{frais_total}'],
-['pay','👉 Ce que vous devez régler maintenant',[['Montant','{frais_admin}'],['Destinataire','{entite_admin}'],['Mode de paiement','{mode_paiement}'],['Numéro','{numero_paiement}'],['Bénéficiaire','{beneficiaire}',1],['Date limite','{date_limite}']],'Ce paiement constitue la première étape financière de votre échange. Le project fee sera réglé auprès de **{entite_projet}**.'],
+['pay','Ce que vous devez régler maintenant',[['Montant','{frais_admin}'],['Destinataire','{entite_admin}'],['Mode de paiement','{mode_paiement}'],['Numéro','{numero_paiement}'],['Bénéficiaire','{beneficiaire}',1],['Date limite','{date_limite}']],'Ce paiement constitue la première étape financière de votre échange. Le project fee sera réglé auprès de **{entite_projet}**.'],
 ['cta','Envoyer la preuve de paiement →','{lien_preuve}','green'],
 ['p','Prenez le temps de consulter attentivement votre contrat et conservez les informations importantes relatives à votre échange.'],
-['cta','Consulter mon contrat →','{lien_contrat}','line']],close:['{destination} vous attend. {drapeau}','Une nouvelle culture. De nouvelles rencontres. Un nouvel impact.']}
+['cta','Consulter mon contrat →','{lien_contrat}','line']],close:['{destination} vous attend.','Une nouvelle culture. De nouvelles rencontres. Un nouvel impact.']}
 ];
 var V={},cur='frais',hist=[];
 try{V=JSON.parse(localStorage.getItem('ogx-v')||'{}');hist=JSON.parse(localStorage.getItem('ogx-h2')||localStorage.getItem('ogx-h')||'[]')}catch(e){}
@@ -205,7 +205,7 @@ function build(t){miss=[];DV=D();var logo=(V.logo_url||'').trim();
  var mark=logo&&/^https:\/\//i.test(logo)?'<img src="'+E(logo)+'" alt="AIESEC" height="44" style="display:block;border:0;height:44px;width:auto">':'<span style="display:inline-block;background:#000;padding:5px 12px;font:italic 700 26px Georgia,serif;letter-spacing:-1px;color:#fff">AIESEC</span>';
  var h=t.h;
  var body=t.b.map(function(x){return B[x[0]].apply(null,x.slice(1))}).join('')+oddHtml();
- var contacts=['<div style="margin:0 0 6px">📱 '+E(V.lcvp_contact||'')+'</div>','<div>📧 '+E(V.lcvp_email||'')+'</div>'];
+ var contacts=['<div style="margin:0 0 6px">Téléphone / WhatsApp : '+E(V.lcvp_contact||'')+'</div>','<div>E-mail : '+E(V.lcvp_email||'')+'</div>'];
  var support='<h2 style="margin:30px 0 10px;'+FN+'font-size:22px;color:#fff">Une question ? Nous sommes là.</h2>'+B.p('Si vous avez la moindre question, n’hésitez pas à nous contacter. Notre objectif est de vous accompagner au mieux afin que vous puissiez vivre cette expérience avec sérénité et enthousiasme.')+
  '<div style="'+FN+'font-size:16px;line-height:1.7;color:#bdbdbd"><strong style="color:#d9d9d9">'+val('sig_nom')+'</strong><br>'+E(V.sig_role||'')+'<br>'+val('entite')+'<br><br>'+(V.lcvp_contact?contacts[0]:'')+(V.lcvp_email?contacts[1]:'')+'</div>';
  var cl=t.close?'<tr><td align="center" style="background:#0a7cf0;padding:34px 24px"><div style="'+FN+'font-size:28px;font-weight:700;color:#fff;margin-bottom:10px">'+X(t.close[0])+'</div><div style="'+FN+'font-size:16px;line-height:1.7;color:#e6f1ff">'+X(t.close[1])+'</div></td></tr>':'';
@@ -233,7 +233,7 @@ function tpl(){return T.filter(function(t){return t.id===cur})[0]}
 function toast(m){var t=$('toast');t.textContent=m;t.classList.add('show');setTimeout(function(){t.classList.remove('show')},2200)}
 function field(k){var f=F[k],id='f_'+k,v=V[k]||'',inp;
  if(f[1]==='odd')inp='<select id="'+id+'"><option value="">Aucun</option>'+ODD.map(function(o,i){return '<option value="'+(i+1)+'"'+(String(v)===String(i+1)?' selected':'')+'>ODD '+(i+1)+' · '+o[2]+'</option>'}).join('')+'</select>';
-  else inp='<input id="'+id+'" type="'+(f[1]||'text')+'" value="'+E(f[1]==='number'?numberValue(v):v)+'"'+(f[1]==='number'?' min="0" step="1" inputmode="numeric"':'')+' autocomplete="off">';
+  else inp='<input id="'+id+'" type="'+(f[1]||'text')+'" value="'+E(f[1]==='number'?numberValue(v):v)+'"'+(f[1]==='number'?' min="0" step="1" inputmode="numeric"':'')+' autocomplete="'+(f[1]==='password'?'new-password':'off')+'">';
  return '<div><label for="'+id+'">'+f[0]+'</label>'+inp+'</div>'}
 function fmt(i){return new Date(i).toLocaleString('fr-FR',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'})}
 function setupDone(){return REQ.filter(function(k){return (V[k]||'').trim()}).length}
@@ -255,7 +255,7 @@ function dEp(){var t=tpl(),n=setupDone();
  '<div class="card"><h3>Objectif de développement durable (facultatif)</h3><div class="mute">Ajoutez au message la carte de l’ODD lié à l’opportunité.</div>'+field('odd')+field('odd_texte')+'</div>'+
  '<div class="acts"><button class="btn p" data-go="apercu" type="button">Afficher l’aperçu</button><button class="btn" id="saveep" type="button">Enregistrer le participant</button><button class="btn d" id="newep" type="button">Réinitialiser</button></div>'}
 function dInf(){var G=[['','Entité et signature',['entite','sig_nom','sig_role','from_name']],['','Responsable local (LCVP)',['lcvp_nom','lcvp_contact','lcvp_email']],['','Paiement',['numero_paiement','mode_paiement','beneficiaire']],['','Logo',['logo_url']],['','Envoi par Gmail',['script_url','pass','email_test']]];
- $('p-infos').innerHTML=head('Mes informations','Ces informations sont réutilisées dans tous les messages.')+G.map(function(g){return '<div class="card"><h3>'+g[1]+'</h3><div class="grid2">'+g[2].map(field).join('')+'</div>'+(g[1]==='Logo'?'<div id="lgp"></div><div class="mute" style="margin-top:8px">Adresse https d’une image hébergée. En l’absence de logo, le logotype texte AIESEC est utilisé.</div>':'')+'</div>'}).join('')+'<div class="mute">Enregistrement automatique dans ce navigateur ; ces réglages ne sont pas synchronisés avec d’autres appareils.</div>';lg()}
+ $('p-infos').innerHTML=head('Mes informations','Ces informations sont réutilisées dans tous les messages.')+G.map(function(g){return '<div class="card"><h3>'+g[1]+'</h3><div class="grid2">'+g[2].map(field).join('')+'</div>'+(g[1]==='Logo'?'<div id="lgp"></div><div class="mute" style="margin-top:8px">Adresse https d’une image hébergée. En l’absence de logo, le logotype texte AIESEC est utilisé.</div>':'')+(g[1]==='Envoi par Gmail'?'<div class="acts"><button class="btn" id="chk" type="button">Vérifier la connexion</button></div><div class="st" id="chs"></div><div class="mute" style="margin-top:8px">L’adresse du script se termine par /exec. Voir l’onglet Aide pour l’installation.</div>':'')+'</div>'}).join('')+'<div class="mute">Enregistrement automatique dans ce navigateur ; ces réglages ne sont pas synchronisés avec d’autres appareils.</div>';lg()}
 function lg(){var e=$('lgp');if(e)e.innerHTML=/^https:\/\//.test(V.logo_url||'')?'<img class="lg" src="'+E(V.logo_url)+'" alt="Logo" onerror="this.outerHTML=\'<div class=warn>Image introuvable.</div>\'">':''}
 function dPrev(){var r=build(tpl()),m=miss.map(lab);
  $('p-apercu').innerHTML=head('Aperçu du message','Vérifiez le contenu avant l’envoi.')+'<div class="meta"><div><span>À</span><b>'+E(V.email||'—')+'</b></div><div><span>Objet</span>'+E(r.subject)+'</div></div><iframe id="prev" sandbox title="Aperçu"></iframe>'+
@@ -274,7 +274,8 @@ function dAide(){$('p-aide').innerHTML=head('Aide','Guide d’utilisation et dé
 ['Champs en surbrillance orange','<p>Ils signalent une information manquante dans l’aperçu. L’envoi est bloqué tant qu’il en reste.</p>']].map(function(x){return '<details class="card"><summary>'+x[0]+'</summary>'+x[1]+'</details>'}).join('')}
 function dPlus(){$('p-plus').innerHTML=head('Outils','Paramètres et données.')+'<div class="list">'+it('card','Mes informations','Équipe, responsable local, paiement, logo, envoi','infos')+it('db','Base de données','Participants et export CSV','base')+it('clock','Historique','Messages envoyés','historique')+it('help','Aide','Guide et dépannage','aide')+'</div>'}
 var DRAW={accueil:dAcc,ep:dEp,infos:dInf,apercu:dPrev,historique:dHist,base:dBase,aide:dAide,plus:dPlus};
-function show(p){if(!DRAW[p])p='accueil';page=p;PAGES.forEach(function(x){$('p-'+x).hidden=x!==p});
+function sync(){document.querySelectorAll('input[id^="f_"],select[id^="f_"]').forEach(function(e){var k=e.id.slice(2),sc=e.closest('section');if(!F[k]||(sc&&sc.hidden))return;if(e.value!==''||V[k]===undefined)V[k]=e.value});save()}
+function show(p){sync();if(!DRAW[p])p='accueil';page=p;PAGES.forEach(function(x){$('p-'+x).hidden=x!==p});
  document.querySelectorAll('.nb').forEach(function(b){var q=b.getAttribute('data-p');b.classList.toggle('on',q===p||(q==='plus'&&(p==='infos'||p==='base'||p==='aide'||p==='historique')))});
  var sb=p==='infos'||p==='base'||p==='aide'||p==='historique';$('back').hidden=!sb;$('pill').hidden=sb;var nn=(V.sig_nom||'').trim().split(/\s+/);$('av').textContent=((nn[0]||'').charAt(0)+(nn[1]||'').charAt(0)).toUpperCase()||'·';DRAW[p]();window.scrollTo(0,0)}
 function go(p){if(location.hash==='#'+p)show(p);else location.hash=p}
@@ -286,6 +287,7 @@ function csv(){var c=['prenom','nom','email','programme','projet','destination',
 document.addEventListener('input',function(e){var k=(e.target.id||'').slice(2);if(!F[k])return;V[k]=e.target.value;save();
  if(page==='ep'&&$('pr'))$('pr').innerHTML=bar();if(k==='logo_url')lg()});
 document.addEventListener('change',function(e){var k=(e.target.id||'').slice(2);if(F[k]){V[k]=e.target.value;save()}});
+document.addEventListener('focusout',function(){sync()});document.addEventListener('paste',function(){setTimeout(sync,60)});setInterval(sync,1500);
 document.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;var id=b.id,g=b.getAttribute('data-go'),t=b.getAttribute('data-t'),l=b.getAttribute('data-load'),p=b.getAttribute('data-p');
  if(p)return go(p);if(g)return go(g);if(t){cur=t;return go('ep')}
  if(l){switchParticipant(l,db[l]);toast('Participant chargé');return go('ep')}
@@ -297,14 +299,21 @@ document.addEventListener('click',function(e){var b=e.target.closest('button');i
  if(id==='clh'){if(confirm('Effacer tout l’historique ?')){hist=[];pt('ogx-h2',hist);dHist()}return}
  if(id==='copy'||id==='expc'){var s=id==='copy'?build(tpl()).html:csv();try{navigator.clipboard.writeText(s).then(function(){toast('Copié')},function(){toast('Copie impossible dans cet environnement')})}catch(x){toast('Copie impossible dans cet environnement')}return}
  if(id==='exp'){try{var a=document.createElement('a');a.href=URL.createObjectURL(new Blob([csv()],{type:'text/csv;charset=utf-8'}));a.download='ogx-ep.csv';document.body.appendChild(a);a.click();a.remove();toast('Export lancé')}catch(x){toast('Téléchargement impossible : utilisez « Copier le CSV »')}return}
+ if(id==='chk')return chk();
  if(id==='send')return doSend(false);if(id==='test')return doSend(true)});
-async function doSend(test){var r=build(tpl()),to=test?(V.email_test||'').trim():(V.email||'').trim(),st=$('pst'),b=$(test?'test':'send'),old=b.textContent,bad=function(m){st.innerHTML='<span class="err">'+m+'</span>'};
+async function chk(){sync();var o=$('chs'),u=(V.script_url||'').trim();
+ if(!/^https:\/\/.+\/exec$/.test(u)){o.innerHTML='<span class="err">L’adresse du script doit commencer par https:// et se terminer par /exec.</span>';return}
+ o.innerHTML='<span class="mute">Vérification…</span>';
+ try{var r=await fetch(u),j=await r.json();o.innerHTML=j.ok?'<span class="ok">Connexion établie. Le script répond correctement.</span>':'<span class="err">Le script répond, mais de façon inattendue.</span>'}
+ catch(e){o.innerHTML='<span class="err">Aucune réponse. Vérifiez que le déploiement est en accès « Tout le monde ». Si l’application est ouverte dans l’aperçu Claude, la vérification est bloquée : utilisez la version hébergée.</span>'}}
+async function doSend(test){sync();var r=build(tpl()),to=test?(V.email_test||'').trim():(V.email||'').trim(),st=$('pst'),b=$(test?'test':'send'),old=b.textContent,bad=function(m){st.innerHTML='<span class="err">'+m+'</span>'};
  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(to))return bad(test?'Renseignez votre adresse e-mail de test dans Mes informations.':'Adresse e-mail du participant invalide.');
  var invalid=$('p-ep').querySelector('input:invalid,select:invalid');if(invalid)return bad('Vérifiez le champ « '+E(lab((invalid.id||'').slice(2)))+' ».');
  if(miss.length)return bad('Veuillez d’abord compléter : '+E(miss.map(lab).join(', ')));
- if(!/^https:\/\//.test(V.script_url||'')||!V.pass)return bad('Renseignez l’adresse du script et le mot de passe dans Mes informations.');
+ if(!/^https:\/\//.test((V.script_url||'').trim()))return bad('L’adresse du script n’est pas renseignée. <a href="#infos" style="color:inherit;font-weight:700">Ouvrir Mes informations</a> (rubrique Envoi par Gmail). Le script doit d’abord être installé : voir l’onglet Aide.');
+ if(!(V.pass||'').trim())return bad('Le mot de passe du script n’est pas renseigné. <a href="#infos" style="color:inherit;font-weight:700">Ouvrir Mes informations</a>.');
  if(!confirm('Confirmer l’envoi à '+to+' ?'))return;b.disabled=true;b.textContent='Envoi en cours…';
- try{var res=await fetch(V.script_url,{method:'POST',body:JSON.stringify({pass:V.pass,to:to,subject:(test?'[TEST] ':'')+r.subject,html:r.html,text:mailText(r.html),name:V.from_name||'AIESEC'})}),j=await res.json();
+ try{var res=await fetch(V.script_url.trim(),{method:'POST',body:JSON.stringify({pass:V.pass.trim(),to:to,subject:(test?'[TEST] ':'')+r.subject,html:r.html,text:mailText(r.html),name:V.from_name||'AIESEC'})}),j=await res.json();
   if(j.ok){st.innerHTML='<span class="ok">Message envoyé. Envois restants aujourd’hui : '+E(j.remaining)+'.</span>';hist.unshift({t:tpl().n,id:cur,to:to,d:new Date().toISOString(),test:!!test});hist=hist.slice(0,200);pt('ogx-h2',hist);
    if(!test){upsert();var e=db[(V.email||'').trim().toLowerCase()];if(e){e.n=(e.n||0)+1;e.lastSentAt=new Date().toISOString();pt('ogx-db',db)}}toast('Message envoyé')}
   else bad('Refusé : '+E(j.error||'erreur'))}
