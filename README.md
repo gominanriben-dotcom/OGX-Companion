@@ -1,1 +1,4 @@
 # OGX-Companion
+OGX Companion est une application web destinée au département Outgoing Exchange (OGX) d’AIESEC. Elle permet de préparer et d’envoyer rapidement des e-mails personnalisés aux participants à l’échange, à chaque étape de leur parcours : premier contact, candidature, acceptation et paiement, choix de la date de départ, séminaire de préparation, suivi et débriefing.
+
+Les modèles, le logo et la mise en page AIESEC sont déjà intégrés. Il suffit de renseigner les informations du participant (nom, programme, destination, montants, dates, liens) pour obtenir un message prêt à envoyer, avec un aperçu avant l’envoi. Un objectif de développement durable (ODD) peut être ajouté au message selon l’opportunité. L’envoi se fait depuis l’adresse Gmail de l’équipe. L’application conserve l’historique des envois et une base de données des participants, exportable au format CSV.
