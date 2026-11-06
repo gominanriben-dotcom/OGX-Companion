@@ -6,92 +6,128 @@
 <title>OGX Companion</title>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#f3f4f8;--card:#fff;--card2:#f7f8fb;--line:#e1e4ec;--ink:#14161c;--mute:#697084;--acc:#2f6df0;--accink:#fff;--ok:#2f6df0;--warn:#b45309;--err:#d12b34;
+:root{--bg:#f2f4f8;--card:#fff;--card2:#f6f7fb;--line:#e1e4ec;--ink:#11131a;--mute:#6b7284;--acc:#1b6fe8;--accink:#fff;--ring:#2f8bff;--ok:#0b8a55;--warn:#b45309;--err:#d12b34;
 box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#17171b;--card:#26262c;--card2:#1f1f24;--line:#383841;--ink:#fff;--mute:#9b9ba6;--acc:#3b8cff;--ok:#72a8ff;--warn:#f0b24a;--err:#ff7b80;color-scheme:dark}}
-:root[data-theme="dark"]{--bg:#17171b;--card:#26262c;--card2:#1f1f24;--line:#383841;--ink:#fff;--mute:#9b9ba6;--acc:#3b8cff;--ok:#72a8ff;--warn:#f0b24a;--err:#ff7b80;color-scheme:dark}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0a0a10;--card:#15151c;--card2:#1c1c25;--line:#272733;--ink:#fff;--mute:#8e8e9b;--acc:#2f8bff;--ring:#5aa9ff;--ok:#4cc38a;--warn:#f0b24a;--err:#ff6b72;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0a0a10;--card:#15151c;--card2:#1c1c25;--line:#272733;--ink:#fff;--mute:#8e8e9b;--acc:#2f8bff;--ring:#5aa9ff;--ok:#4cc38a;--warn:#f0b24a;--err:#ff6b72;color-scheme:dark}
 html{scroll-padding-top:env(safe-area-inset-top,0px)}
 *,*::before,*::after{box-sizing:border-box}[hidden]{display:none!important}
 body{margin:0;background:var(--bg);color:var(--ink);font:500 15px/1.5 "Plus Jakarta Sans",Inter,system-ui,-apple-system,sans-serif}
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:30}
 svg.i{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;flex:0 0 auto}
-.top{max-width:720px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:16px 20px 4px}
-.pill{display:flex;align-items:center;gap:10px;background:var(--card);border-radius:18px;padding:10px 16px;font-size:13.5px;font-weight:600;color:var(--ink)}
-.mark{background:#000;color:#fff;font:italic 700 14px Georgia,serif;letter-spacing:-.5px;padding:1px 6px;border-radius:3px}
-.back{border:0;background:var(--card);color:var(--ink);border-radius:50%;width:44px;height:44px;display:grid;place-items:center;cursor:pointer}
-.av{width:46px;height:46px;border-radius:50%;border:2px solid var(--line);background:linear-gradient(135deg,#3b8cff,#7a5cff);color:#fff;font:700 15px system-ui,sans-serif;cursor:pointer}
-main{max-width:720px;margin:auto;padding:8px 20px 120px}
-.hi{font-size:clamp(32px,9vw,44px);font-weight:800;letter-spacing:-.02em;line-height:1.1;margin:26px 0 22px}
-.pg h1.t{margin:22px 0 4px;font-size:32px;font-weight:800;letter-spacing:-.02em}.pg>p.s{margin:0 0 20px;color:var(--mute)}
-.sec{display:flex;align-items:center;justify-content:space-between;margin:26px 0 12px}.sec h2{margin:0;font-size:15px;font-weight:600;color:var(--mute)}
+.top{position:relative;max-width:720px;margin:auto;display:flex;align-items:center;gap:12px;padding:16px 20px 6px;min-height:72px}
+.sp{flex:1}.ttl{position:absolute;left:0;right:0;top:26px;text-align:center;font-size:18px;font-weight:700;pointer-events:none}
+.av{width:46px;height:46px;border-radius:50%;border:0;background:var(--card);color:var(--ink);font:700 15px inherit;cursor:pointer;display:grid;place-items:center}
+.hi2{font-size:19px;font-weight:700}
+.ib,.back{width:46px;height:46px;border-radius:50%;border:0;background:var(--card);color:var(--ink);display:grid;place-items:center;cursor:pointer;position:relative;z-index:2}
+main{max-width:720px;margin:auto;padding:8px 20px 140px}
+.pg h1.t{margin:14px 0 4px;font-size:30px;font-weight:800;letter-spacing:-.02em}.pg>p.s{margin:0 0 18px;color:var(--mute)}.pg.sub>h1.t{display:none}
+h2{font-size:15px;font-weight:600;color:var(--mute);margin:26px 0 12px}
+.sec{display:flex;align-items:center;justify-content:space-between;margin:26px 0 12px}.sec h2{margin:0}
 .chv{border:0;background:transparent;color:var(--mute);cursor:pointer;padding:4px;display:grid}
+.bal{position:relative;overflow:hidden;border-radius:30px;padding:30px 26px 22px;background:radial-gradient(120% 90% at 85% 0%,rgba(47,139,255,.35),transparent 60%),linear-gradient(160deg,var(--card2),var(--card));border:1px solid var(--line);text-align:center}
+.bal span{color:var(--mute);font-size:14px}.bal b{display:block;font-size:64px;line-height:1.05;font-weight:800;letter-spacing:-.03em;margin:6px 0 10px}
+.dots{display:flex;gap:6px;justify-content:center}.dots i{width:30px;height:5px;border-radius:9px;background:var(--line)}.dots i.on{background:var(--ink)}
+.qa{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:22px 0 6px}
+.sqb{font:inherit;font-size:13px;font-weight:600;color:var(--mute);background:transparent;border:0;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:9px}
+.sqi{width:min(78px,19vw);height:min(78px,19vw);border-radius:22px;border:1px solid var(--line);display:grid;place-items:center;color:var(--ink);background:var(--card)}
+.sqi.pr{border:2px solid var(--ring);box-shadow:0 0 18px rgba(90,169,255,.3)}
 .hs{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 -20px;padding:0 20px 4px;scrollbar-width:none}.hs::-webkit-scrollbar{display:none}
-.tcard{flex:0 0 min(272px,74vw);scroll-snap-align:start;text-align:left;font:inherit;color:var(--ink);background:var(--card);border:0;border-radius:26px;padding:24px 22px;min-height:236px;cursor:pointer;display:flex;flex-direction:column}
-.tcard b{display:block;font-size:18px;font-weight:700;margin-top:auto}.tcard small{display:block;color:var(--mute);font-size:13.5px;margin-top:4px;line-height:1.4}
-.gi{width:64px;height:64px;border-radius:20px;display:grid;place-items:center;color:#fff;margin-bottom:26px;box-shadow:inset 0 2px 0 rgba(255,255,255,.35),0 8px 18px rgba(0,0,0,.28)}.gi svg{width:30px;height:30px}
-.g0{background:linear-gradient(135deg,#6aa8ff,#2f62e8)}.g1{background:linear-gradient(135deg,#b69bff,#6a47ee)}.g2{background:linear-gradient(135deg,#8aa7ff,#4f46e5)}.g3{background:linear-gradient(135deg,#ffcb52,#e08709)}.g4{background:linear-gradient(135deg,#ff8a9a,#dc3f59)}
-.card{background:var(--card);border-radius:22px;padding:20px;margin-bottom:14px}
-.card h3{margin:0 0 2px;font-size:16px;font-weight:700}
-.mute{color:var(--mute);font-size:13.5px}
-.last{display:block}.last b{font-size:16px;font-weight:600;display:block}.last small{color:var(--mute)}
-.chips{display:flex;gap:10px;overflow-x:auto;margin:22px -20px 0;padding:0 20px;scrollbar-width:none}.chips::-webkit-scrollbar{display:none}
-.chip{flex:0 0 auto;display:flex;align-items:center;gap:8px;font:inherit;font-weight:600;font-size:14px;color:var(--ink);background:transparent;border:1px solid var(--line);border-radius:16px;padding:12px 16px;cursor:pointer}.chip svg{width:19px;height:19px}
-.qs{margin-top:22px;border:1px solid transparent;border-radius:26px;padding:18px 18px 16px;background:linear-gradient(var(--card2),var(--card2)) padding-box,linear-gradient(120deg,rgba(59,140,255,.9),rgba(122,92,255,.35) 45%,rgba(255,255,255,.04)) border-box;box-shadow:0 10px 30px rgba(59,140,255,.12)}
-.qs .r{display:flex;gap:10px;align-items:center}.qs select{flex:1;min-width:0;padding:10px 12px;font-weight:600}.qs input{border:0;background:transparent;padding:14px 2px 6px;font-size:16px}
-.go{width:56px;height:56px;border-radius:50%;border:0;background:var(--acc);color:var(--accink);display:grid;place-items:center;cursor:pointer;margin-left:auto;box-shadow:0 6px 18px rgba(59,140,255,.4)}
-.bar{height:6px;background:var(--line);border-radius:99px;overflow:hidden;margin:10px 0 6px}.bar i{display:block;height:100%;background:var(--acc);border-radius:99px;transition:width .25s}
-.list{background:var(--card);border-radius:22px;overflow:hidden;margin-bottom:14px}
+.mc{flex:0 0 auto;min-width:150px;background:var(--card);border-radius:22px;padding:16px 18px;scroll-snap-align:start}.mc b{display:block;font-size:26px;font-weight:800}.mc span{font-size:13px;color:var(--mute)}
+.cfg{display:flex;align-items:center;justify-content:space-between;gap:14px;margin:20px 0 4px;border-radius:30px;padding:24px;color:#fff;background:linear-gradient(135deg,#0a62e0,#2f8bff 55%,#37c8ff)}
+.cfg h3{margin:0 0 4px;font-size:20px;font-weight:800}.cfg p{margin:0 0 14px;opacity:.9;font-size:14px}
+.wbtn{border:0;background:#fff;color:#0a62e0;font:inherit;font-weight:700;border-radius:99px;padding:11px 26px;cursor:pointer}
+.ring{position:relative;width:86px;height:86px;flex:0 0 auto}.ring svg{width:86px;height:86px;transform:rotate(-90deg)}.ring b{position:absolute;inset:0;display:grid;place-items:center;font-size:17px;font-weight:800}
+.tcard{flex:0 0 min(262px,72vw);scroll-snap-align:start;text-align:left;font:inherit;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:26px;padding:22px;min-height:224px;cursor:pointer;display:flex;flex-direction:column}
+.tcard b{display:block;font-size:17px;font-weight:700;margin-top:auto}.tcard small{display:block;color:var(--mute);font-size:13.5px;margin-top:4px;line-height:1.4}
+.gi{width:58px;height:58px;border-radius:18px;display:grid;place-items:center;color:#fff;margin-bottom:20px;box-shadow:inset 0 2px 0 rgba(255,255,255,.3),0 8px 18px rgba(0,0,0,.25)}.gi svg{width:28px;height:28px}
+.g0{background:linear-gradient(135deg,#6aa8ff,#2f62e8)}.g1{background:linear-gradient(135deg,#b69bff,#6a47ee)}.g2{background:linear-gradient(135deg,#3fdcc0,#0e9f8b)}.g3{background:linear-gradient(135deg,#ffcb52,#e08709)}.g4{background:linear-gradient(135deg,#ff8a9a,#dc3f59)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:20px;margin-bottom:14px}.card h3{margin:0 0 2px;font-size:16px;font-weight:700}
+.mute{color:var(--mute);font-size:13.5px}.last b{font-size:16px;font-weight:600;display:block}.last small{color:var(--mute)}
+.list{background:var(--card);border:1px solid var(--line);border-radius:24px;overflow:hidden;margin-bottom:14px}
 .it{display:flex;align-items:center;gap:14px;width:100%;text-align:left;font:inherit;color:var(--ink);background:transparent;border:0;border-bottom:1px solid var(--line);padding:16px 18px;cursor:pointer}.it:last-child{border-bottom:0}
-.it .ic{width:42px;height:42px;border-radius:13px;background:var(--card2);color:var(--acc);display:grid;place-items:center;flex:0 0 auto}
-.it div{flex:1;min-width:0}.it b{display:block;font-weight:600}.it small{display:block;color:var(--mute);font-size:13px;overflow-wrap:anywhere}.it>svg.i{color:var(--mute);width:18px;height:18px}
-.tag{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--acc);margin-bottom:2px}
+.it .ic{width:34px;height:34px;display:grid;place-items:center;flex:0 0 auto}
+.it div{flex:1;min-width:0}.it b{display:block;font-weight:600;font-size:16px}.it small{display:block;color:var(--mute);font-size:13px;overflow-wrap:anywhere}.it>svg.i{color:var(--mute);width:18px;height:18px}
+.bd{font-size:12.5px;font-weight:600;border-radius:99px;padding:5px 13px;flex:0 0 auto}.bd.no{background:rgba(255,107,114,.14);color:var(--err)}.bd.yes{background:rgba(76,195,138,.16);color:var(--ok)}
+.tag{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--ring);margin-bottom:2px}
+.sr{display:flex;align-items:center;gap:12px;background:var(--card);border-radius:20px;padding:0 18px;margin:6px 0 4px;color:var(--mute)}.sr input{border:0;background:transparent;padding:15px 0;font-size:16px;color:var(--ink)}.sr input:focus{outline:0}
+.tg{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.tl{text-align:left;font:inherit;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:24px;padding:20px 18px;cursor:pointer;min-height:176px}
+.tl .ic{display:grid;place-items:center;width:46px;height:46px;border-radius:14px;background:var(--card2);color:var(--ring);margin-bottom:14px}.tl b{display:block;font-size:17px;font-weight:700}.tl small{display:block;color:var(--mute);font-size:13.5px;margin-top:4px}
+.prof{text-align:center;padding:10px 0 18px}.bigav{width:112px;height:112px;border-radius:50%;margin:0 auto 14px;background:var(--card);display:grid;place-items:center;font-size:36px;font-weight:800;color:var(--ring)}
+.prof .pn{margin:0 0 6px;font-size:24px;font-weight:800;color:var(--ink)}
+.ver{text-align:center;color:var(--mute);font-size:13px;margin:16px 0}
 label{display:block;font-size:13px;font-weight:600;color:var(--mute);margin:14px 0 6px}
 input,select,textarea{width:100%;font:inherit;font-size:15px;color:var(--ink);background:var(--card2);border:1px solid var(--line);border-radius:14px;padding:12px 14px}
-input:focus,select:focus{outline:2px solid var(--acc);outline-offset:-1px}
-button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid var(--acc);outline-offset:3px}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--ring);outline-offset:-1px}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:0 16px}@media(max-width:520px){.grid2{grid-template-columns:1fr}}
 .acts{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
-.btn{font:inherit;font-weight:600;font-size:15px;border-radius:16px;padding:14px 20px;cursor:pointer;border:1px solid var(--line);background:var(--card);color:var(--ink)}
+.btn{font:inherit;font-weight:600;font-size:15px;border-radius:99px;padding:14px 22px;cursor:pointer;border:1px solid var(--line);background:var(--card);color:var(--ink)}
 .btn.p{background:var(--acc);border-color:var(--acc);color:var(--accink)}.btn.d{color:var(--err)}.btn:disabled{opacity:.55}
+.btn.dng{display:block;width:100%;margin-top:14px;background:rgba(255,107,114,.12);border-color:transparent;color:var(--err);font-weight:700;padding:17px}
 @media(max-width:520px){.acts .btn{flex:1 1 100%}}
-.meta{background:var(--card);border-radius:22px 22px 0 0;padding:14px 18px;font-size:14px}.meta div{display:flex;gap:10px}.meta span{color:var(--mute);width:56px;flex:0 0 auto}
-iframe{display:block;width:100%;height:calc(100dvh - 400px);min-height:420px;border:0;border-radius:0 0 22px 22px;background:#0b1220}
+.meta{background:var(--card);border:1px solid var(--line);border-bottom:0;border-radius:24px 24px 0 0;padding:14px 18px;font-size:14px}.meta div{display:flex;gap:10px}.meta span{color:var(--mute);width:56px;flex:0 0 auto}
+iframe{display:block;width:100%;height:calc(100dvh - 430px);min-height:420px;border:1px solid var(--line);border-radius:0 0 24px 24px;background:#0b1220}
 .st{margin:12px 0 0;font-size:14px;font-weight:600}.ok{color:var(--ok)}.warn{color:var(--warn)}.err{color:var(--err)}
 .empty{text-align:center;padding:44px 12px;color:var(--mute)}.empty b{display:block;color:var(--ink);font-size:16px;margin-bottom:4px}
-.nav{position:fixed;left:0;right:0;bottom:0;z-index:20;background:var(--bg);display:flex;justify-content:center;padding:8px 10px calc(8px + env(safe-area-inset-bottom,0px))}
-.nav>div{display:flex;width:100%;max-width:720px}
-.nb{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;font:inherit;font-size:12px;font-weight:600;color:var(--mute);background:transparent;border:0;padding:8px 2px;cursor:pointer}.nb.on{color:var(--acc)}
-details.card summary{cursor:pointer;font-weight:600}details.card p,details.card ol{margin:10px 0 0;color:var(--mute);font-size:14px}details.card ol{padding-left:20px}
-#toast{position:fixed;left:50%;bottom:calc(90px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:11px 18px;border-radius:14px;font-size:14px;font-weight:600;opacity:0;pointer-events:none;transition:opacity .2s;z-index:40;max-width:90%}#toast.show{opacity:1}
+.swr{display:flex;align-items:center;gap:14px;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--line)}.swr:last-child{border-bottom:0}.swr b{display:block}.swr small{color:var(--mute);font-size:13px}
+input.sw{appearance:none;-webkit-appearance:none;width:52px;height:32px;border-radius:99px;background:var(--line);position:relative;border:0;padding:0;flex:0 0 auto;cursor:pointer}
+input.sw::after{content:"";position:absolute;top:4px;left:4px;width:24px;height:24px;border-radius:50%;background:#fff;transition:left .2s}input.sw:checked{background:var(--acc)}input.sw:checked::after{left:24px}
+.nav{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(14px + env(safe-area-inset-bottom,0px));width:min(560px,calc(100% - 24px));height:68px;z-index:20;background:var(--card);border:1px solid var(--line);border-radius:40px;display:flex;align-items:center;justify-content:space-around;padding:0 8px;box-shadow:0 12px 34px rgba(0,0,0,.35)}
+.nb{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;font:inherit;color:var(--mute);background:transparent;border:0;cursor:pointer}.nb.on{color:var(--ink);background:var(--card2)}
+.nb.ctr{width:72px;height:72px;margin-top:-4px;border:2px solid var(--ring);color:var(--ink);box-shadow:0 0 0 4px rgba(90,169,255,.12),0 0 26px rgba(90,169,255,.35);background:var(--card)}.nb.ctr.on{background:var(--card2)}
+details.card summary{cursor:pointer;font-weight:600}details.card p,details.card ol{margin:10px 0 0;color:var(--mute);font-size:14.5px;line-height:1.65}details.card ol{padding-left:20px}
+.doc h3{margin:18px 0 4px;font-size:15px}.doc p{margin:0 0 8px;color:var(--mute);line-height:1.65}
+#toast{position:fixed;left:50%;bottom:calc(100px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:11px 18px;border-radius:14px;font-size:14px;font-weight:600;opacity:0;pointer-events:none;transition:opacity .2s;z-index:40;max-width:90%}#toast.show{opacity:1}
 .lg{max-height:48px;max-width:100%;margin-top:12px;background:#0a7cf0;padding:6px 10px;border-radius:8px}
-@media(min-width:900px){
- .top{max-width:1280px;padding:18px 32px 10px;position:sticky;top:0;z-index:21;background:var(--bg)}
- main{max-width:1080px;margin:0 max(24px,calc((100vw - 1280px)/2)) 0 max(240px,calc((100vw - 1280px)/2 + 240px));padding:34px 24px 48px}
- .nav{left:max(16px,calc((100vw - 1280px)/2));right:auto;top:96px;bottom:auto;width:210px;padding:0;background:transparent}
- .nav>div{width:100%;max-width:none;display:flex;flex-direction:column;gap:8px}
- .nb{flex:none;flex-direction:row;justify-content:flex-start;gap:10px;text-align:left;font-size:14px;padding:14px 16px;background:var(--card);border-radius:16px}
- .hs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));overflow:visible;margin:0;padding:0}
- .tcard{min-width:0;flex-basis:auto}
- .chips{flex-wrap:wrap;overflow:visible;margin-left:0;margin-right:0;padding:0}
- .qs{max-width:760px}
- iframe{height:min(72vh,880px);min-height:520px}
+.qa{grid-template-columns:repeat(4,minmax(0,1fr))}.sqb{min-width:0;font-size:12px;text-align:center}.hs{scroll-padding:0 20px}
+.hcol{display:block}.hcol>.hs{margin-top:18px}
+.nl,.dk,.nbrand,.ng{display:none}
+.nbrand .mark{align-self:flex-start;background:#000;color:#fff;font:italic 700 20px Georgia,serif;letter-spacing:-.5px;padding:3px 10px;border-radius:4px}
+@media(min-width:1024px){
+ .nav{left:0;top:0;bottom:0;transform:none;width:272px;height:auto;border-width:0 1px 0 0;border-radius:0;flex-direction:column;align-items:stretch;justify-content:flex-start;gap:6px;padding:26px 16px;box-shadow:none;overflow-y:auto}
+ .nbrand{display:flex;flex-direction:column;gap:4px;padding:4px 10px 22px}.nbrand b{font-size:18px;font-weight:800;margin-top:10px}.nbrand small{color:var(--mute)}
+ .ng{display:block;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--mute);padding:20px 14px 6px}
+ .nb{width:auto;height:50px;border-radius:14px;display:flex;align-items:center;justify-content:flex-start;gap:14px;padding:0 16px;font-size:15px;font-weight:600}
+ .nl{display:inline}.dk{display:flex}
+ .nb.on{background:transparent;color:var(--mute)}.nb.don{background:var(--card2);color:var(--ink)}.nb:hover{background:var(--card2)}
+ .nb.ctr{width:auto;height:52px;margin:4px 0;border:0;background:var(--acc);color:#fff;box-shadow:none}.nb.ctr.on,.nb.ctr:hover{background:var(--acc);filter:brightness(1.08)}.nb.ctr.don{box-shadow:0 0 0 3px rgba(90,169,255,.35)}
+ .top{max-width:none;margin:0 0 0 272px;padding:26px 44px 6px}
+ .ttl{position:static;text-align:left;font-size:28px;font-weight:800;letter-spacing:-.02em;pointer-events:auto;flex:1}
+ .pg h1.t{display:none}
+ main{max-width:none;margin:0 0 0 272px;padding:12px 44px 70px}
+ .pg{max-width:1000px}#p-apercu{max-width:860px}
+ .hrow{display:grid;grid-template-columns:1.1fr 1fr;gap:20px;align-items:stretch}
+ .hcol{display:flex;flex-direction:column;gap:14px}.hcol>.hs{margin:0}.hs{scroll-padding:0}.hcol>.hs{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.hcol .mc{min-width:0;padding:14px 16px}.bal{display:flex;flex-direction:column;justify-content:center}
+ .hrow .qa{margin:0;background:var(--card);border:1px solid var(--line);border-radius:30px;padding:26px 20px;align-content:center}
+ .hs{flex-wrap:wrap;overflow:visible;margin:0;padding:0}
+ .tcard{flex:1 1 230px;max-width:calc(33.33% - 10px);min-height:210px}
+ .tg{grid-template-columns:repeat(4,1fr)}
+ .grid2{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+ iframe{height:calc(100dvh - 340px);min-height:480px}
+ #avc{min-height:380px}
+ #toast{left:calc(50% + 136px);bottom:30px}
 }
-@media(min-width:900px) and (max-width:1200px){.hs{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.nbrand .nlogo{align-self:flex-start;height:46px;max-width:100%;background:#fff;border-radius:10px;padding:6px 12px;object-fit:contain}
+.ib .bg{position:absolute;top:4px;right:3px;min-width:19px;height:19px;border-radius:10px;background:var(--acc);color:#fff;font-size:11px;font-weight:700;display:grid;place-items:center;padding:0 5px}
 </style>
 </head>
 <body>
-<div class="top"><button class="back" id="back" type="button" aria-label="Retour" hidden><svg class="i" viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg></button><div class="pill" id="pill"><span class="mark">AIESEC</span>Outgoing Exchange</div><button class="av" id="av" type="button" aria-label="Mes informations">·</button></div>
-<main>
- <section class="pg" id="p-accueil"></section><section class="pg" id="p-ep" hidden></section><section class="pg" id="p-infos" hidden></section>
- <section class="pg" id="p-apercu" hidden></section><section class="pg" id="p-historique" hidden></section><section class="pg" id="p-base" hidden></section>
- <section class="pg" id="p-aide" hidden></section><section class="pg" id="p-avance" hidden></section><section class="pg" id="p-plus" hidden></section>
-</main>
-<nav class="nav" aria-label="Navigation principale"><div>
- <button class="nb" data-p="accueil" type="button"><svg class="i" viewBox="0 0 24 24"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>Accueil</button>
- <button class="nb" data-p="ep" type="button"><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>Participant</button>
- <button class="nb" data-p="apercu" type="button"><svg class="i" viewBox="0 0 24 24"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>Aperçu</button>
- <button class="nb" data-p="plus" type="button"><svg class="i" viewBox="0 0 24 24"><rect x="4" y="4" width="6.5" height="6.5" rx="1.5"/><rect x="13.5" y="4" width="6.5" height="6.5" rx="1.5"/><rect x="4" y="13.5" width="6.5" height="6.5" rx="1.5"/><rect x="13.5" y="13.5" width="6.5" height="6.5" rx="1.5"/></svg>Outils</button>
-</div></nav>
+<div class="top" id="top"><button class="back" id="back" type="button" aria-label="Retour" hidden><svg class="i" viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg></button><button class="av" id="av" type="button" aria-label="Profil">·</button><div class="hi2" id="hi">Bonjour</div><div class="ttl" id="ttl" hidden></div><span class="sp"></span><button class="ib" id="ib1" data-go="faq" type="button" aria-label="Aide"><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 015 .5c0 1.7-2.5 2-2.5 3.5M12 17h.01"/></svg></button><button class="ib" id="ib2" data-go="notif" type="button" aria-label="Notifications"><span class="bg" id="nbadge" hidden></span><svg class="i" viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 0112 0v5l2 2H4z"/><path d="M10 21h4"/></svg></button></div>
+<main id="main"></main>
+<nav class="nav" aria-label="Navigation principale">
+ <div class="nbrand"><img class="nlogo" id="nlogo" alt="AIESEC" hidden><span class="mark" id="nmark">AIESEC</span><b>OGX Companion</b><small>Outgoing Exchange</small></div>
+ <button class="nb" data-p="accueil" type="button" aria-label="Accueil"><svg class="i" viewBox="0 0 24 24"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg><span class="nl">Accueil</span></button>
+ <button class="nb" data-p="ep" type="button" aria-label="Participant"><svg class="i" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3 10h18"/></svg><span class="nl">Participant</span></button>
+ <button class="nb ctr" data-p="apercu" type="button" aria-label="Aperçu et envoi"><svg class="i" viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg><span class="nl">Aperçu et envoi</span></button>
+ <button class="nb" data-p="outils" type="button" aria-label="Outils"><svg class="i" viewBox="0 0 24 24"><rect x="4" y="4" width="6.5" height="6.5" rx="1.5"/><rect x="13.5" y="4" width="6.5" height="6.5" rx="1.5"/><rect x="4" y="13.5" width="6.5" height="6.5" rx="1.5"/><rect x="13.5" y="13.5" width="6.5" height="6.5" rx="1.5"/></svg><span class="nl">Outils</span></button>
+ <button class="nb" data-p="profil" type="button" aria-label="Profil"><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg><span class="nl">Profil</span></button>
+ <div class="ng">Raccourcis</div>
+ <button class="nb dk" data-p="base" type="button"><svg class="i" viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v6c0 1.7 3.6 3 8 3s8-1.3 8-3V6M4 12v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg><span class="nl">Participants</span></button>
+ <button class="nb dk" data-p="historique" type="button"><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span class="nl">Historique</span></button>
+ <button class="nb dk" data-p="avance" type="button"><svg class="i" viewBox="0 0 24 24"><path d="M8 8l-4 4 4 4M16 8l4 4-4 4M14 5l-4 14"/></svg><span class="nl">Avancé</span></button>
+ <button class="nb dk" data-p="faq" type="button"><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 015 .5c0 1.7-2.5 2-2.5 3.5M12 17h.01"/></svg><span class="nl">FAQ</span></button>
+</nav>
 <div id="toast" role="status"></div>
 <script>
 (function(){
@@ -103,68 +139,112 @@ var F={email:['E-mail de l’EP','email'],prenom:['Prénom'],nom:['Nom complet (
 odd:['ODD de l’opportunité','odd'],odd_texte:['Texte ODD (laissez vide pour le texte officiel)'],
 entite:['Votre entité','',1],sig_nom:['Nom du signataire','',1],sig_role:['Poste du signataire','',1],lcvp_nom:['Prénom du LCVP','',1],lcvp_contact:['Téléphone / WhatsApp du LCVP','',1],lcvp_email:['E-mail du LCVP','',1],numero_paiement:['Numéro de paiement du comité local','',1],mode_paiement:['Mode de paiement','',1],beneficiaire:['Bénéficiaire du paiement','',1],from_name:['Nom affiché de l’expéditeur','',1],logo_url:['Adresse du logo (facultatif)','url',1],script_url:['Adresse du script d’envoi','url',1],pass:['Mot de passe du script','password',1],email_test:['Mon e-mail (pour les tests)','email',1]};
 var LBL={};
+var LOGO_DEFAULT='https://www.logos.aiesec.org/_next/image?url=https%3A%2F%2Faiesec-logos.s3.eu-west-1.amazonaws.com%2FBlack-Logo.png&w=640&q=75';
 var DEF={entite:'AIESEC in Côte d’Ivoire',mode_paiement:'Mobile Money',from_name:'AIESEC',acompte:'30000',heure_ops:'9h',logo_url:'https://www.logos.aiesec.org/_next/image?url=https%3A%2F%2Faiesec-logos.s3.eu-west-1.amazonaws.com%2FBlack-Logo.png&w=640&q=75'};
 var SK=Object.keys(F).filter(function(k){return F[k][2]});
 var ODD=[['#e5243b','NO POVERTY','Pas de pauvreté','Mettre fin à la pauvreté sous toutes ses formes, partout dans le monde.'],['#dda63a','ZERO HUNGER','Faim « zéro »','Éliminer la faim, assurer la sécurité alimentaire et promouvoir une agriculture durable.'],['#4c9f38','GOOD HEALTH','Bonne santé et bien-être','Permettre à tous de vivre en bonne santé et promouvoir le bien-être à tout âge.'],['#c5192d','QUALITY EDUCATION','Éducation de qualité','Assurer l’accès de tous à une éducation de qualité, équitable et inclusive.'],['#ff3a21','GENDER EQUALITY','Égalité entre les sexes','Réaliser l’égalité des sexes et autonomiser toutes les femmes et les filles.'],['#26bde2','CLEAN WATER','Eau propre et assainissement','Garantir l’accès de tous à l’eau et à l’assainissement.'],['#fcc30b','CLEAN ENERGY','Énergie propre et abordable','Garantir l’accès de tous à des services énergétiques fiables, durables et modernes.'],['#a21942','DECENT WORK','Travail décent et croissance','Promouvoir une croissance économique soutenue et un travail décent pour tous.'],['#fd6925','INNOVATION','Industrie, innovation, infrastructure','Bâtir une infrastructure résiliente et promouvoir l’innovation.'],['#dd1367','REDUCED INEQUALITIES','Inégalités réduites','Réduire les inégalités dans les pays et d’un pays à l’autre.'],['#fd9d24','SUSTAINABLE CITIES','Villes et communautés durables','Faire en sorte que les villes soient inclusives, sûres, résilientes et durables.'],['#bf8b2e','RESPONSIBLE CONSUMPTION','Consommation responsable','Établir des modes de consommation et de production durables.'],['#3f7e44','CLIMATE ACTION','Lutte contre le changement climatique','Prendre d’urgence des mesures pour lutter contre les changements climatiques.'],['#0a97d9','LIFE BELOW WATER','Vie aquatique','Conserver et exploiter de manière durable les océans et les ressources marines.'],['#56c02b','LIFE ON LAND','Vie terrestre','Préserver et restaurer les écosystèmes terrestres et lutter contre la désertification.'],['#00689d','PEACE & JUSTICE','Paix, justice et institutions','Promouvoir des sociétés pacifiques, justes et inclusives.'],['#19486a','PARTNERSHIPS','Partenariats pour les objectifs','Renforcer les partenariats mondiaux pour le développement durable.']];
 /* Modèles : f = champs propres à l’EP ; b = blocs */
 var T=[
 {id:'first',n:'Premier contact',s:'Open',f:['email','prenom','lien_calendly'],sub:'Votre prochaine étape avec AIESEC',eb:'Premier contact',h:'Bienvenue chez ==AIESEC==, {prenom}',b:[
-['p','Félicitations pour votre inscription sur la plateforme AIESEC. C’est une **première étape importante** vers une expérience qui peut transformer votre parcours personnel et professionnel.'],
-['p','Chaque opportunité est encadrée par des standards internationaux qui garantissent la qualité, la sécurité et l’accompagnement des candidats, avant, pendant et après l’expérience. Vous n’êtes jamais seul(e) dans votre démarche.'],
-['ul',['Des expériences internationales structurées','Un développement réel de compétences (leadership, employabilité, ouverture culturelle)','Un accompagnement humain et professionnel']],
-['p','Votre prochaine étape est simple : **réserver un créneau** pour une première discussion en ligne. Elle nous permettra de comprendre votre profil et vos attentes afin de mieux vous orienter.'],
-['cta','Réserver mon créneau →','{lien_calendly}','green']]},
+['p','Bonjour {prenom}, **félicitations pour votre inscription sur la plateforme AIESEC.** Vous venez de franchir une première étape importante vers une expérience internationale qui peut transformer votre parcours personnel et professionnel.'],
+['p','AIESEC est une organisation internationale dirigée par des jeunes, présente dans plus de 100 pays. Elle propose des expériences de volontariat et de stage à l’étranger, encadrées par des standards qui garantissent la qualité, la sécurité et l’accompagnement des participants, avant, pendant et après leur expérience.'],
+['h','Ce que vous trouverez chez nous'],
+['ul',['Des expériences internationales structurées, dans des projets et des organisations vérifiés','Un développement concret de vos compétences : leadership, employabilité, ouverture culturelle','Un accompagnement humain et personnalisé par une équipe locale, à chaque étape','Un réseau mondial de jeunes engagés, que vous rejoignez dès votre inscription']],
+['h','Votre prochaine étape'],
+['p','Nous vous invitons à **réserver un créneau pour une première discussion en ligne** avec l’équipe locale en charge des échanges sortants. Cet échange nous permettra de comprendre votre profil, vos objectifs et vos contraintes, afin de vous orienter vers l’opportunité la plus adaptée.'],
+['cta','Réserver mon créneau →','{lien_calendly}','green'],
+['quote','**Bon à savoir.** À ce stade, aucun paiement ne vous est demandé. Le détail des frais, le cas échéant, vous est communiqué de façon transparente lorsque vous êtes sélectionné(e) pour une opportunité.'],
+['p','Si vous avez la moindre question avant notre échange, répondez simplement à ce message : nous reviendrons vers vous dans les meilleurs délais.']]},
 {id:'relance',n:'Relance premier contact',s:'Open',f:['email','prenom','lien_calendly'],sub:'Votre projet d’expérience internationale avec AIESEC',eb:'Relance',h:'Votre projet est-il toujours ==d’actualité== ?',b:[
 ['p','Bonjour {prenom}, je reviens vers vous concernant votre inscription sur la plateforme AIESEC.'],
-['p','Nous n’avons pas encore eu l’occasion d’échanger afin de mieux comprendre votre projet et vos attentes pour une éventuelle expérience internationale.'],
-['p','Si votre projet est toujours d’actualité, vous pouvez simplement **réserver un créneau pour un échange individuel**. Nous ferons le point sur votre profil, vos objectifs et les opportunités qui pourraient vous correspondre.'],
+['p','Nous n’avons pas encore eu l’occasion d’échanger avec vous pour mieux comprendre votre projet et vos attentes en vue d’une éventuelle expérience internationale. Nous savons que les semaines passent vite et que les priorités évoluent : c’est pourquoi nous préférons prendre de vos nouvelles.'],
+['h','Pourquoi échanger avec nous ?'],
+['ul',['Faire le point sur votre profil, votre parcours d’études ou votre expérience professionnelle','Clarifier vos objectifs : compétences à développer, pays ou domaines qui vous intéressent','Découvrir les opportunités qui correspondent à votre projet et à votre calendrier','Obtenir des réponses à toutes vos questions sur le déroulement, la sécurité et l’accompagnement']],
+['p','Si votre projet est toujours d’actualité, vous pouvez simplement **réserver un créneau pour un échange individuel**. Quelques minutes suffisent.'],
 ['cta','Réserver un échange →','{lien_calendly}','green'],
-['p','Si vous avez déjà avancé de votre côté ou si vous ne souhaitez plus poursuivre, vous pouvez simplement me le signaler afin que je mette votre dossier à jour.']]},
-{id:'appli',n:'Candidature',s:'Open → Applied',f:['email','prenom','opportunite','destination','lien_opportunite'],sub:'{prenom}, une opportunité internationale adaptée à votre profil vous attend',eb:'Opportunité',h:'Une opportunité faite pour ==vous==',b:[
-['p','Bonjour {prenom}, j’espère que vous allez bien. Suite à nos échanges, nous avons identifié une opportunité qui correspond à votre profil et à vos objectifs :'],
+['quote','**Votre situation a changé ?** Si vous avez déjà avancé de votre côté ou si vous ne souhaitez plus poursuivre votre démarche, répondez simplement à ce message afin que nous mettions votre dossier à jour. Aucune autre démarche n’est nécessaire.'],
+['p','Au plaisir d’échanger avec vous prochainement.']]},
+{id:'appli',n:'Candidature',s:'Open → Applied',f:['email','prenom','opportunite','destination','lien_opportunite'],sub:'{prenom}, une opportunité internationale faite pour vous',eb:'Opportunité',h:'Une opportunité faite pour ==vous==',b:[
+['p','Bonjour {prenom}, j’espère que vous allez bien. Suite à nos échanges, nous avons identifié une opportunité qui correspond à votre profil et à vos objectifs.'],
 ['tiles',[['Opportunité','{opportunite}'],['Destination','{destination}']]],
-['ul',['Développer tes compétences professionnelles et ton leadership','Vivre une immersion internationale enrichissante','Renforcer ton employabilité','Intégrer le réseau mondial d’AIESEC']],
-['cta','Postuler sur aiesec.org →','{lien_opportunite}','green'],
-['quote','**Les places sont limitées.** Les opportunités peuvent être fermées à tout moment : plus tôt vous candidatez, plus vous augmentez vos chances d’être sélectionné(e).'],
-['p','Je reste disponible pour vous aider à optimiser votre CV, vous préparer à l’entretien et vous guider à chaque étape. N’hésitez pas à me confirmer lorsque vous aurez candidaté.']]},
-{id:'acc',n:'Acceptation et paiement',s:'Accepted → Approved',f:['email','prenom','programme','frais_total','acompte','date_acc','date_limite','lien_contrat','lien_preuve'],sub:'Félicitations {prenom}, confirmez votre place pour votre stage AIESEC',eb:'Acceptation',h:'Félicitations {prenom}, ==confirmez== votre place',b:[
-['p','Vous avez été accepté(e) pour **{programme}** après vos interviews. Votre projet international va bientôt devenir réalité. Pour confirmer votre participation, la prochaine étape consiste à régler les frais de stage.'],
-['pay','Ce que vous devez régler',[['Montant total','{frais_total}'],['Pour sécuriser votre place','{acompte} FCFA'],['Numéro de paiement','{numero_paiement}'],['Mode de paiement','{mode_paiement}'],['Bénéficiaire','{beneficiaire}',1],['Date limite','{date_limite}']],'Envoyez ensuite la capture à **{lcvp_nom}**, en discussion permanente avec vous. Confirmer avant la date limite vous permet de commencer votre préparation sans délai.'],
-['ul',['Votre place pour l’opportunité choisie','Un accompagnement personnalisé par votre responsable local','Le développement concret de compétences clés','L’accès à un réseau mondial de jeunes leaders','Une expérience conforme aux standards AIESEC']],
-['p','Nous vous encourageons à lire votre contrat avant de régler.'],
-['cta','Consulter mon contrat →','{lien_contrat}','line'],['cta','Envoyer la preuve de paiement →','{lien_preuve}','green']]},
-{id:'apd',n:'Choix de la date de départ',s:'Approved',f:['email','prenom','programme','date_apd','date_limite'],sub:'{prenom}, choisissez votre date de départ pour votre stage AIESEC !',eb:'Paiement confirmé',h:'Choisissez votre date de ==départ==',b:[
-['p','Félicitations et merci d’avoir finalisé le paiement pour **{programme}**. Votre place est maintenant sécurisée et votre projet international est officiellement en route.'],
-['pay','Prochaine étape',[['Action','Confirmer votre date de départ'],['Avant le','{date_limite}']],'Passé ce délai sans nouvelle, votre responsable reprendra contact avec vous pour finaliser cette étape.'],
-['ul',['Assurez votre place sur la période idéale','Permettez à votre responsable de préparer votre programme personnalisé','Profitez d’un suivi complet conforme aux standards AIESEC','Rejoignez les participants qui ont déjà choisi leurs dates']]]},
+['p','Cette expérience vous permettra de mettre vos compétences en pratique dans un contexte international, de découvrir une nouvelle culture et de contribuer concrètement à un projet à impact.'],
+['h','Ce que vous y gagnerez'],
+['ul',['Le développement de compétences professionnelles et de leadership valorisées par les employeurs','Une immersion interculturelle qui renforce votre adaptabilité et votre confiance en vous','Un accompagnement personnalisé de notre équipe, du dépôt de votre candidature jusqu’à votre retour','L’accès au réseau mondial d’AIESEC, présent dans plus de 100 pays']],
+['h','Comment postuler ?'],
+['ul',['Ouvrez la page de l’opportunité avec le bouton ci-dessous','Vérifiez que votre profil et votre CV sont à jour','Sélectionnez « Postuler » et suivez les étapes','Prévenez-nous dès que c’est fait : nous vous aiderons à préparer l’entretien']],
+['cta','Voir l’opportunité →','{lien_opportunite}','green'],
+['quote','**Les places sont limitées.** Une opportunité peut être fermée à tout moment : plus vous postulez tôt, plus vos chances d’être retenu(e) augmentent.'],
+['p','Nous restons à votre disposition pour relire votre candidature, vous préparer à l’entretien et répondre à toutes vos questions.']]},
+{id:'acc',n:'Acceptation et paiement',s:'Accepted → Approved',f:['email','prenom','programme','frais_total','acompte','date_acc','lien_contrat','lien_preuve'],sub:'Félicitations {prenom}, confirmez votre place pour votre stage AIESEC',eb:'Acceptation',h:'Félicitations {prenom}, ==confirmez== votre place',b:[
+['p','**Félicitations !** Vous avez été accepté(e) pour **{programme}** à l’issue de vos entretiens. C’est une étape majeure : votre projet international va bientôt devenir réalité, et nous sommes ravis de vous compter parmi les jeunes qui choisissent d’investir en eux-mêmes.'],
+['p','Pour confirmer votre participation, la prochaine étape consiste à régler les frais liés à votre expérience. Vous trouverez ci-dessous toutes les informations nécessaires.'],
+['pay','Ce que vous devez régler',[['Montant total','{frais_total}'],['Pour sécuriser votre place','{acompte}'],['Numéro de paiement','{numero_paiement}'],['Mode de paiement','{mode_paiement}'],['Bénéficiaire','{beneficiaire}',1],['Date limite','{limite_acc}']],'Après votre paiement, envoyez la capture ou la preuve de transaction à **{lcvp_nom}**, qui est en contact permanent avec vous et valide votre dossier.'],
+['h','Comment procéder ?'],
+['ul',['Lisez attentivement votre contrat avant tout paiement','Effectuez le paiement sur le numéro indiqué ci-dessus','Conservez la preuve de paiement (capture d’écran ou reçu)','Envoyez-la à {lcvp_nom} pour la validation de votre dossier']],
+['cta','Consulter mon contrat →','{lien_contrat}','line'],['cta','Envoyer la preuve de paiement →','{lien_preuve}','green'],
+['h','En confirmant rapidement, vous garantissez'],
+['ul',['Votre place pour l’opportunité choisie','Un accompagnement personnalisé par votre responsable local tout au long de votre expérience','Le développement concret de compétences clés : leadership, employabilité, ouverture culturelle','L’accès à un réseau mondial de jeunes professionnels et leaders','Une expérience entièrement conforme aux standards AIESEC']],
+['quote','**Important.** Régler l’acompte avant le {limite_acc} vous permet de sécuriser votre place et de commencer votre préparation sans délai. Passé cette date, nous ne pouvons plus garantir la disponibilité de l’opportunité.'],
+['p','Nous avons hâte de vous voir concrétiser ce projet et de vous accompagner dans cette aventure. En cas de doute sur le paiement, le contrat ou la suite du processus, n’hésitez pas à contacter {lcvp_nom} dès aujourd’hui.']]},
+{id:'apd',n:'Choix de la date de départ',s:'Approved',f:['email','prenom','programme','date_apd'],sub:'{prenom}, choisissez votre date de départ pour votre stage AIESEC !',eb:'Paiement confirmé',h:'Choisissez votre date de ==départ==',b:[
+['p','Bonjour {prenom}, **félicitations et merci d’avoir finalisé votre paiement** pour {programme}. Votre place est désormais sécurisée et votre projet international est officiellement en route.'],
+['p','Pour organiser votre expérience dans les meilleures conditions, nous avons maintenant besoin de connaître la date à laquelle vous souhaitez partir.'],
+['pay','Prochaine étape',[['Action','Confirmer votre date de départ'],['À faire avant le','{limite_apd}']],'Sans nouvelles de votre part d’ici cette date, **{lcvp_nom}** reprendra contact avec vous pour finaliser cette étape ensemble.'],
+['h','Pourquoi choisir votre date rapidement ?'],
+['ul',['Vous assurez votre place sur la période qui vous convient le mieux','Votre responsable local peut préparer votre programme personnalisé','Vous disposez du temps nécessaire pour vos démarches : visa, billets, vaccins, logement','Vous rejoignez les participants qui ont déjà choisi leur date et sont prêts à démarrer']],
+['h','Comment bien choisir ?'],
+['ul',['Vérifiez vos disponibilités : examens, obligations professionnelles ou familiales','Tenez compte des délais de visa et de préparation de vos documents de voyage','Consultez les dates de début proposées pour votre opportunité','Échangez avec votre responsable local en cas de doute']],
+['quote','**Besoin d’aide pour décider ?** Votre responsable local peut vous conseiller sur la période la plus adaptée à votre situation. Contactez-le avant de vous engager sur une date.'],
+['p','Nous avons hâte de vous voir commencer cette aventure et de vous accompagner à chaque étape.']]},
 {id:'ops',n:'Invitation à l’OPS',s:'Approved',f:['email','prenom','programme','date_ops','heure_ops','lieu_ops','lien_goal'],sub:'Séminaire de préparation pour votre départ !',eb:'Séminaire de préparation',h:'Préparez votre ==départ==',b:[
-['p','Félicitations, {prenom} ! Votre paiement pour **{programme}** est bien reçu. Nous organisons pour vous un séminaire de préparation avant le départ.'],
+['p','Félicitations, {prenom} ! Votre paiement pour **{programme}** est bien reçu et votre place est confirmée. Avant votre départ, nous organisons pour vous un séminaire de préparation (OPS).'],
 ['tiles',[['Date','{date_ops}'],['Heure','{heure_ops}'],['Lieu','{lieu_ops}']]],
-['ul',['Vous préparer à l’expérience que vous allez vivre','Clarifier vos attentes juridiques et contractuelles','Définir vos droits et ce qu’AIESEC vous a promis','Répondre à toutes vos questions']],
-['p','Dès maintenant, partagez vos objectifs personnels pour votre programme :'],['cta','Définir mes objectifs →','{lien_goal}','green']]},
+['h','Pourquoi ce séminaire est important'],
+['ul',['Vous préparer à l’expérience que vous allez vivre, sur le plan personnel et professionnel','Clarifier vos attentes en matière juridique et contractuelle','Connaître vos droits et ce qu’AIESEC s’engage à vous apporter','Recevoir des conseils pratiques : voyage, santé, sécurité, vie quotidienne sur place','Rencontrer les autres participants et poser toutes vos questions à l’équipe']],
+['h','À prévoir'],
+['ul',['Soyez présent(e) à l’heure, afin de profiter de l’ensemble du programme','Si possible, apportez votre contrat et de quoi prendre des notes','Préparez vos questions sur le visa, le logement, le transport et votre projet']],
+['p','D’ici là, partagez avec nous vos objectifs personnels pour cette expérience. Ils nous aideront à mieux vous accompagner et vous serviront de repère tout au long de votre séjour.'],
+['cta','Définir mes objectifs →','{lien_goal}','green'],
+['quote','**Un empêchement ?** Prévenez {lcvp_nom} le plus tôt possible afin de convenir d’une solution.']]},
 {id:'re',n:'Suivi pendant le stage',s:'Realized',f:['email','prenom','programme','lien_feedback'],sub:'{prenom}, comment se passe votre stage avec AIESEC ?',eb:'Suivi',h:'Comment se passe votre ==expérience== ?',b:[
-['p','Nous espérons que votre expérience avec **{programme}** se déroule à merveille. Nous tenons à ce que chaque étape soit positive, sécurisée et pleinement enrichissante.'],
-['p','Même un court retour nous permet de mieux adapter notre soutien. En nous répondant, vous :'],
-['ul',['Signalez rapidement toute difficulté ou question','Recevez un accompagnement personnalisé','Optimisez votre apprentissage et votre développement','Améliorez l’expérience des prochains participants']],
-['cta','Partager mes impressions →','{lien_feedback}','green']]},
-{id:'fi',n:'Débrief après le stage',s:'Finished',f:['email','prenom','programme','lien_debrief'],sub:'{prenom}, nous avons hâte d’en savoir plus sur votre expérience !',eb:'Retour d’expérience',h:'Bravo {prenom}, ==racontez-nous== !',b:[
-['p','Félicitations pour avoir vécu votre expérience avec **{programme}**. Elle vous a permis de développer vos compétences, d’élargir votre réseau et d’acquérir de précieuses expériences professionnelles et culturelles.'],
-['p','La prochaine étape essentielle est votre **séance de debrief AIESEC** :'],
-['ul',['Partager vos réussites et apprentissages clés','Identifier vos compétences et comment les valoriser','Recevoir un retour personnalisé','Contribuer à améliorer l’expérience des prochains participants']],
-['cta','Réserver mon créneau →','{lien_debrief}','green']],close:['Merci d’avoir osé.','Votre histoire inspire la suite.']},
+['p','Bonjour {prenom}, nous espérons que votre expérience avec **{programme}** se déroule à merveille. Chez AIESEC, nous tenons à ce que chaque étape de votre séjour soit positive, sécurisée et pleinement enrichissante.'],
+['p','Pour continuer à bien vous accompagner, nous aimerions connaître vos impressions et vos besoins. Même un court retour nous aide à adapter notre soutien à votre situation, et à intervenir rapidement si quelque chose ne se passe pas comme prévu.'],
+['h','Quelques points sur lesquels nous aimerions votre avis'],
+['ul',['Votre accueil et votre intégration dans l’équipe et sur place','Les missions qui vous sont confiées et ce que vous y apprenez','Votre logement, votre sécurité et votre quotidien','Le soutien que vous recevez, de notre part comme de celle de l’entité d’accueil']],
+['cta','Partager mes impressions →','{lien_feedback}','green'],
+['h','En nous faisant un retour, vous…'],
+['ul',['Pouvez signaler rapidement toute difficulté ou question','Recevez un accompagnement personnalisé de votre responsable local','Optimisez votre apprentissage et votre développement personnel','Améliorez l’expérience des futurs participants']],
+['quote','**Une urgence ?** En cas de problème de sécurité ou de santé, n’attendez pas de remplir le formulaire : contactez immédiatement {lcvp_nom} ou l’entité d’accueil.'],
+['p','Nous sommes ravis de vous voir vivre cette aventure et restons à vos côtés pour la réussir pleinement.']]},
+{id:'fi',n:'Debrief après le stage',s:'Finished',f:['email','prenom','programme','lien_debrief'],sub:'{prenom}, nous avons hâte d’en savoir plus sur votre expérience !',eb:'Retour d’expérience',h:'Bravo {prenom}, ==racontez-nous== !',b:[
+['p','**Félicitations pour avoir mené à terme votre expérience** avec {programme} ! Elle vous a permis de développer vos compétences, d’élargir votre réseau et d’acquérir de précieuses expériences professionnelles et culturelles.'],
+['p','Ce que vous avez vécu mérite d’être valorisé. La prochaine étape essentielle est votre **séance de debrief AIESEC** : un temps d’échange pour prendre du recul sur votre parcours et transformer cette expérience en atouts concrets.'],
+['h','Ce que le debrief vous permet de faire'],
+['ul',['Partager vos réussites et vos apprentissages clés','Identifier les compétences développées et la façon de les valoriser pour votre avenir','Recevoir un retour personnalisé de votre responsable local','Obtenir des conseils pour mettre cette expérience en avant dans votre CV et vos entretiens','Contribuer à améliorer l’expérience des prochains participants']],
+['h','Comment réserver ?'],
+['p','Choisissez simplement le créneau qui vous convient le mieux grâce au lien ci-dessous. La séance est animée par votre responsable local, {lcvp_nom}.'],
+['cta','Réserver mon créneau →','{lien_debrief}','green'],
+['quote','**Votre avis compte.** Vos retours nous aident à améliorer chaque expérience pour les prochains participants. Merci pour votre confiance et pour l’énergie que vous avez mise dans ce projet.'],
+['p','Nous sommes impatients de vous retrouver pour célébrer vos réussites.']],close:['Merci d’avoir osé.','Votre histoire inspire la suite.']},
 {id:'frais',n:'Confirmation d’échange et frais',s:'Accepted → Approved',f:['email','nom','programme','projet','destination','entite_admin','frais_admin','entite_projet','frais_projet','frais_total','date_limite','lien_preuve','lien_contrat'],sub:'Votre aventure à {destination} se prépare',eb:'{programme}',h:'Votre aventure à =={destination}== se prépare',b:[
-['p','Bonjour **{nom}**, nous sommes heureux de vous accompagner dans cette nouvelle étape. Votre expérience **{programme}**, portée par **{projet}**, vous conduira à **{destination}**, où vous contribuerez à un projet porteur d’impact.'],
+['p','Bonjour **{nom}**, nous sommes heureux de vous accompagner dans cette nouvelle étape de votre parcours avec AIESEC. Votre expérience **{programme}**, portée par **{projet}**, vous conduira à **{destination}**, où vous aurez l’occasion de vivre une véritable expérience internationale tout en contribuant à un projet porteur d’impact.'],
+['p','Une nouvelle destination, de nouvelles rencontres et surtout une belle occasion d’apprendre, de partager et de grandir, à travers une expérience qui va bien au-delà du simple voyage.'],
 ['tiles',[['Programme','{programme}'],['Projet','{projet}'],['Destination','{destination}']]],
+['h','Votre prochaine étape'],
+['p','Pour poursuivre sereinement la préparation de votre expérience, la prochaine étape consiste à régler vos **frais administratifs d’échange** auprès de **{entite_admin}**. Le détail des frais et les modalités de paiement sont présentés ci-dessous.'],
 ['h','Vos frais d’échange'],
-['p','Le montant total s’élève à **{frais_total}**, réparti entre l’entité d’envoi et l’entité d’accueil.'],
-['fee','1 — Frais administratifs','{entite_admin}','{frais_admin}','Frais liés à votre participation, à régler auprès de votre entité d’envoi.'],
-['fee','2 — Project fee','{entite_projet}','{frais_projet}','Frais de projet destinés à l’entité d’accueil, réglés selon les modalités qui vous seront communiquées.'],
+['p','Pour vous donner une vision claire de votre engagement financier, le montant total s’élève à **{frais_total}**, réparti entre l’entité d’envoi et l’entité d’accueil.'],
+['fee','1 — Frais administratifs','{entite_admin}','{frais_admin}','Ces frais correspondent aux frais administratifs liés à votre participation au programme et sont à régler auprès de votre entité d’envoi.'],
+['fee','2 — Project fee','{entite_projet}','{frais_projet}','Il s’agit des frais de projet liés à votre expérience. Ils sont destinés à l’entité d’accueil et seront réglés selon les modalités qui vous seront communiquées.'],
 ['total','{frais_total}'],
 ['pay','Ce que vous devez régler maintenant',[['Montant','{frais_admin}'],['Destinataire','{entite_admin}'],['Mode de paiement','{mode_paiement}'],['Numéro','{numero_paiement}'],['Bénéficiaire','{beneficiaire}',1],['Date limite','{date_limite}']],'Ce paiement constitue la première étape financière de votre échange. Le project fee sera réglé auprès de **{entite_projet}**.'],
 ['cta','Envoyer la preuve de paiement →','{lien_preuve}','green'],
-['p','Prenez le temps de consulter attentivement votre contrat et conservez les informations importantes relatives à votre échange.'],
+['h','Après le paiement'],
+['p','Une fois le paiement effectué, merci de nous transmettre votre preuve afin que nous assurions le suivi de votre dossier et poursuivions les prochaines étapes de votre préparation : séminaire de préparation, démarches de voyage et mise en relation avec l’entité d’accueil.'],
+['p','Nous vous invitons également à prendre le temps de consulter attentivement votre contrat et à conserver les informations importantes relatives à votre échange.'],
 ['cta','Consulter mon contrat →','{lien_contrat}','line']],close:['{destination} vous attend.','Une nouvelle culture. De nouvelles rencontres. Un nouvel impact.']}
 ];
+
 var V={},cur='frais',hist=[];
 try{V=JSON.parse(localStorage.getItem('ogx-v')||'{}');hist=JSON.parse(localStorage.getItem('ogx-h2')||localStorage.getItem('ogx-h')||'[]')}catch(e){}
 Object.keys(DEF).forEach(function(k){if(V[k]===undefined)V[k]=DEF[k]});
@@ -174,10 +254,14 @@ function num(s){var x=String(s||'').trim();if(/^\d+$/.test(x))return Number(x);r
 function numberValue(s){var x=String(s||'').trim();if(/^\d+$/.test(x))return x;return /^\d{1,3}(?:[ ,.\u00a0\u202f]\d{3})+$/.test(x)?x.replace(/\D/g,''):''}
 function money(x){x=String(x==null?'':x).trim();if(!x)return '';var n=numberValue(x);return n!==''?Number(n).toLocaleString('fr-FR')+' FCFA':x}
 function fd(s){return s?new Date(s+'T12:00:00').toLocaleDateString('fr-FR',{day:'numeric',month:'long',year:'numeric'}):''}
+function iso(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
+function addD(x,n){var d=new Date(x+'T12:00:00');d.setDate(d.getDate()+n);return iso(d)}
+function addM(x,n){var d=new Date(x+'T12:00:00');d.setMonth(d.getMonth()+n);return iso(d)}
 function D(){var d={};for(var k in V)d[k]=V[k];
  ['frais_total','acompte','frais_admin','frais_projet'].forEach(function(k){d[k]=money(V[k])});
  if(!V.frais_total&&numberValue(V.frais_admin)!==''&&numberValue(V.frais_projet)!=='')d.frais_total=money(num(V.frais_admin)+num(V.frais_projet));
  ['date_acc','date_apd','date_limite','date_ops'].forEach(function(k){d[k]=fd(V[k])});
+ d.limite_acc=V.date_acc?fd(addM(V.date_acc,1)):'';d.limite_apd=V.date_apd?fd(addD(V.date_apd,7)):'';
  return d}
 /* Rendu de l’e-mail */
 var miss,DV,SRC=false,CU={};try{CU=JSON.parse(localStorage.getItem('ogx-cu')||'{}')||{}}catch(e){CU={}}
@@ -201,7 +285,7 @@ pay:function(t,rows,note){var r=rows.filter(function(x){return SRC||!(x[2]&&!(DV
 cta:function(l,u,k){var g=k==='green';return '<table role="presentation" cellspacing="0" cellpadding="0" style="margin:0 0 22px"><tr><td style="border-radius:10px;background:'+(g?'#0a7cf0':'#0f1b2d')+';'+(g?'':'border:1px solid #1f6feb;')+'"><a href="'+E(url(u))+'" style="display:inline-block;padding:16px 26px;'+FN+'font-size:15px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:'+(g?'#fff':'#3b9bff')+';text-decoration:none">'+l+'</a></td></tr></table>'}};
 function oddHtml(){var n=parseInt(V.odd,10);if(!n)return '';var o=ODD[n-1],tx=(V.odd_texte||'').trim()||o[3];
  return '<table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="margin:8px 0 26px;background:#221d1d;border-radius:16px"><tr><td style="padding:22px"><table role="presentation" cellspacing="0" cellpadding="0"><tr><td width="120" height="120" align="center" valign="middle" style="background:'+o[0]+';border-radius:6px"><div style="'+FN+'font-size:44px;font-weight:700;line-height:1;color:#fff">'+n+'</div><div style="'+FN+'font-size:10px;font-weight:700;letter-spacing:1px;color:#fff;padding:6px 8px 0">'+o[1]+'</div></td></tr></table><div style="'+FN+'font-size:12px;letter-spacing:2px;text-transform:uppercase;font-weight:700;color:'+(n===7?'#fcc30b':o[0])+';margin:18px 0 6px">Your experience · Your impact</div><div style="'+FN+'font-size:24px;font-weight:700;line-height:1.25;color:#fff">ODD '+n+' — '+E(o[2])+'</div><div style="'+FN+'font-size:15px;line-height:1.7;color:#bdbdbd;margin-top:8px">'+E(tx)+'</div></td></tr></table>'}
-function build0(t){miss=[];DV=D();var logo=(V.logo_url||'').trim();
+function build0(t){miss=[];DV=D();var logo=(V.logo_url||LOGO_DEFAULT).trim();
  var mark=logo&&/^https:\/\//i.test(logo)?'<img src="'+(SRC?'{logo_url}':E(logo))+'" alt="AIESEC" height="44" style="display:block;border:0;height:44px;width:auto">':'<span style="display:inline-block;background:#000;padding:5px 12px;font:italic 700 26px Georgia,serif;letter-spacing:-1px;color:#fff">AIESEC</span>';
  var h=t.h;
  var body=t.b.map(function(x){return B[x[0]].apply(null,x.slice(1))}).join('')+(SRC?'{odd_block}':oddHtml());
@@ -221,7 +305,7 @@ function build(t,src){var c=CU[t.id];
 function KN(k){return !!F[k]||k==='limite_acc'||k==='limite_apd'}
 function fillTokens(h){return h.replace(/\{(\w+)\}/g,function(m,k,off){
  if(k==='odd_block')return oddHtml();
- if(k==='logo_url'||k==='lcvp_contact'||k==='lcvp_email')return E(V[k]||'');
+ if(k==='logo_url'||k==='lcvp_contact'||k==='lcvp_email')return E(V[k]||(k==='logo_url'?LOGO_DEFAULT:''));
  if(!KN(k))return m;var x=(DV[k]||'').trim();
  if(!x){if(miss.indexOf(k)<0)miss.push(k);return /(href|src)=["']$/.test(h.slice(Math.max(0,off-8),off))?'#':'<span style="background:#ffb020;color:#111;border-radius:4px;padding:0 4px">['+E(lab(k))+']</span>'}
  return E(x)})}
@@ -230,13 +314,13 @@ function fieldsOf(t){var c=CU[t.id];if(!(c&&c.html))return t.f;var o=['email'],r
  if(/\{limite_acc\}/.test(x)&&o.indexOf('date_acc')<0)o.push('date_acc');if(/\{limite_apd\}/.test(x)&&o.indexOf('date_apd')<0)o.push('date_apd');return o}
 /* Interface */
 var DSC={first:'Premier message après l’inscription sur la plateforme.',relance:'Relance d’un candidat sans échange initial.',appli:'Présentation d’une opportunité et invitation à postuler.',acc:'Acceptation, modalités et échéance de paiement.',apd:'Demande de confirmation de la date de départ.',ops:'Convocation au séminaire de préparation au départ.',re:'Prise de nouvelles pendant l’expérience.',fi:'Invitation à la séance de débriefing.',frais:'Détail des frais d’échange et instructions de paiement.'};
-var PI={code:'<path d="M8 8l-4 4 4 4M16 8l4 4-4 4M14 5l-4 14"/>',mail:'<path d="M3 6h18v12H3z"/><path d="M3 7l9 6 9-6"/>',card:'<rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M14 10h4M14 14h4"/>',db:'<ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v6c0 1.7 3.6 3 8 3s8-1.3 8-3V6M4 12v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/>',help:'<circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 015 .5c0 1.7-2.5 2-2.5 3.5M12 17h.01"/>',chev:'<path d="M9 6l6 6-6 6"/>',send:'<path d="M5 12h14M13 6l6 6-6 6"/>',clock:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',up:'<path d="M3 11l9-8 9 8"/>',user:'<circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/>'};
+var PI={home:'<path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/>',bell:'<path d="M6 16V11a6 6 0 0112 0v5l2 2H4z"/><path d="M10 21h4"/>',shield:'<path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/>',globe:'<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/>',palette:'<path d="M12 3a9 9 0 100 18c1.5 0 2-1 1.5-2s0-2 1.5-2h2a3 3 0 003-3c0-5-4-11-8-11z"/><circle cx="8" cy="10" r="1"/><circle cx="12" cy="7" r="1"/><circle cx="16" cy="10" r="1"/>',doc:'<path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M9 13h7M9 17h7"/>',lock:'<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 018 0v3"/>',check:'<circle cx="12" cy="12" r="9"/><path d="M8 12.5l3 3 5-6"/>',search:'<circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/>',code:'<path d="M8 8l-4 4 4 4M16 8l4 4-4 4M14 5l-4 14"/>',mail:'<path d="M3 6h18v12H3z"/><path d="M3 7l9 6 9-6"/>',card:'<rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M14 10h4M14 14h4"/>',db:'<ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v6c0 1.7 3.6 3 8 3s8-1.3 8-3V6M4 12v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/>',help:'<circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 015 .5c0 1.7-2.5 2-2.5 3.5M12 17h.01"/>',chev:'<path d="M9 6l6 6-6 6"/>',send:'<path d="M5 12h14M13 6l6 6-6 6"/>',clock:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',up:'<path d="M3 11l9-8 9 8"/>',user:'<circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/>'};
 var TG={first:'<circle cx="9" cy="8" r="4"/><path d="M2 21c0-4 3-6 7-6s7 2 7 6"/><path d="M19 8v6M16 11h6"/>',relance:'<path d="M6 16V11a6 6 0 0112 0v5l2 2H4z"/><path d="M10 21h4"/>',appli:'<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/>',acc:'<circle cx="12" cy="12" r="9"/><path d="M8 12.5l3 3 5-6"/>',apd:'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>',ops:'<circle cx="9" cy="8" r="3.5"/><path d="M2 20c0-3.5 3-5.5 7-5.5s7 2 7 5.5"/><circle cx="17" cy="9" r="2.5"/><path d="M17 14.5c3 0 5 1.5 5 4"/>',re:'<path d="M4 5h16v11H9l-5 4z"/>',fi:'<circle cx="12" cy="9" r="6"/><path d="M8.5 14.5L7 21l5-3 5 3-1.5-6.5"/>',frais:'<rect x="3" y="6" width="18" height="14" rx="2"/><path d="M3 10h18M16 15h2"/>'};
 function ic(n){return '<svg class="i" viewBox="0 0 24 24">'+PI[n]+'</svg>'}
 function head(t,s){return '<h1 class="t">'+t+'</h1><p class="s">'+s+'</p>'}
 var REQ=['entite','sig_nom','sig_role','lcvp_nom','numero_paiement','script_url','pass'];
-var TTL={accueil:'Accueil',ep:'Participant',infos:'Mes informations',apercu:'Aperçu',historique:'Historique',base:'Base de données',avance:'Avancé',aide:'Aide',plus:'Outils'};
-var PAGES=Object.keys(TTL),page='accueil';
+var TTL={accueil:'Accueil',ep:'Participant',apercu:'Aperçu et envoi',outils:'Outils',profil:'Profil',infos:'Informations personnelles',verif:'Vérification de l’envoi',secu:'Sécurité',notif:'Notifications',langue:'Langue',apparence:'Apparence',confid:'Politique de confidentialité',cgu:'Conditions d’utilisation',support:'Support',faq:'FAQ',historique:'Historique',base:'Participants',avance:'Avancé'};
+var PAGES=Object.keys(TTL),page='accueil';$('main').innerHTML=PAGES.map(function(p){return '<section class="pg" id="p-'+p+'" hidden></section>'}).join('');
 function ld(k,d){try{return JSON.parse(localStorage.getItem(k))||d}catch(e){return d}}
 function pt(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
 hist=ld('ogx-h2',ld('ogx-h',[]));var db=ld('ogx-db',{}),drafts=ld('ogx-drafts',{});
@@ -253,14 +337,15 @@ function fmt(i){return new Date(i).toLocaleString('fr-FR',{day:'numeric',month:'
 function setupDone(){return REQ.filter(function(k){return (V[k]||'').trim()}).length}
 function it(icn,t,s,p,x){return '<button class="it" type="button" data-'+(x||'go')+'="'+p+'"><span class="ic">'+ic(icn)+'</span><div><b>'+t+'</b><small>'+s+'</small></div>'+ic('chev')+'</button>'}
 function sec(t,p){return '<div class="sec"><h2>'+t+'</h2>'+(p?'<button class="chv" data-go="'+p+'" type="button" aria-label="Voir tout">'+ic('chev')+'</button>':'')+'</div>'}
-function chip(i,t,p){return '<button class="chip" type="button" data-go="'+p+'">'+ic(i)+t+'</button>'}
-function dAcc(){var n=setupDone(),nm=(V.sig_nom||'').trim().split(/\s+/)[0],l=hist.filter(function(h){return !h.test})[0];
- $('p-accueil').innerHTML='<h1 class="hi">Bonjour'+(nm?', '+E(nm):'')+'</h1>'+
- (n<REQ.length?'<div class="card"><h3>Configuration</h3><div class="mute">'+n+' sur '+REQ.length+' informations requises renseignées</div><div class="bar"><i style="width:'+Math.round(n/REQ.length*100)+'%"></i></div><div class="acts"><button class="btn p" data-go="infos" type="button">Compléter mes informations</button></div></div>':'')+
+function sq(i,t,p,pr){return '<button class="sqb" type="button" data-go="'+p+'"><span class="sqi'+(pr?' pr':'')+'">'+ic(i)+'</span>'+t+'</button>'}
+function mc(n,t){return '<div class="mc"><b>'+n+'</b><span>'+t+'</span></div>'}
+function dAcc(){var n=setupDone(),ok=function(h){return !h.test},today=hist.filter(function(h){return ok(h)&&new Date(h.d).toDateString()===new Date().toDateString()}).length,tot=hist.filter(ok).length,l=hist.filter(ok)[0],cust=Object.keys(CU).filter(function(k){return CU[k]&&CU[k].html}).length,C=2*Math.PI*26,off=C*(1-n/REQ.length);
+ $('p-accueil').innerHTML='<div class="hrow"><div class="bal"><span>E-mails envoyés aujourd’hui</span><b>'+today+'</b><div class="dots"><i class="on"></i><i></i></div></div>'+
+ '<div class="hcol"><div class="qa">'+sq('send','Nouveau','ep',1)+sq('db','Participants','base')+sq('clock','Historique','historique')+sq('code','Avancé','avance')+'</div>'+
+ '<div class="hs">'+mc(tot,'Envoyés au total')+mc(Object.keys(db).length,'Participants')+mc(cust,'Modèles personnalisés')+'</div></div></div>'+
+ (n<REQ.length?'<div class="cfg"><div><h3>Configuration</h3><p>Renseignez vos informations pour activer l’envoi.</p><button class="wbtn" type="button" data-go="infos">Compléter</button></div><div class="ring"><svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="26" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="7"/><circle cx="32" cy="32" r="26" fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round" stroke-dasharray="'+C.toFixed(1)+'" stroke-dashoffset="'+off.toFixed(1)+'"/></svg><b>'+n+'/'+REQ.length+'</b></div></div>':'')+
  sec('Modèles d’e-mails')+'<div class="hs">'+T.map(function(t,i){return '<button class="tcard" type="button" data-t="'+t.id+'"><span class="gi g'+(i%5)+'"><svg class="i" viewBox="0 0 24 24">'+TG[t.id]+'</svg></span><span class="tag">'+t.s+'</span><b>'+t.n+'</b><small>'+DSC[t.id]+'</small></button>'}).join('')+'</div>'+
- sec('Historique','historique')+(l?'<div class="card last"><b>'+E(l.t)+'</b><small>'+E(l.to)+' · '+fmt(l.d)+'</small></div>':'<div class="card last"><b>Aucun envoi pour l’instant</b><small>Vos messages envoyés apparaîtront ici.</small></div>')+
- '<div class="chips">'+chip('card','Mes informations','infos')+chip('db','Base de données','base')+chip('clock','Historique','historique')+chip('help','Aide','aide')+'</div>'+
- '<div class="qs"><div class="r"><select id="qm" aria-label="Modèle">'+T.map(function(t){return '<option value="'+t.id+'"'+(t.id===cur?' selected':'')+'>'+t.n+'</option>'}).join('')+'</select></div><input id="qe" type="email" placeholder="Adresse e-mail du participant" value="'+E(V.email||'')+'" autocomplete="off"><div style="display:flex"><button class="go" id="qgo" type="button" aria-label="Continuer">'+ic('send')+'</button></div></div>'}
+ sec('Dernier envoi','historique')+(l?'<div class="card last"><b>'+E(l.t)+'</b><small>'+E(l.to)+' · '+fmt(l.d)+'</small></div>':'<div class="card last"><b>Aucun envoi pour l’instant</b><small>Vos messages envoyés apparaîtront ici.</small></div>')}
 function bar(){var t=tpl(),f=fieldsOf(t),k=f.filter(function(x){return (V[x]||'').trim()}).length;return '<h3>Progression</h3><div class="mute">'+k+' champ(s) renseigné(s) sur '+f.length+'</div><div class="bar"><i style="width:'+Math.round(k/f.length*100)+'%"></i></div>'}
 function dEp(){var t=tpl(),n=setupDone();
  $('p-ep').innerHTML=head('Informations du participant','Renseignez les champs du message.')+'<div class="list">'+it('mail',t.n,'Modèle sélectionné · modifier','accueil')+'</div>'+
@@ -268,8 +353,8 @@ function dEp(){var t=tpl(),n=setupDone();
  '<div class="card" id="pr">'+bar()+'</div><div class="card"><h3>Champs du message</h3><div class="grid2">'+fieldsOf(t).map(field).join('')+'</div></div>'+
  '<div class="card"><h3>Objectif de développement durable (facultatif)</h3><div class="mute">Ajoutez au message la carte de l’ODD lié à l’opportunité.</div>'+field('odd')+field('odd_texte')+'</div>'+
  '<div class="acts"><button class="btn p" data-go="apercu" type="button">Afficher l’aperçu</button><button class="btn" id="saveep" type="button">Enregistrer le participant</button><button class="btn d" id="newep" type="button">Réinitialiser</button></div>'}
-function dInf(){var G=[['','Entité et signature',['entite','sig_nom','sig_role','from_name']],['','Responsable local (LCVP)',['lcvp_nom','lcvp_contact','lcvp_email']],['','Paiement',['numero_paiement','mode_paiement','beneficiaire']],['','Logo',['logo_url']],['','Envoi par Gmail',['script_url','pass','email_test']]];
- $('p-infos').innerHTML=head('Mes informations','Ces informations sont réutilisées dans tous les messages.')+G.map(function(g){return '<div class="card"><h3>'+g[1]+'</h3><div class="grid2">'+g[2].map(field).join('')+'</div>'+(g[1]==='Logo'?'<div id="lgp"></div><div class="mute" style="margin-top:8px">Adresse https d’une image hébergée. En l’absence de logo, le logotype texte AIESEC est utilisé.</div>':'')+(g[1]==='Envoi par Gmail'?'<div class="acts"><button class="btn" id="chk" type="button">Vérifier la connexion</button></div><div class="st" id="chs"></div><div class="mute" style="margin-top:8px">L’adresse du script se termine par /exec. Voir l’onglet Aide pour l’installation.</div>':'')+'</div>'}).join('')+'<div class="mute">Enregistrement automatique dans ce navigateur ; ces réglages ne sont pas synchronisés avec d’autres appareils.</div>';lg()}
+function dInf(){var G=[['Entité et signature',['entite','sig_nom','sig_role','from_name']],['Responsable local (LCVP)',['lcvp_nom','lcvp_contact','lcvp_email']],['Paiement',['numero_paiement','mode_paiement','beneficiaire']],['Logo',['logo_url']]];
+ $('p-infos').innerHTML=head('Informations personnelles','Ces informations sont réutilisées dans tous les messages.')+G.map(function(g){return '<div class="card"><h3>'+g[0]+'</h3><div class="grid2">'+g[1].map(field).join('')+'</div>'+(g[0]==='Logo'?'<div id="lgp"></div><div class="mute" style="margin-top:8px">Adresse https d’une image hébergée. Laissez le champ vide pour utiliser le logo AIESEC par défaut.</div>':'')+'</div>'}).join('')+'<div class="mute">Enregistrement automatique dans ce navigateur ; ces réglages ne sont pas synchronisés avec d’autres appareils.</div>';lg()}
 function lg(){var e=$('lgp');if(e)e.innerHTML=/^https:\/\//.test(V.logo_url||'')?'<img class="lg" src="'+E(V.logo_url)+'" alt="Logo" onerror="this.outerHTML=\'<div class=warn>Image introuvable.</div>\'">':''}
 function dPrev(){var r=build(tpl()),m=miss.map(lab);
  $('p-apercu').innerHTML=head('Aperçu du message','Vérifiez le contenu avant l’envoi.')+'<div class="meta"><div><span>À</span><b>'+E(V.email||'—')+'</b></div><div><span>Objet</span>'+E(r.subject)+'</div></div><iframe id="prev" sandbox title="Aperçu"></iframe>'+
@@ -279,14 +364,73 @@ function dHist(){$('p-historique').innerHTML=head('Historique','Messages envoyé
 function dBase(){var a=Object.keys(db).map(function(k){return db[k]}).sort(function(x,y){return String(y.updatedAt||y.last||'').localeCompare(String(x.updatedAt||x.last||''))});
  $('p-base').innerHTML=head('Participants enregistrés','Carnet local des participants de cet appareil.')+'<div class="card"><h3>'+a.length+' participant(s)</h3><div class="mute">Exportez la liste au format CSV, compatible Excel et Google Sheets. Les données ne sont pas synchronisées ni sauvegardées automatiquement sur un serveur.</div><div class="acts"><button class="btn p" id="exp" type="button">Exporter en CSV</button><button class="btn" id="expc" type="button">Copier le CSV</button></div></div>'+
  (a.length?'<div class="list">'+a.map(function(e){return it('user',E(((e.prenom||'')+' '+(e.nom||'')).trim()||e.email),E(e.email)+(e.programme?' · '+E(e.programme):'')+' · '+(e.n||0)+' envoi(s)',E(e.email),'load')}).join('')+'</div>':'<div class="empty"><b>Base vide</b>Aucun participant enregistré.</div>')}
-function dAide(){$('p-aide').innerHTML=head('Aide','Guide d’utilisation et dépannage.')+[
-['Envoyer un message','<ol><li>Accueil : sélectionnez un modèle.</li><li>Participant : renseignez les champs.</li><li>Aperçu : vérifiez le message, puis sélectionnez « Envoyer au participant ».</li></ol>'],
-['Installer l’envoi par Gmail','<ol><li>Ouvrez script.google.com, créez un projet et collez le contenu du fichier apps-script.gs.</li><li>Dans les propriétés du script, ajoutez OGX_PASS avec le mot de passe de votre choix.</li><li>Déployez en application Web : exécution « Moi », accès « Tout le monde ».</li><li>Saisissez l’adresse du déploiement (se terminant par /exec) et le mot de passe dans Mes informations.</li></ol>'],
-['Ajouter le logo','<p>Dans Mes informations, rubrique Logo, saisissez l’adresse https d’une image hébergée. Un lien de téléchargement ou de partage ne fonctionne pas dans un e-mail.</p>'],
-['Limites d’envoi','<p>Un compte Gmail personnel permet 100 destinataires par jour, un compte Google Workspace 1 500.</p>'],
- ['Un message ne part pas','<p>Vérifiez l’adresse du script, le mot de passe et le dossier Envoyés de Gmail. Certains environnements d’aperçu bloquent l’envoi : publiez l’application et utilisez son adresse hébergée.</p>'],
-['Champs en surbrillance orange','<p>Ils signalent une information manquante dans l’aperçu. L’envoi est bloqué tant qu’il en reste.</p>']].map(function(x){return '<details class="card"><summary>'+x[0]+'</summary>'+x[1]+'</details>'}).join('')}
-function dPlus(){$('p-plus').innerHTML=head('Outils','Paramètres et données.')+'<div class="list">'+it('card','Mes informations','Équipe, responsable local, paiement, logo, envoi','infos')+it('db','Base de données','Participants et export CSV','base')+it('clock','Historique','Messages envoyés','historique')+it('code','Avancé','Modifier le code des modèles d’e-mails','avance')+it('help','Aide','Guide et dépannage','aide')+'</div>'}
+var SUB={infos:'profil',verif:'profil',secu:'profil',notif:'profil',langue:'profil',apparence:'profil',confid:'profil',cgu:'profil',support:'profil',faq:'profil',historique:'outils',base:'outils',avance:'outils'};
+var LASTERR='',PF=Object.assign({conf:true,toast:true},ld('ogx-pf',{}));
+function isVerif(){return !!ld('ogx-verif',false)}
+function themeNow(){try{return localStorage.getItem('ogx-theme')||'auto'}catch(e){return 'auto'}}
+function applyTheme(v){try{localStorage.setItem('ogx-theme',v)}catch(e){}var r=document.documentElement;if(v==='auto'){if(r.removeAttribute)r.removeAttribute('data-theme')}else r.setAttribute('data-theme',v)}
+applyTheme(themeNow());
+function wipe(){try{Object.keys(localStorage).forEach(function(k){if(k.indexOf('ogx-')===0)localStorage.removeItem(k)})}catch(e){}location.hash='';location.reload()}
+function diag(){var u=(V.script_url||'').trim();return ['OGX Companion · Version 2.0','Date : '+new Date().toLocaleString('fr-FR'),'Navigateur : '+(typeof navigator!=='undefined'?navigator.userAgent:'inconnu'),'Adresse du script : '+(u?(/^https:\/\/.+\/exec$/.test(u)?'renseignée (format valide)':'renseignée (format inattendu)'):'non renseignée'),'Mot de passe : '+((V.pass||'').trim()?'renseigné':'non renseigné'),'Envoi vérifié : '+(isVerif()?'oui':'non'),'Modèle actif : '+tpl().n,'Participants enregistrés : '+Object.keys(db).length,'Dernière erreur : '+(LASTERR||'aucune')].join('\n')}
+function itv(i,t,v,p){return '<button class="it" type="button" data-go="'+p+'"><span class="ic">'+ic(i)+'</span><div><b>'+t+'</b></div><span class="mute">'+v+'</span>'+ic('chev')+'</button>'}
+function tl(i,t,d,p){return '<button class="tl" type="button" data-go="'+p+'"><span class="ic">'+ic(i)+'</span><b>'+t+'</b><small>'+d+'</small></button>'}
+function dOutils(){$('p-outils').innerHTML='<div class="sr">'+ic('search')+'<input id="osq" type="search" placeholder="Rechercher un outil" autocomplete="off"></div>'+
+ '<h2>Gestion des messages</h2><div class="tg">'+tl('code','Avancé','Modifier le code HTML des modèles d’e-mails.','avance')+tl('db','Participants','Carnet des participants et export CSV.','base')+tl('clock','Historique','Liste des messages envoyés.','historique')+tl('send','Aperçu et envoi','Vérifier puis envoyer un message.','apercu')+'</div>'+
+ '<h2>Configuration et aide</h2><div class="tg">'+tl('user','Informations personnelles','Équipe, LCVP, paiement et logo.','infos')+tl('check','Vérification de l’envoi','Tester la connexion à Gmail.','verif')+tl('mail','Modèles d’e-mails','Choisir un modèle à utiliser.','accueil')+tl('help','FAQ','Réponses détaillées aux questions fréquentes.','faq')+'</div>'}
+function grp(t,a){return '<h2>'+t+'</h2><div class="list">'+a.join('')+'</div>'}
+function dProfil(){var nm=(V.sig_nom||'').trim(),p=nm.split(/\s+/),ini=((p[0]||'').charAt(0)+(p[1]||'').charAt(0)).toUpperCase()||'?',v=isVerif(),th={auto:'Automatique',light:'Clair',dark:'Sombre'}[themeNow()];
+ $('p-profil').innerHTML='<div class="prof"><div class="bigav">'+E(ini)+'</div><div class="pn">'+E(nm||'Votre nom')+'</div><div class="mute">'+E(V.lcvp_contact||'Téléphone non renseigné')+'</div><div class="mute">'+E(V.lcvp_email||V.email_test||'E-mail non renseigné')+'</div></div>'+
+ (v?'':'<div class="cfg"><div><h3>Vérifiez votre envoi</h3><p>Connectez votre script Gmail pour pouvoir envoyer vos messages.</p><button class="wbtn" type="button" data-go="verif">Commencer</button></div></div>')+
+ grp('Compte',[it('user','Informations personnelles','','infos').replace('<small></small>',''),'<button class="it" type="button" data-go="verif"><span class="ic">'+ic('check')+'</span><div><b>Vérification de l’envoi</b></div><span class="bd '+(v?'yes':'no')+'">'+(v?'Vérifié':'Non vérifié')+'</span>'+ic('chev')+'</button>'])+
+ grp('Sécurité',[it('lock','Sécurité','','secu').replace('<small></small>',''),it('bell','Notifications','','notif').replace('<small></small>','')])+
+ grp('Préférences',[itv('globe','Langue','Français','langue'),itv('palette','Apparence',th,'apparence')])+
+ grp('Légal',[it('shield','Politique de confidentialité','','confid').replace('<small></small>',''),it('doc','Conditions d’utilisation','','cgu').replace('<small></small>','')])+
+ grp('Assistance',[it('help','Support','','support').replace('<small></small>',''),it('help','FAQ','','faq').replace('<small></small>','')])+
+ '<button class="btn dng" id="wipe" type="button">Réinitialiser les données</button><div class="ver">OGX Companion · Version 2.0</div>'}
+function dVerif(){var v=isVerif();$('p-verif').innerHTML=head('Vérification de l’envoi','Connectez l’application à votre script Gmail.')+
+ '<div class="card"><h3>État de la connexion</h3><div class="mute" style="margin:6px 0 10px"><span class="bd '+(v?'yes':'no')+'">'+(v?'Vérifié':'Non vérifié')+'</span></div><div class="grid2">'+field('script_url')+field('email_test')+'</div><div class="acts"><button class="btn p" id="chk" type="button">Vérifier la connexion</button></div><div class="st" id="chs"></div><div class="mute" style="margin-top:8px">L’adresse du script se termine par /exec. Le mot de passe se règle dans Sécurité.</div></div>'+
+ '<div class="card"><h3>Comment ça marche ?</h3><div class="mute" style="line-height:1.65">Vos messages sont transmis à un script Google installé dans votre compte, qui les envoie depuis votre adresse Gmail ou Google Workspace. L’installation se fait une seule fois : la marche à suivre détaillée se trouve dans la FAQ.</div><div class="acts"><button class="btn" type="button" data-go="faq">Ouvrir la FAQ</button></div></div>'}
+function dSecu(){$('p-secu').innerHTML=head('Sécurité','Protégez l’accès à votre script d’envoi.')+
+ '<div class="card"><h3>Mot de passe du script</h3><div class="mute" style="margin-top:4px">Il doit être identique à la propriété OGX_PASS enregistrée dans votre script Google.</div>'+field('pass')+'</div>'+
+ '<div class="card doc"><h3>Bonnes pratiques</h3><p>Toute personne qui connaît à la fois l’adresse du script et ce mot de passe peut envoyer des messages depuis votre compte. Ne les partagez qu’avec les membres de votre équipe.</p><p>Choisissez un mot de passe long, composé de lettres et de chiffres, que vous n’utilisez nulle part ailleurs. Si vous pensez qu’il a été divulgué, changez la propriété OGX_PASS dans le script, puis saisissez le nouveau mot de passe ici.</p><p>Les données de l’application (participants, historique, réglages) sont enregistrées uniquement dans ce navigateur. Sur un appareil partagé, utilisez « Réinitialiser les données » dans le Profil lorsque vous avez terminé.</p></div>'}
+var NT=ld('ogx-notifs',[]);
+function badge(){var n=NT.filter(function(x){return !x.r}).length,b=$('nbadge');if(b){b.hidden=!n;b.textContent=n>9?'9+':String(n)}}
+function notify(id,t,m){if(NT.some(function(x){return x.id===id}))return false;NT.unshift({id:id,t:t,m:m,d:new Date().toISOString(),r:false});NT=NT.slice(0,50);pt('ogx-notifs',NT);badge();return true}
+function checkConfig(){var done=setupDone()===REQ.length,f=!!ld('ogx-cfgdone',false);
+ if(done&&!f){pt('ogx-cfgdone',true);notify('cfg-'+Date.now(),'Configuration terminée','Toutes vos informations sont renseignées. Vous pouvez désormais envoyer vos messages.');if(PF.toast)toast('Configuration terminée');if(page==='accueil')dAcc()}
+ else if(!done&&f){pt('ogx-cfgdone',false)}}
+function setVerif(v){var was=isVerif();pt('ogx-verif',!!v);if(v&&!was)notify('verif-ok','Envoi vérifié','La connexion à votre script Gmail fonctionne : vos messages peuvent partir.')}
+function dNotif(){function r(k,t,d){return '<label class="swr"><span><b>'+t+'</b><small>'+d+'</small></span><input class="sw" type="checkbox" id="pf_'+k+'"'+(PF[k]?' checked':'')+'></label>'}
+ var items=NT.map(function(x){return '<div class="it" style="cursor:default"><span class="ic">'+ic(x.id.indexOf('verif')===0?'check':'bell')+'</span><div><b>'+E(x.t)+'</b><small>'+E(x.m)+' · '+fmt(x.d)+'</small></div>'+(x.r?'':'<span class="bd yes">Nouveau</span>')+'</div>'}).join('');
+ $('p-notif').innerHTML=head('Notifications','Messages de l’application et préférences.')+(NT.length?'<div class="list">'+items+'</div><div class="acts"><button class="btn" id="ntclr" type="button">Effacer les notifications</button></div>':'<div class="empty"><b>Aucune notification</b>Les messages importants, comme la fin de la configuration, apparaîtront ici.</div>')+
+ '<h2>Préférences</h2><div class="card">'+r('conf','Confirmation avant l’envoi','Demander une validation avant chaque envoi pour éviter les erreurs.')+r('toast','Message de confirmation','Afficher une notification après un envoi réussi ou à la fin de la configuration.')+'</div><div class="mute">Ces préférences sont enregistrées sur cet appareil.</div>';
+ NT.forEach(function(x){x.r=true});pt('ogx-notifs',NT);badge()}
+function dLangue(){$('p-langue').innerHTML=head('Langue','Langue de l’application et des modèles.')+'<div class="list"><div class="it" style="cursor:default"><span class="ic">'+ic('globe')+'</span><div><b>Français</b><small>Langue active</small></div><span class="bd yes">Actif</span></div><div class="it" style="cursor:default;opacity:.6"><span class="ic">'+ic('globe')+'</span><div><b>English</b><small>Non disponible pour le moment</small></div></div></div><div class="mute">L’application et tous les modèles d’e-mails sont rédigés en français. Pour adapter un modèle dans une autre langue, utilisez l’onglet Avancé.</div>'}
+function dApp(){var c=themeNow();function o(v,t,d){return '<button class="it" type="button" data-th="'+v+'"><span class="ic">'+ic('palette')+'</span><div><b>'+t+'</b><small>'+d+'</small></div>'+(c===v?'<span class="bd yes">Actif</span>':'')+'</button>'}
+ $('p-apparence').innerHTML=head('Apparence','Thème de l’application.')+'<div class="list">'+o('auto','Automatique','Suit le réglage de votre appareil')+o('light','Clair','Fond clair')+o('dark','Sombre','Fond sombre')+'</div>'}
+function dConfid(){$('p-confid').innerHTML=head('Politique de confidentialité','Comment vos données sont traitées.')+'<div class="card doc"><h3>Données enregistrées</h3><p>OGX Companion enregistre, dans le navigateur de l’appareil que vous utilisez, vos réglages (signature, coordonnées du responsable local, numéro de paiement, adresse du script), la liste des participants que vous saisissez, l’historique des envois et vos modèles personnalisés.</p><h3>Aucun serveur</h3><p>L’application ne dispose d’aucun serveur et ne transmet ces données à aucun service d’analyse ou de publicité. Elle n’utilise pas de cookies de suivi.</p><h3>Envoi des messages</h3><p>Lorsque vous envoyez un message, son contenu et l’adresse du destinataire sont transmis au script Google installé dans votre compte, qui l’expédie via Gmail. Google traite ces informations selon ses propres conditions.</p><h3>Police de caractères</h3><p>L’affichage utilise une police chargée depuis Google Fonts : votre navigateur contacte donc les serveurs de Google à l’ouverture de l’application.</p><h3>Vos responsabilités</h3><p>Les données des participants (nom, adresse e-mail, informations de paiement) sont des données personnelles. Utilisez-les uniquement pour le suivi des échanges, respectez les règles de protection des données applicables et les consignes de votre organisation, et supprimez-les lorsqu’elles ne sont plus nécessaires.</p><h3>Suppression</h3><p>Vous pouvez effacer toutes les données à tout moment depuis le Profil, avec « Réinitialiser les données ».</p></div>'}
+function dCgu(){$('p-cgu').innerHTML=head('Conditions d’utilisation','Règles d’usage de l’application.')+'<div class="card doc"><h3>Usage prévu</h3><p>OGX Companion est destiné aux équipes Outgoing Exchange pour préparer et envoyer des communications légitimes aux participants à l’échange. Il ne doit pas servir à l’envoi de messages non sollicités.</p><h3>Contenu des messages</h3><p>Vous restez responsable du contenu des messages et de l’exactitude des informations saisies : montants, dates limites, numéros de paiement, liens et coordonnées. Relisez toujours l’aperçu et effectuez un envoi test après toute modification d’un modèle.</p><h3>Accès au script</h3><p>L’adresse du script et le mot de passe donnent accès à l’envoi depuis votre compte. Gardez-les confidentiels.</p><h3>Limites d’envoi</h3><p>Les quotas d’envoi sont fixés par Google et ne dépendent pas de l’application. Un compte Gmail personnel est limité à 100 destinataires par jour via Apps Script, un compte Google Workspace à 1 500.</p><h3>Garanties</h3><p>L’application est fournie en l’état, sans garantie de disponibilité ni de résultat. Le rendu des e-mails peut varier selon les messageries.</p></div>'}
+function dSupport(){$('p-support').innerHTML=head('Support','Obtenir de l’aide en cas de difficulté.')+'<div class="card doc"><h3>1. Consultez la FAQ</h3><p>La plupart des questions (installation du script, mot de passe, quotas, modification d’un modèle) y sont traitées pas à pas.</p><div class="acts"><button class="btn" type="button" data-go="faq">Ouvrir la FAQ</button></div></div><div class="card doc"><h3>2. Vérifiez l’envoi</h3><p>Dans Vérification de l’envoi, touchez « Vérifier la connexion » pour savoir si le script répond.</p><div class="acts"><button class="btn" type="button" data-go="verif">Vérifier l’envoi</button></div></div><div class="card doc"><h3>3. Transmettez un rapport de diagnostic</h3><p>Si le problème persiste, copiez le rapport ci-dessous et transmettez-le à la personne qui administre l’application. Il indique la version, le navigateur, l’état de la configuration et la dernière erreur. Il ne contient ni votre mot de passe ni l’adresse complète de votre script.</p><div class="acts"><button class="btn p" id="diag" type="button">Copier le rapport</button></div></div>'}
+var FQ=[
+['À quoi sert OGX Companion ?','<p>OGX Companion aide les équipes Outgoing Exchange à écrire et envoyer rapidement des e-mails soignés et cohérents aux participants à l’échange. Chaque étape du parcours (premier contact, acceptation et paiement, séminaire de préparation, suivi, débriefing) dispose d’un modèle prêt à l’emploi. Vous renseignez les informations propres au participant : l’application complète le message et l’envoie depuis votre compte Gmail.</p>'],
+['Comment envoyer un message à un participant ?','<ol><li>Sur l’accueil, choisissez un modèle, ou touchez « Nouveau ».</li><li>Dans l’onglet Participant, renseignez l’adresse e-mail et les champs demandés.</li><li>Ouvrez l’onglet Aperçu (bouton central) et relisez le message.</li><li>Touchez « Envoyer au participant » et confirmez.</li></ol>'],
+['Que signifient les champs surlignés en orange ?','<p>Dans l’aperçu, un texte orange entre crochets, par exemple [Prénom], signale une information manquante. L’envoi est bloqué tant qu’il en reste, afin d’éviter qu’un message incomplet ne parte. Complétez le champ dans l’onglet Participant ou, s’il s’agit d’un réglage d’équipe (signature, numéro de paiement, responsable local), dans Profil > Informations personnelles.</p>'],
+['Comment fonctionne l’envoi par Gmail ?','<p>L’application ne possède aucun serveur. Elle transmet le message à un petit script Google (Apps Script) que vous installez une fois dans votre compte. Ce script envoie le message depuis votre adresse Gmail ou Google Workspace : le participant voit donc votre adresse comme expéditeur, et le message apparaît dans votre dossier Envoyés.</p>'],
+['Comment installer le script d’envoi ?','<ol><li>Ouvrez script.google.com avec le compte qui enverra les e-mails et créez un nouveau projet.</li><li>Supprimez le code existant et collez le contenu du fichier apps-script.gs.</li><li>Dans Paramètres du projet, ajoutez une propriété de script nommée OGX_PASS avec le mot de passe de votre choix.</li><li>Cliquez sur Déployer, puis Nouveau déploiement, type Application Web. Exécuter en tant que : Moi. Qui a accès : Tout le monde.</li><li>Autorisez l’accès lorsque Google le demande.</li><li>Copiez l’adresse du déploiement (elle se termine par /exec) dans Profil > Vérification de l’envoi, puis saisissez le mot de passe dans Profil > Sécurité.</li><li>Touchez « Vérifier la connexion ».</li></ol>'],
+['Le message « Mot de passe incorrect » s’affiche. Que faire ?','<p>Cela signifie que le script a bien été joint, mais que le mot de passe saisi dans l’application diffère de celui enregistré dans le script. Vérifiez que la propriété s’appelle exactement OGX_PASS, retapez le même mot de passe à la main aux deux endroits, sans espace avant ou après, et évitez le remplissage automatique du navigateur.</p>'],
+['L’envoi échoue ou ne répond pas. Comment diagnostiquer ?','<ol><li>Dans Vérification de l’envoi, touchez « Vérifier la connexion ».</li><li>Si aucune réponse n’est reçue, vérifiez que le déploiement est en accès « Tout le monde » et que l’adresse se termine par /exec.</li><li>Si vous avez modifié le script, créez une nouvelle version dans Déployer > Gérer les déploiements.</li><li>Dans Apps Script, ouvrez la page Exécutions : si une ligne doPost apparaît, la requête est bien arrivée au script.</li><li>Sinon, copiez le rapport de diagnostic (Profil > Support) et transmettez-le à la personne qui administre l’application.</li></ol>'],
+['Combien de messages puis-je envoyer par jour ?','<p>Google limite les envois par Apps Script : 100 destinataires par jour avec un compte Gmail personnel, 1 500 avec un compte Google Workspace. Après chaque envoi, l’application affiche le nombre d’envois restants pour la journée. Le quota est renouvelé quotidiennement.</p>'],
+['Comment ajouter ou changer le logo ?','<p>Dans Profil > Informations personnelles, rubrique Logo, collez l’adresse https d’une image hébergée en ligne (finissant par .png, .jpg ou .svg). Un lien de téléchargement ou de partage (Drive, WeTransfer) ne fonctionne pas dans un e-mail. Laissez le champ vide pour utiliser le logo AIESEC par défaut.</p>'],
+['Comment modifier le texte ou la mise en page d’un e-mail ?','<p>Ouvrez Outils > Avancé, choisissez le modèle et modifiez son code HTML. Pour être aidé, décrivez la modification souhaitée, copiez la demande générée pour l’IA, collez-la dans ChatGPT, Claude ou Gemini, puis collez le code obtenu dans l’application. Vérifiez l’aperçu et enregistrez. Vous pouvez rétablir le modèle d’origine à tout moment. Faites toujours un envoi test après une modification.</p>'],
+['Où sont enregistrées mes données ?','<p>Tout est enregistré dans le navigateur de l’appareil que vous utilisez : réglages, participants, historique et modèles personnalisés. Rien n’est envoyé à un serveur de l’application. Conséquence : un autre appareil ou un autre navigateur ne voit pas ces données, et vider les données du navigateur les supprime. Pensez à exporter régulièrement la liste des participants.</p>'],
+['Comment exporter la liste des participants ?','<p>Ouvrez Outils > Participants, puis touchez « Exporter en CSV ». Le fichier s’ouvre dans Excel ou Google Sheets. Si le téléchargement est bloqué, utilisez « Copier le CSV » et collez le contenu dans une feuille de calcul.</p>'],
+['Comment ajouter un objectif de développement durable (ODD) ?','<p>Dans l’onglet Participant, rubrique « Objectif de développement durable », choisissez l’ODD correspondant à l’opportunité. Une carte aux couleurs de cet objectif est ajoutée au message, avec un texte officiel que vous pouvez remplacer par le vôtre. Laissez « Aucun » pour ne pas l’afficher.</p>'],
+['Comment sont calculées les dates limites ?','<p>Pour l’acceptation et le paiement, la date limite est fixée automatiquement à un mois après la date d’acceptation saisie. Pour le choix de la date de départ, elle est fixée à une semaine après la date d’approbation. Pour modifier ces délais, adaptez le modèle dans Outils > Avancé.</p>'],
+['Puis-je utiliser l’application à plusieurs ?','<p>Oui. Chaque membre de l’équipe peut utiliser l’application sur son appareil avec le même script d’envoi : les messages partent alors depuis le compte Google qui a installé ce script. Chacun peut aussi installer son propre script pour envoyer depuis sa propre adresse. Dans les deux cas, les données enregistrées restent propres à chaque appareil.</p>'],
+['Comment effacer mes données ?','<p>Dans Profil, touchez « Réinitialiser les données » en bas de page. Cette action supprime les réglages, les participants, l’historique et les modèles personnalisés de cet appareil. Elle est irréversible : exportez d’abord les données dont vous avez besoin.</p>']];
+function dFaq(){$('p-faq').innerHTML=head('FAQ','Questions fréquentes et réponses détaillées.')+FQ.map(function(x){return '<details class="card"><summary>'+x[0]+'</summary>'+x[1]+'</details>'}).join('')}
+document.addEventListener('change',function(e){var i=e.target.id||'';if(i.slice(0,3)==='pf_'){PF[i.slice(3)]=e.target.checked;pt('ogx-pf',PF)}});
+document.addEventListener('input',function(e){if(e.target.id==='osq'){var q=e.target.value.toLowerCase();document.querySelectorAll('.tl').forEach(function(x){x.hidden=x.textContent.toLowerCase().indexOf(q)<0})}});
 
 var AVT=null;
 function cl(c){return String(c).replace(/^\s*```[a-z]*\s*/i,'').replace(/\s*```\s*$/,'').trim()}
@@ -318,11 +462,15 @@ function avClick(id){var t=T.filter(function(x){return x.id===AVT})[0];if(!t)ret
  if(id==='avai'){var q=$('avq').value.trim();if(!q){toast('Décrivez d’abord la modification souhaitée');return true}copyTxt(aiPrompt($('avc').value,q),'Demande copiée : collez-la dans votre IA');return true}
  return false}
 document.addEventListener('change',function(e){if(e.target.id==='avt'){AVT=e.target.value;dAvance()}});
-var DRAW={accueil:dAcc,ep:dEp,infos:dInf,apercu:dPrev,historique:dHist,base:dBase,avance:dAvance,aide:dAide,plus:dPlus};
-function sync(){document.querySelectorAll('input[id^="f_"],select[id^="f_"]').forEach(function(e){var k=e.id.slice(2),sc=e.closest('section');if(!F[k]||(sc&&sc.hidden))return;if(e.value!==''||V[k]===undefined)V[k]=e.value});save()}
-function show(p){sync();if(!DRAW[p])p='accueil';page=p;PAGES.forEach(function(x){$('p-'+x).hidden=x!==p});
- document.querySelectorAll('.nb').forEach(function(b){var q=b.getAttribute('data-p');b.classList.toggle('on',q===p||(q==='plus'&&(p==='infos'||p==='base'||p==='aide'||p==='historique'||p==='avance')))});
- var sb=p==='infos'||p==='base'||p==='aide'||p==='historique'||p==='avance';$('back').hidden=!sb;$('pill').hidden=sb;var nn=(V.sig_nom||'').trim().split(/\s+/);$('av').textContent=((nn[0]||'').charAt(0)+(nn[1]||'').charAt(0)).toUpperCase()||'·';DRAW[p]();window.scrollTo(0,0)}
+var DRAW={accueil:dAcc,ep:dEp,apercu:dPrev,outils:dOutils,profil:dProfil,infos:dInf,verif:dVerif,secu:dSecu,notif:dNotif,langue:dLangue,apparence:dApp,confid:dConfid,cgu:dCgu,support:dSupport,faq:dFaq,historique:dHist,base:dBase,avance:dAvance};
+function sync(){document.querySelectorAll('input[id^="f_"],select[id^="f_"]').forEach(function(e){var k=e.id.slice(2),sc=e.closest('section');if(!F[k]||(sc&&sc.hidden))return;if(e.value!==''||V[k]===undefined)V[k]=e.value});save();checkConfig()}
+function show(p){sync();if(!DRAW[p])p='accueil';page=p;PAGES.forEach(function(x){var e=$('p-'+x);e.hidden=x!==p;e.classList.toggle('sub',!!SUB[x])});
+ var par=SUB[p]||p,home=p==='accueil';
+ var dkp={base:1,historique:1,avance:1,faq:1}[p];document.querySelectorAll('.nb').forEach(function(b){var q=b.getAttribute('data-p'),dk=b.classList.contains('dk');b.classList.toggle('on',q===par);b.classList.toggle('don',dk?q===p:(!dkp&&q===par))});
+ $('back').hidden=!SUB[p];$('av').hidden=!home;$('hi').hidden=!home;$('ib1').hidden=!home;$('ib2').hidden=!home;$('ttl').hidden=home;$('ttl').textContent=TTL[p];
+ var nn=(V.sig_nom||'').trim().split(/\s+/);$('av').textContent=((nn[0]||'').charAt(0)+(nn[1]||'').charAt(0)).toUpperCase()||'·';$('hi').textContent='Bonjour'+(nn[0]?', '+nn[0]:'');
+ var lu=(V.logo_url||LOGO_DEFAULT).trim(),nl=$('nlogo'),nm2=$('nmark');if(/^https:\/\//.test(lu)){if(nl.getAttribute&&nl.getAttribute('src')!==lu)nl.src=lu;nl.onerror=function(){nl.hidden=true;nm2.hidden=false};nl.hidden=false;nm2.hidden=true}else{nl.hidden=true;nm2.hidden=false}
+ badge();DRAW[p]();window.scrollTo(0,0)}
 function go(p){if(location.hash==='#'+p)show(p);else location.hash=p}
 window.addEventListener('hashchange',function(){show(location.hash.slice(1))});
 function upsert(){var e=(V.email||'').trim().toLowerCase();if(!e)return false;var o=db[e]||{n:0},now=new Date().toISOString();
@@ -336,8 +484,12 @@ document.addEventListener('focusout',function(){sync()});document.addEventListen
 document.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;var id=b.id,g=b.getAttribute('data-go'),t=b.getAttribute('data-t'),l=b.getAttribute('data-load'),p=b.getAttribute('data-p');
  if(p)return go(p);if(g)return go(g);if(t){cur=t;return go('ep')}
  if(l){switchParticipant(l,db[l]);toast('Participant chargé');return go('ep')}
- if(id==='back'){if(typeof history!=='undefined'&&history.length>1)history.back();else go('plus');return}
- if(id==='av')return go('infos');
+ if(id==='back')return go(SUB[page]||'accueil');
+ if(id==='av')return go('profil');
+ var th=b.getAttribute('data-th');if(th){applyTheme(th);return dApp()}
+ if(id==='wipe'){if(confirm('Effacer définitivement tous les réglages, participants, historique et modèles personnalisés de cet appareil ?'))wipe();return}
+ if(id==='diag')return copyTxt(diag(),'Rapport copié');
+ if(id==='ntclr'){NT=[];pt('ogx-notifs',NT);badge();return dNotif()}
  if(id==='qgo'){var m=$('qm').value,em=($('qe').value||'').trim();if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)){toast('Saisissez une adresse e-mail valide.');return}cur=m;switchParticipant(em);return go('ep')}
  if(id==='newep'){Object.keys(V).forEach(function(k){if(!F[k][2])delete V[k]});save();return dEp()}
  if(id==='saveep')return toast(upsert()?'Participant enregistré':'Renseignez d’abord son adresse e-mail');
@@ -350,18 +502,18 @@ document.addEventListener('click',function(e){var b=e.target.closest('button');i
 async function chk(){sync();var o=$('chs'),u=(V.script_url||'').trim();
  if(!/^https:\/\/.+\/exec$/.test(u)){o.innerHTML='<span class="err">L’adresse du script doit commencer par https:// et se terminer par /exec.</span>';return}
  o.innerHTML='<span class="mute">Vérification…</span>';
- try{var r=await fetch(u),j=await r.json();o.innerHTML=j.ok?'<span class="ok">Connexion établie. Le script répond correctement.</span>':'<span class="err">Le script répond, mais de façon inattendue.</span>'}
+ try{var r=await fetch(u),j=await r.json();if(j.ok)setVerif(true);o.innerHTML=j.ok?'<span class="ok">Connexion établie. Le script répond correctement.</span>':'<span class="err">Le script répond, mais de façon inattendue.</span>'}
  catch(e){o.innerHTML='<span class="err">Aucune réponse. Vérifiez que le déploiement est en accès « Tout le monde ». Si l’application est ouverte dans l’aperçu Claude, la vérification est bloquée : utilisez la version hébergée.</span>'}}
-async function doSend(test){sync();var r=build(tpl()),to=test?(V.email_test||'').trim():(V.email||'').trim(),st=$('pst'),b=$(test?'test':'send'),old=b.textContent,bad=function(m){st.innerHTML='<span class="err">'+m+'</span>'};
+async function doSend(test){sync();var r=build(tpl()),to=test?(V.email_test||'').trim():(V.email||'').trim(),st=$('pst'),b=$(test?'test':'send'),old=b.textContent,bad=function(m){LASTERR=String(m).replace(/<[^>]+>/g,'');st.innerHTML='<span class="err">'+m+'</span>'};
  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(to))return bad(test?'Renseignez votre adresse e-mail de test dans Mes informations.':'Adresse e-mail du participant invalide.');
  var invalid=$('p-ep').querySelector('input:invalid,select:invalid');if(invalid)return bad('Vérifiez le champ « '+E(lab((invalid.id||'').slice(2)))+' ».');
  if(miss.length)return bad('Veuillez d’abord compléter : '+E(miss.map(lab).join(', ')));
  if(!/^https:\/\//.test((V.script_url||'').trim()))return bad('L’adresse du script n’est pas renseignée. <a href="#infos" style="color:inherit;font-weight:700">Ouvrir Mes informations</a> (rubrique Envoi par Gmail). Le script doit d’abord être installé : voir l’onglet Aide.');
  if(!(V.pass||'').trim())return bad('Le mot de passe du script n’est pas renseigné. <a href="#infos" style="color:inherit;font-weight:700">Ouvrir Mes informations</a>.');
- if(!confirm('Confirmer l’envoi à '+to+' ?'))return;b.disabled=true;b.textContent='Envoi en cours…';
+ if(PF.conf&&!confirm('Confirmer l’envoi à '+to+' ?'))return;b.disabled=true;b.textContent='Envoi en cours…';
  try{var res=await fetch(V.script_url.trim(),{method:'POST',body:JSON.stringify({pass:V.pass.trim(),to:to,subject:(test?'[TEST] ':'')+r.subject,html:r.html,text:mailText(r.html),name:V.from_name||'AIESEC'})}),j=await res.json();
-  if(j.ok){st.innerHTML='<span class="ok">Message envoyé. Envois restants aujourd’hui : '+E(j.remaining)+'.</span>';hist.unshift({t:tpl().n,id:cur,to:to,d:new Date().toISOString(),test:!!test});hist=hist.slice(0,200);pt('ogx-h2',hist);
-   if(!test){upsert();var e=db[(V.email||'').trim().toLowerCase()];if(e){e.n=(e.n||0)+1;e.lastSentAt=new Date().toISOString();pt('ogx-db',db)}}toast('Message envoyé')}
+  if(j.ok){setVerif(true);st.innerHTML='<span class="ok">Message envoyé. Envois restants aujourd’hui : '+E(j.remaining)+'.</span>';hist.unshift({t:tpl().n,id:cur,to:to,d:new Date().toISOString(),test:!!test});hist=hist.slice(0,200);pt('ogx-h2',hist);
+   if(!test){upsert();var e=db[(V.email||'').trim().toLowerCase()];if(e){e.n=(e.n||0)+1;e.lastSentAt=new Date().toISOString();pt('ogx-db',db)}}if(PF.toast)toast('Message envoyé')}
   else bad('Refusé : '+E(j.error||'erreur'))}
  catch(x){bad('Envoi impossible ou réponse illisible. Vérifiez le dossier Envoyés de Gmail, l’adresse du script et le fait que l’application est ouverte depuis son adresse publiée.')}
  b.disabled=false;b.textContent=old}
